@@ -5,33 +5,55 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const MouseTracker = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [isHoveringLink, setIsHoveringLink] = useState(false);
+
+  const [isVisible, setIsVisible] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   useEffect(() => {
-    // Set initial position to center of page
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-    setPosition({ x: centerX, y: centerY });
-
     const handleMouseMove = (e: MouseEvent) => {
       setPosition({ x: e.clientX, y: e.clientY });
+      setIsVisible(true);
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
-      if (e.target instanceof HTMLElement) {
-        const isLink =
-          e.target.tagName.toLowerCase() === "a" ||
-          Boolean(e.target.closest("a"));
-        setIsHoveringLink(isLink);
-      }
+    const handleMouseLeave = () => {
+      setIsVisible(false);
     };
+
+    const handleMouseEnter = () => {
+      setIsVisible(true);
+    };
+
+    // Track hover state for interactive elements
+    const handleElementHover = () => {
+      setIsHovering(true);
+    };
+
+    const handleElementLeave = () => {
+      setIsHovering(false);
+    };
+
+    // Add hover detection to interactive elements
+    const interactiveElements = document.querySelectorAll(
+      'a, button, [role="button"]'
+    );
+    interactiveElements.forEach((el) => {
+      el.addEventListener("mouseenter", handleElementHover);
+      el.addEventListener("mouseleave", handleElementLeave);
+    });
 
     window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("mouseover", handleMouseOver);
+    document.body.addEventListener("mouseleave", handleMouseLeave);
+    document.body.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("mouseover", handleMouseOver);
+      document.body.removeEventListener("mouseleave", handleMouseLeave);
+      document.body.removeEventListener("mouseenter", handleMouseEnter);
+
+      interactiveElements.forEach((el) => {
+        el.removeEventListener("mouseenter", handleElementHover);
+        el.removeEventListener("mouseleave", handleElementLeave);
+      });
     };
   }, []);
 
@@ -66,8 +88,8 @@ const MouseTracker = () => {
             className="absolute inset-0 rounded-full bg-transparent"
             initial={{ opacity: 0.2 }}
             animate={{
-              scale: isHoveringLink ? [1, 1.1, 1] : [1, 1.05, 1],
-              opacity: isHoveringLink ? [0.3, 0.4, 0.3] : [0.2, 0.3, 0.2],
+              scale: isHovering ? [1, 1.1, 1] : [1, 1.05, 1],
+              opacity: isHovering ? [0.3, 0.4, 0.3] : [0.2, 0.3, 0.2],
             }}
             transition={{
               duration: 1.5,
@@ -82,11 +104,11 @@ const MouseTracker = () => {
             className="absolute inset-0 rounded-full"
             style={{
               border: "1px solid",
-              borderColor: isHoveringLink ? "#ffffff" : "#ffffff",
+              borderColor: isHovering ? "#fffff" : "#ffffff",
             }}
             animate={{
-              scale: isHoveringLink ? 1.8 : 1.5,
-              opacity: isHoveringLink ? 0.8 : 0.6,
+              scale: isHovering ? 1.8 : 1,
+              opacity: isHovering ? 0.8 : 0.6,
             }}
             transition={{
               type: "spring",
@@ -105,8 +127,8 @@ const MouseTracker = () => {
               left: "23px",
             }}
             animate={{
-              scale: isHoveringLink ? 1.3 : 1,
-              opacity: isHoveringLink ? 0.5 : 1,
+              scale: isHovering ? 1.3 : 1,
+              opacity: isHovering ? 0.5 : 1,
             }}
             transition={{
               type: "spring",

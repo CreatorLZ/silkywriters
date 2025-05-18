@@ -1,32 +1,46 @@
 import { motion } from "framer-motion";
+import InfiniteSlider from "./InfiniteSLider";
 
 const Hero = () => {
+  const writingServices = [
+    "Thesis Writing",
+    "Dissertation Support",
+    "Research Papers",
+    "Academic Essays",
+    "Ghost Writing",
+    "Creative Writing",
+    "Technical Writing",
+    "Blog Posts",
+    "Content Strategy",
+    "Book Writing",
+    "Grant Writing",
+    "White Papers",
+    "Case Studies",
+    "Literary Analysis",
+    "Script Writing",
+    "Web Content",
+  ];
+
   // Main heading animation
   const headingVariants = {
     hidden: {
       opacity: 0,
       y: 100,
       x: 40,
-      rotateZ: 2,
+      rotate: 2,
       skewX: 1,
       scale: 0.95,
-      style: {
-        transformStyle: "preserve-3d",
-      },
     },
     show: {
       opacity: 1,
       y: 0,
       x: 0,
-      rotateZ: 0,
+      rotate: 0,
       skewX: 0,
       scale: 1,
       transition: {
         duration: 1.2,
-        ease: [0.25, 0.1, 0.25, 1], // Custom cubic-bezier for a more dramatic effect
-      },
-      style: {
-        transformStyle: "preserve-3d",
+        ease: [0.25, 0.1, 0.25, 1],
       },
     },
   };
@@ -37,27 +51,21 @@ const Hero = () => {
       opacity: 0,
       y: 80,
       x: 30,
-      rotateZ: 1,
+      rotate: 1,
       skewX: 1,
       scale: 0.95,
-      style: {
-        transformStyle: "preserve-3d",
-      },
     },
     show: {
       opacity: 1,
       y: 0,
       x: 0,
-      rotateZ: 0,
+      rotate: 0,
       skewX: 0,
       scale: 1,
       transition: {
         duration: 1.2,
-        delay: 0.3, // Staggered delay after heading
+        delay: 0.3,
         ease: [0.25, 0.1, 0.25, 1],
-      },
-      style: {
-        transformStyle: "preserve-3d",
       },
     },
   };
@@ -67,41 +75,53 @@ const Hero = () => {
       opacity: 0,
       y: 80,
       x: 30,
-      rotateZ: 1,
+      rotate: 1,
       skewX: 1,
       scale: 0.95,
-      style: {
-        transformStyle: "preserve-3d",
-      },
     },
     show: {
       opacity: 1,
       y: 0,
       x: 0,
-      rotateZ: 0,
+      rotate: 0,
       skewX: 0,
       scale: 1,
       transition: {
         duration: 1.2,
-        delay: 0.4, // Staggered delay after heading
+        delay: 0.4,
         ease: [0.25, 0.1, 0.25, 1],
       },
-      style: {
-        transformStyle: "preserve-3d",
+    },
+  };
+
+  const sliderVariants = {
+    hidden: {
+      opacity: 0,
+      y: 200,
+      rotateX: 45,
+    },
+    show: {
+      opacity: 1,
+      y: 0,
+      rotateX: 0,
+      transition: {
+        duration: 1.4,
+        delay: 0.5,
+        ease: [0.25, 0.1, 0.25, 1],
       },
     },
   };
 
   return (
-    <div className="text-white h-screen w-full overflow-x-hidden px-36 pt-32 pb-16 flex flex-col gap-10">
-      <div className="fixed top-9 left-[-5px]  h-40 w-16 flex flex-col  py-2 bg-white ">
+    <div className="text-white h-screen w-screen relative overflow-hidden px-36 pt-28 pb-16 flex flex-col gap-10">
+      {/* <div className="fixed top-9 left-[-5px]  h-40 w-16 flex flex-col  py-2 bg-white ">
         <a href="/" className="flex flex-col items-center   w-full h-full">
           <span className="text-black font-bold text-2xl">S.</span>
           <span className="text-black font-bold rotate-90 mt-14 transform -translate-y-2 text-[13px] tracking-wider">
             Silkywriters
           </span>
         </a>
-      </div>
+      </div> */}
       <motion.h2
         initial="hidden"
         animate="show"
@@ -149,6 +169,26 @@ const Hero = () => {
         >
           Learn More
         </motion.a>
+      </motion.div>
+
+      <motion.div
+        initial="hidden"
+        animate="show"
+        variants={sliderVariants}
+        className="absolute bottom-[-50px] right-[-150px] w-[180%] transform-gpu rotate-[-12deg] perspective-1000"
+      >
+        <InfiniteSlider duration={35} durationOnHover={100} className="py-4">
+          {writingServices.map((service, index) => (
+            <div
+              key={index}
+              className="min-w-fit px-8 flex items-center justify-center"
+            >
+              <span className="text-2xl font-light whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">
+                {service}
+              </span>
+            </div>
+          ))}
+        </InfiniteSlider>
       </motion.div>
     </div>
   );
