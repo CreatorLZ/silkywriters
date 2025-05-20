@@ -1,9 +1,10 @@
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
+import Projects from "./components/Projects";
 import ScrollContainer from "./components/ScrollContainer";
 import ScrollProgressCursor from "./components/ScrollProgressCursor";
 import ScrollToTop from "./components/ScrollToTop";
-// import Statement from "./components/Statement";
+// import Services from "./components/Services";
 
 function Landing() {
   // Define section names for the scrollbar indicators
@@ -22,7 +23,8 @@ function Landing() {
       <div className="min-h-screen overflow-x-hidden">
         <Navbar />
         <Hero />
-        {/* <CraftSection /> */}
+        <Projects />
+        {/* <Services /> */}
         <section id="about" className="h-screen w-full bg-[#111827]"></section>
         <section
           id="services"

@@ -175,20 +175,27 @@ const Hero = () => {
         initial="hidden"
         animate="show"
         variants={sliderVariants}
-        className="absolute bottom-[-50px] right-[-150px] w-[180%] transform-gpu rotate-[-12deg] perspective-1000"
+        className="absolute bottom-[-50px] right-[-150px] w-[180%] transform-gpu rotate-[-12deg] perspective-1000 "
       >
-        <InfiniteSlider duration={35} durationOnHover={100} className="py-4">
-          {writingServices.map((service, index) => (
-            <div
-              key={index}
-              className="min-w-fit px-8 flex items-center justify-center"
-            >
-              <span className="text-2xl font-light whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">
-                {service}
-              </span>
-            </div>
-          ))}
-        </InfiniteSlider>
+        <div className="relative">
+          {/* <div className="absolute left-[1300px] -top-1 h-[50px] w-[100px] bg-gradient-to-l from-black via-white to-black z-50 backdrop-blur-xl"></div> */}
+          <InfiniteSlider
+            duration={35}
+            durationOnHover={100}
+            className="py-4 ml-[0px]"
+          >
+            {writingServices.map((service, index) => (
+              <div
+                key={index}
+                className="min-w-fit px-8 flex items-center justify-center"
+              >
+                <span className="text-2xl font-light whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">
+                  {service}
+                </span>
+              </div>
+            ))}
+          </InfiniteSlider>
+        </div>
       </motion.div>
     </div>
   );

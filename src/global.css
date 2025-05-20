@@ -15,3 +15,85 @@ body {
   max-width: 100vw;
   /* background-color: #222222; */
 }
+.outline-text {
+  -webkit-text-stroke: 1px white;
+  color: transparent;
+  transition: color 0.3s ease;
+}
+
+.outline-text:hover {
+  color: white;
+}
+
+/* Container for the circular text, handles positioning and movement */
+@layer components {
+  .circular-text-container {
+    position: relative; /* Keep the positioning */
+  }
+}
+
+@layer components {
+  /* Inner circle border and container for the expanding background */
+  .circular-text-container > div:first-child {
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px; /* Tailwind's rounded-full */
+    border: 2px solid red !important; /* Tailwind's border border-white */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.5s ease-in-out; /* Transition for border color if needed */
+    /* overflow: hidden; Hide the expanding pseudo-element outside the circle */
+  }
+}
+@layer components {
+  /* Pseudo-element for the expanding white background */
+  .circular-bg-expand {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 9999px; /* Make it circular */
+    background-color: red !important; /* Background color */
+    /* transform is now controlled by the isHovered state in JSX */
+    transition: transform 0.3s ease-in-out !important; /* Transition the scale property */
+    z-index: 0; /* Ensure it's behind the text */
+  }
+}
+
+/* Circular text element, handles rotation and text centering */
+@layer components {
+  .circular-text {
+    /* position: absolute; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    /* align-items: center;
+    justify-content: center; */
+    transition: color 0.5s ease-in-out;
+    color: white !important; /* Text color */
+    z-index: 10; /* Ensure text is above the expanding background */
+  }
+}
+
+@layer components {
+  /* Only keep the spinning animation for the text content */
+  .circular-text > div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    animation: spin 20s linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Keyframes for rotation animation */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

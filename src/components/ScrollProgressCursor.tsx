@@ -76,7 +76,7 @@ export default function ScrollProgressCursor() {
               r="40"
               fill="none"
               stroke="rgba(255,255,255,0.2)"
-              strokeWidth="4"
+              strokeWidth="0"
             />
             <motion.circle
               cx="50"
@@ -99,7 +99,7 @@ export default function ScrollProgressCursor() {
           </svg>
 
           {/* Percentage text */}
-          <motion.div className="absolute inset-0 flex items-center justify-center text-xs font-medium text-white">
+          <motion.div className="absolute inset-0 flex items-center justify-center text-[8px] font-medium text-white">
             {progressPercentage}
           </motion.div>
         </div>
