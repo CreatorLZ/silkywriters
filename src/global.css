@@ -87,6 +87,21 @@ body {
     justify-content: center;
   }
 }
+@layer components {
+  .outline-text2 {
+    -webkit-text-stroke: 1px rgb(209 213 219);
+    color: transparent;
+    transition: color 0.3s ease;
+    transform: translate3d(0vw, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg)
+      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+    transform-style: preserve-3d;
+    opacity: 0.2;
+  }
+}
+
+/* .outline-text2:hover {
+  color: white;
+} */
 
 /* Keyframes for rotation animation */
 @keyframes spin {
