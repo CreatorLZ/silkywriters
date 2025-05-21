@@ -1,3 +1,4 @@
+/* global.css */
 @import "tailwindcss";
 
 ::-webkit-scrollbar {
@@ -9,12 +10,13 @@ html {
 }
 
 body {
-  background-color: #111827;
-  /* background-color: #333335; */
+  /* background-color: #111827; */
+  background-color: rgb(27, 27, 27);
   overflow-x: hidden;
   max-width: 100vw;
-  /* background-color: #222222; */
 }
+
+/* Original outline-text for other parts of the project */
 .outline-text {
   -webkit-text-stroke: 1px white;
   color: transparent;
@@ -25,68 +27,92 @@ body {
   color: white;
 }
 
+/* Outline text for project titles - This is the "full" solid white text that appears when not over the image */
+.outline-text3 {
+  -webkit-text-stroke: 1px white;
+  color: white; /* Default white fill */
+  position: relative;
+  z-index: 5; /* This will be the lowest text layer for the title, seen when nothing is on top */
+}
+
+/* Container for the *clipped* transparent text layer */
+.inverted-text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Will match the project div width */
+  height: 100%; /* Will match the project div height */
+  overflow: hidden; /* **Crucial for clipping the transparent h2 to the image bounds** */
+  pointer-events: none; /* Allows clicks to pass through to the image if needed */
+  z-index: 10; /* This container sits *above* the main project image */
+}
+
+/* The h2 inside the overlay - this is the one that becomes transparent/image-filled */
+.inverted-text-overlay > h2 {
+  -webkit-text-stroke: 1px white; /* Keep the white stroke */
+  color: transparent; /* Makes the fill transparent */
+  background-clip: text; /* Clips the background to the text shape */
+  -webkit-background-clip: text; /* For WebKit browsers */
+  background-image: var(--project-image); /* Image will be passed from JS */
+  background-size: var(--project-bg-size); /* Size will be passed from JS */
+  background-position: var(
+    --project-bg-position
+  ); /* Position will be passed from JS */
+  background-repeat: no-repeat;
+  position: absolute; /* Needed for positioning relative to its parent .inverted-text-overlay */
+  /* No clip-path directly on h2, its parent's overflow: hidden handles the clip */
+  z-index: 1; /* Relative z-index within the overlay, but its parent .inverted-text-overlay has z-index 10 */
+}
+
+/* Ensure hover effect applies correctly */
+/* .outline-text3:hover {
+  color: transparent;
+} */
+
 /* Container for the circular text, handles positioning and movement */
 @layer components {
   .circular-text-container {
-    position: relative; /* Keep the positioning */
+    position: relative;
   }
 }
 
 @layer components {
-  /* Inner circle border and container for the expanding background */
   .circular-text-container > div:first-child {
     position: absolute;
     inset: 0;
-    border-radius: 9999px; /* Tailwind's rounded-full */
-    border: 2px solid red; /* Tailwind's border border-white */
+    border-radius: 9999px;
+    border: 2px solid red;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.5s ease-in-out; /* Transition for border color if needed */
-    /* overflow: hidden; Hide the expanding pseudo-element outside the circle */
+    transition: border-color 0.5s ease-in-out;
+    overflow: visible !important; /* Allow content to overflow */
   }
 }
+
 @layer components {
-  /* Pseudo-element for the expanding white background */
   .circular-bg-expand {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: 9999px; /* Make it circular */
-    background-color: red; /* Background color */
-    /* transform is now controlled by the isHovered state in JSX */
-    transition: transform 0.3s ease-in-out !important; /* Transition the scale property */
-    z-index: 0; /* Ensure it's behind the text */
-  }
-}
-
-/* Circular text element, handles rotation and text centering */
-@layer components {
-  .circular-text {
-    /* position: absolute; */
-    width: 100%;
-    height: 100%;
-    display: flex;
-    /* align-items: center;
-    justify-content: center; */
-    transition: color 0.5s ease-in-out;
-    color: white !important; /* Text color */
-    z-index: 10; /* Ensure text is above the expanding background */
+    border-radius: 9999px;
+    background-color: red;
+    transition: transform 0.3s ease-in-out !important;
+    z-index: 0;
   }
 }
 
 @layer components {
-  /* Only keep the spinning animation for the text content */
-  .circular-text > div {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    animation: spin 20s linear infinite;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .circular-text-container span {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+    transform: scale(1.1); /* Slightly larger to break out of circle */
+    color: white !important;
+    transition: color 0.5s ease-in-out, transform 0.3s ease;
   }
 }
+
 @layer components {
   .outline-text2 {
     -webkit-text-stroke: 1px rgb(209 213 219);
@@ -94,16 +120,32 @@ body {
     transition: color 0.3s ease;
     transform: translate3d(0vw, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg)
       rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-    transform-style: preserve-3d;
     opacity: 0.2;
+    transform-style: preserve-3d;
   }
 }
 
-/* .outline-text2:hover {
-  color: white;
-} */
+@layer components {
+  .extended-text {
+    letter-spacing: 0.5em;
+    transform: scale(1);
+    color: white !important;
+    transition: color 0.5s ease-in-out, transform 0.3s ease;
+    width: 200%;
+    display: inline-block;
+    text-align: center;
+  }
+}
 
-/* Keyframes for rotation animation */
+@layer components {
+  .circular-text-container,
+  .circular-text-container > div,
+  .circular-text-container > div > div {
+    overflow: visible !important;
+  }
+}
+
+/*
 @keyframes spin {
   0% {
     transform: rotate(0deg);
@@ -112,3 +154,4 @@ body {
     transform: rotate(360deg);
   }
 }
+*/

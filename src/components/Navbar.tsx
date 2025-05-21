@@ -73,7 +73,7 @@ const ModernNavbar = () => {
           isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         style={{
-          backgroundColor: isMenuOpen ? "#111827" : "#f5f5f5",
+          backgroundColor: isMenuOpen ? "rgb(27, 27, 27)" : "#f5f5f5",
           transition:
             "background-color 0.8s ease-in-out, opacity 0.5s ease-in-out",
         }}

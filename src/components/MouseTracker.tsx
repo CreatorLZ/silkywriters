@@ -107,7 +107,7 @@ const MouseTracker = () => {
               borderColor: isHovering ? "#fffff" : "#ffffff",
             }}
             animate={{
-              scale: isHovering ? 1.8 : 1,
+              scale: isHovering ? 1.6 : 1.3,
               opacity: isHovering ? 0.8 : 0.6,
             }}
             transition={{
