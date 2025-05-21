@@ -1,9 +1,8 @@
 "use client";
 
 import type React from "react";
-
 import { useState, useEffect, useRef, createRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import students from "../assets/students.jpg";
 import tech2 from "../assets/tech2.jpg";
 import project3 from "../assets/project3.jpg";
@@ -38,10 +37,9 @@ const Projects: React.FC = () => {
       image: tech1,
       number: "02",
       category: "TECHNICAL WRITING",
-      borderColor: "#f2f54c",
-      fillColor: "#f2f54c",
+      borderColor: "goldenrod",
+      fillColor: "goldenrod",
     },
-
     {
       id: 3,
       title: "THE_FUTURE",
@@ -65,13 +63,23 @@ const Projects: React.FC = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [scales, setScales] = useState<number[]>(projects.map(() => 1));
   const projectRefs = useRef(projects.map(() => createRef<HTMLDivElement>()));
-  const titleRefs = useRef<(HTMLDivElement | null)[]>(projects.map(() => null));
-  const scrollYProgresses = projects.map(() => useScroll().scrollYProgress);
-  const xs = scrollYProgresses.map((scrollYProgress) =>
-    useTransform(scrollYProgress, [0, 0.5, 1], [50, 0, -50], {
-      clamp: false,
-    })
+
+  // Create scroll tracking for each project section
+  const scrollYProgresses = projects.map(
+    (_, index) =>
+      useScroll({
+        target: projectRefs.current[index],
+        offset: ["start end", "end start"], // Trigger when project enters/exits viewport
+      }).scrollYProgress
   );
+
+  // Smooth x transformation with useSpring
+  const xs = scrollYProgresses.map((scrollYProgress) => {
+    const x = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [50, 0, -50], {
+      clamp: false,
+    });
+    return useSpring(x, { stiffness: 50, damping: 40 }); // Slower animation
+  });
 
   // Handle background image scale
   useEffect(() => {
@@ -98,11 +106,10 @@ const Projects: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col gap-64 pt-72 relative overflow-scroll">
+    <div className="w-full h-full flex flex-col gap-64 pt-72 relative overflow-scroll scroll-smooth">
       {projects.map((project, index) => {
         const x = xs[index];
 
-        // Background properties for the main project div
         const mainBackgroundPosition = "center";
         const mainBackgroundSize = `${scales[index] * 100}%`;
 
@@ -117,28 +124,24 @@ const Projects: React.FC = () => {
                 backgroundPosition: mainBackgroundPosition,
               }}
             >
-              {/* This is the container for the single overlay text layer that shows the image through it */}
+              {/* Inverted text overlay */}
               <div
                 className="inverted-text-overlay !flex"
                 style={{
                   width: "870px",
                   height: "450px",
-                  clipPath: "inset(0 0 0 0)", // Match project div bounds
-                  // The clipPath here is somewhat redundant due to overflow: hidden on the parent,
-                  // but ensures an extra layer of clipping if needed.
+                  clipPath: "inset(0 0 0 0)",
                 }}
               >
-                {/* This is the text layer that becomes transparent/image-filled when over the image */}
                 <motion.h2
-                  className="text-9xl text-left font-extrabold outline-text3 !flex" /* Use outline-text3 for stroke, but its color will be overridden */
+                  className="text-9xl text-left font-extrabold outline-text3 !flex"
                   style={{
                     position: "absolute",
                     top: "-5rem",
                     left: "12rem",
-                    x, // Match the original title's animation
+                    x, // Smooth x animation
                     translateX: "0%",
                     translateY: "0%",
-                    // Pass the project image and its background properties to the H2
                     ["--project-image" as string]: `url(${
                       project.image || "/placeholder.svg"
                     })`,
@@ -160,14 +163,11 @@ const Projects: React.FC = () => {
                 </motion.h2>
               </div>
 
-              {/* Original title (This is the solid white text visible outside the image) */}
+              {/* Original title (solid white text) */}
               <motion.div
-                ref={(el: HTMLDivElement | null) => {
-                  titleRefs.current[index] = el;
-                }}
                 className="absolute -top-[5rem] left-[12rem] !flex"
                 style={{
-                  x,
+                  x, // Smooth x animation
                   translateX: "0%",
                   translateY: "0%",
                 }}
@@ -182,7 +182,7 @@ const Projects: React.FC = () => {
                 }}
                 viewport={{ once: true, amount: 0.5 }}
               >
-                <h2 className="text-9xl text-left font-extrabold outline-text3 !flex ">
+                <h2 className="text-9xl text-left font-extrabold outline-text3 !flex">
                   {project.title}
                 </h2>
               </motion.div>
@@ -212,18 +212,18 @@ const Projects: React.FC = () => {
                   ></div>
                   <div
                     className={`relative w-full h-full z-10 cursor-pointer flex items-center justify-center overflow-visible ${
-                      hoveredProject === project.id ? "scale-85" : "scale-100"
+                      hoveredProject === project.id ? "scale-65" : "scale-100"
                     }`}
                   >
                     <span
-                      className="tracking-[0.2em] text-sm font-medium whitespace-nowrap extended-text"
+                      className="tracking-[0.5em] text-sm font-medium whitespace-nowrap extended-text"
                       style={{
                         position: "absolute",
-                        width: "200%", // Extend beyond circle
+                        width: "200%",
                         textAlign: "center",
                       }}
                     >
-                      V I E W&nbsp;&nbsp;P R O J E C T
+                      VIEW PROJECT
                     </span>
                   </div>
                 </div>
