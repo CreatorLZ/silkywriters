@@ -25,7 +25,7 @@ function Landing() {
         <Hero />
         <Projects />
         {/* <Services /> */}
-        <section id="about" className="h-screen w-full bg-[#111827]"></section>
+        <section id="about" className="h-screen w-full bg-[#d5e21f]"></section>
         <section
           id="services"
           className="h-screen w-full bg-[#8fd5e8]"

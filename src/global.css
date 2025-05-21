@@ -38,7 +38,7 @@ body {
     position: absolute;
     inset: 0;
     border-radius: 9999px; /* Tailwind's rounded-full */
-    border: 2px solid red !important; /* Tailwind's border border-white */
+    border: 2px solid red; /* Tailwind's border border-white */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -53,7 +53,7 @@ body {
     position: absolute;
     inset: 0;
     border-radius: 9999px; /* Make it circular */
-    background-color: red !important; /* Background color */
+    background-color: red; /* Background color */
     /* transform is now controlled by the isHovered state in JSX */
     transition: transform 0.3s ease-in-out !important; /* Transition the scale property */
     z-index: 0; /* Ensure it's behind the text */
