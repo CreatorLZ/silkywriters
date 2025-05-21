@@ -7,6 +7,7 @@ import students from "../assets/students.jpg";
 import tech2 from "../assets/tech2.jpg";
 import project3 from "../assets/project3.jpg";
 import tech1 from "../assets/tech1.jpg";
+import diary from "../assets/dairy.jpg";
 
 // Define the Project interface
 interface Project {
@@ -57,6 +58,15 @@ const Projects: React.FC = () => {
       category: "DEVELOPMENT",
       borderColor: "#4CAF50",
       fillColor: "#4CAF50",
+    },
+    {
+      id: 5,
+      title: "LIFE_XOXO",
+      image: diary,
+      number: "05",
+      category: "CULINARY",
+      borderColor: "#FF9800",
+      fillColor: "#FF9800",
     },
   ];
 
