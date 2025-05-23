@@ -8,6 +8,15 @@ import tech2 from "../assets/tech2.jpg";
 import project3 from "../assets/project3.jpg";
 import tech1 from "../assets/tech1.jpg";
 import diary from "../assets/dairy.jpg";
+import InfiniteSlider from "./InfiniteSLider";
+
+const logos = [
+  "https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.png",
+  "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+  "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+  "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
+  "https://c37uf7lofs.ufs.sh/f/GSgiKERmD2ElS49Le4jaC4EgyF69hqUMi1L8uOGzeIfTodYr",
+];
 
 // Define the Project interface
 interface Project {
@@ -97,7 +106,7 @@ const Projects: React.FC = () => {
   // Transform x position for the "FEATURED WORK" div
   const xTransform = useTransform(
     scrollYProgress,
-    [0.06, 0.062, 0.63, 0.65], // Scroll progress: 6% to 6.2% (slide in), 63% to 65% (slide out)
+    [0.18, 0.182, 0.69, 0.7], // Scroll progress: 10% to 10.2% (slide in), 68% to 70% (slide out)
     [-230, 0, 0, -230] // Slide in from -230px (off-screen) to 0px, stay at 0px, then slide out to -230px
   );
 
@@ -129,15 +138,61 @@ const Projects: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col gap-64 pt-4 pb-52 relative overflow-scroll scroll-smooth">
-      <div className="w-full h-[30%] flex flex-col pt-36 ">
-        <h1 className="text-4xl font-bold text-center text-gray-800">
-          Our Services
-        </h1>
-        <p className="mt-4 text-center text-gray-600">
-          We offer a wide range of services to meet your needs.
-        </p>
+    <div className=" w-full h-full flex flex-col gap-64 pt-4 pb-52 relative overflow-scroll scroll-smooth">
+      {/* statement*/}
+      <div className="w-full h-[90vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent">
+        <div className="absolute w-[0.7px] h-32 bg-white -top-0 left-[50%] z-50"></div>
+        <div className="absolute w-[900px] h-[0.7px] bg-white top-32 left-[15%] z-50"></div>
+        <div className="absolute w-[900px] h-[0.7px] bg-white bottom-32 left-[15%] z-50"></div>
+        <div className="absolute w-[0.7px] h-32 bg-white -bottom-0 left-[50%] z-50"></div>
+
+        <motion.h1
+          className="text-4xl font-bold text-center text-gray-100"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+            delay: 0.2,
+          }}
+          viewport={{ once: true }}
+        >
+          We're not new to this, <span className="outline-text4">but</span> we
+          maybe new to you.
+        </motion.h1>
+
+        <motion.p
+          className="mt-4 text-center text-gray-400"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: "easeOut",
+            delay: 0.4, // Slightly delayed after the heading
+          }}
+          viewport={{ once: true }}
+        >
+          Our work is a testament to our commitment to excellence and
+          innovation.
+        </motion.p>
+
+        <InfiniteSlider
+          duration={55}
+          durationOnHover={100}
+          className="py-4 ml-[0px] text-white w-[50%] flex items-center justify-center"
+        >
+          {logos.map((logo, index) => (
+            <img
+              key={index}
+              src={logo}
+              alt={`Company Logo ${index + 1}`}
+              className="h-8 mx-8 object-contain filter brightness-0 invert"
+            />
+          ))}
+        </InfiniteSlider>
       </div>
+      {/* statement end*/}
+
       <motion.div
         className="fixed bottom-0 left-0 w-[230px] h-[95px] z-50 flex items-center justify-center text-center bg-white text-black tracking-wide"
         style={{ x: xSpring }} // Apply smooth x animation

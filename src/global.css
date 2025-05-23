@@ -36,6 +36,12 @@ body {
   position: relative;
   z-index: 5; /* This will be the lowest text layer for the title, seen when nothing is on top */
 }
+.outline-text4 {
+  -webkit-text-stroke: 1px white;
+  color: transparent; /* Default white fill */
+  position: relative;
+  z-index: 5; /* This will be the lowest text layer for the title, seen when nothing is on top */
+}
 
 /* Container for the *clipped* transparent text layer */
 .inverted-text-overlay {
