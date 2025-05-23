@@ -23,12 +23,12 @@ const Hero = () => {
   const rotateY = useTransform(
     scrollYProgressSpring,
     [0, 0.1, 0.5, 1],
-    [0, 4, 8, 8]
+    [0, 6, 10, 10]
   ); // Stronger 3D rotation
   const translateZ = useTransform(
     scrollYProgressSpring,
     [0, 0.1, 0.5, 1],
-    [0, -20, -30, -30]
+    [0, -30, -40, -40]
   ); // Stronger 3D depth
   const opacityHeading = useTransform(
     scrollYProgressSpring,

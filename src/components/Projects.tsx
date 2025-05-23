@@ -130,7 +130,7 @@ const Projects: React.FC = () => {
 
   return (
     <div className="w-full h-full flex flex-col gap-64 pt-4 pb-52 relative overflow-scroll scroll-smooth">
-      <div className="w-full h-screen flex flex-col pt-36 ">
+      <div className="w-full h-[30%] flex flex-col pt-36 ">
         <h1 className="text-4xl font-bold text-center text-gray-800">
           Our Services
         </h1>
