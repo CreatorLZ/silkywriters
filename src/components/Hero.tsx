@@ -5,6 +5,10 @@ import { useRef } from "react";
 const Hero = () => {
   const heroRef = useRef(null);
 
+  // useEffect(() => {
+  //   window.scrollTo(0, 0); // Force scroll to top on mount
+  // }, []);
+
   // Track scroll progress within the hero section
   const { scrollYProgress } = useScroll({ target: heroRef });
 

@@ -140,7 +140,7 @@ const Projects: React.FC = () => {
   return (
     <div className=" w-full h-full flex flex-col gap-64 pt-4 pb-52 relative overflow-scroll scroll-smooth">
       {/* statement*/}
-      <div className="w-full h-[90vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent">
+      <div className="w-full h-[90vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0">
         <motion.div
           className="absolute w-[0.7px] h-32 bg-white -top-0 left-[50%] z-50"
           initial={{ opacity: 0, height: 0 }}
