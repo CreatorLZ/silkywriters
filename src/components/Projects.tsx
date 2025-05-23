@@ -34,7 +34,7 @@ const Projects: React.FC = () => {
     },
     {
       id: 2,
-      title: "TECHNOLOGY",
+      title: "TASKWISE",
       image: tech1,
       number: "02",
       category: "TECHNICAL WRITING",
@@ -61,7 +61,7 @@ const Projects: React.FC = () => {
     },
     {
       id: 5,
-      title: "LIFE_XOXO",
+      title: "LAMINE",
       image: diary,
       number: "05",
       category: "CULINARY",
@@ -79,17 +79,30 @@ const Projects: React.FC = () => {
     (_, index) =>
       useScroll({
         target: projectRefs.current[index],
-        offset: ["start end", "end start"], // Trigger when project enters/exits viewport
+        offset: ["start end", "end start"],
       }).scrollYProgress
   );
 
-  // Smooth x transformation with useSpring
+  // Smooth x transformation for projects
   const xs = scrollYProgresses.map((scrollYProgress) => {
     const x = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [50, 0, -50], {
       clamp: false,
     });
-    return useSpring(x, { stiffness: 50, damping: 40 }); // Slower animation
+    return useSpring(x, { stiffness: 50, damping: 40 });
   });
+
+  // Track scroll progress for the entire page
+  const { scrollYProgress } = useScroll();
+
+  // Transform x position for the "FEATURED WORK" div
+  const xTransform = useTransform(
+    scrollYProgress,
+    [0.06, 0.062, 0.63, 0.65], // Scroll progress: 6% to 6.2% (slide in), 63% to 65% (slide out)
+    [-230, 0, 0, -230] // Slide in from -230px (off-screen) to 0px, stay at 0px, then slide out to -230px
+  );
+
+  // Apply smooth animation to the x transform
+  const xSpring = useSpring(xTransform, { stiffness: 100, damping: 20 });
 
   // Handle background image scale
   useEffect(() => {
@@ -102,7 +115,7 @@ const Projects: React.FC = () => {
             Math.max((windowHeight - projectRect.top) / windowHeight, 0),
             1
           );
-          const newScale = 1 + scrollProgress * 0.2;
+          const newScale = 1 + scrollProgress * 0.4;
           setScales((prev) =>
             prev.map((scale, i) => (i === index ? newScale : scale))
           );
@@ -116,7 +129,21 @@ const Projects: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col gap-64 pt-72 relative overflow-scroll scroll-smooth">
+    <div className="w-full h-full flex flex-col gap-64 pt-4 pb-52 relative overflow-scroll scroll-smooth">
+      <div className="w-full h-screen flex flex-col pt-36 ">
+        <h1 className="text-4xl font-bold text-center text-gray-800">
+          Our Services
+        </h1>
+        <p className="mt-4 text-center text-gray-600">
+          We offer a wide range of services to meet your needs.
+        </p>
+      </div>
+      <motion.div
+        className="fixed bottom-0 left-0 w-[230px] h-[95px] z-50 flex items-center justify-center text-center bg-white text-black tracking-wide"
+        style={{ x: xSpring }} // Apply smooth x animation
+      >
+        <h2>FEATURED WORK</h2>
+      </motion.div>
       {projects.map((project, index) => {
         const x = xs[index];
 
@@ -127,7 +154,7 @@ const Projects: React.FC = () => {
           <div key={project.id} className="h-full pb-16">
             <motion.div
               ref={projectRefs.current[index]}
-              className="relative w-[870px] h-[450px] flex items-center bg-cover bg-center"
+              className="relative w-[860px] h-[460px] flex items-center bg-cover bg-center"
               style={{
                 backgroundImage: `url(${project.image || "/placeholder.svg"})`,
                 backgroundSize: mainBackgroundSize,
@@ -138,7 +165,7 @@ const Projects: React.FC = () => {
               <div
                 className="inverted-text-overlay !flex"
                 style={{
-                  width: "870px",
+                  width: "860px",
                   height: "450px",
                   clipPath: "inset(0 0 0 0)",
                 }}
@@ -163,7 +190,7 @@ const Projects: React.FC = () => {
                     y: 0,
                     opacity: 1,
                     transition: {
-                      y: { duration: 1, ease: "easeOut" },
+                      y: { duration: 0.97, ease: "easeOut" },
                       opacity: { duration: 0.6, ease: "easeOut" },
                     },
                   }}

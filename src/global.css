@@ -14,6 +14,8 @@ body {
   background-color: rgb(27, 27, 27);
   overflow-x: hidden;
   max-width: 100vw;
+  margin: 0;
+  padding: 0;
 }
 
 /* Original outline-text for other parts of the project */
@@ -85,7 +87,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: border-color 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
     overflow: visible !important; /* Allow content to overflow */
   }
 }
@@ -115,12 +117,12 @@ body {
 
 @layer components {
   .outline-text2 {
-    -webkit-text-stroke: 1px rgb(209 213 219);
+    -webkit-text-stroke: 2px rgb(209 213 219);
     color: transparent;
     transition: color 0.3s ease;
     transform: translate3d(0vw, 0vh, 0px) scale3d(1, 1, 1) rotateX(0deg)
       rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
-    opacity: 0.2;
+    opacity: 0.1;
     transform-style: preserve-3d;
   }
 }
@@ -130,7 +132,7 @@ body {
     letter-spacing: 0.5em;
     transform: scale(1);
     color: white !important;
-    transition: color 0.5s ease-in-out, transform 0.3s ease;
+    transition: color 0.5s ease-in-out, transform 0.5s ease-in-out;
     width: 200%;
     display: inline-block;
     text-align: center;

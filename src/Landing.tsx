@@ -10,9 +10,8 @@ function Landing() {
   // Define section names for the scrollbar indicators
   const sections = [
     "Home",
-    "About",
+    "Work",
     "Services",
-    "Portfolio",
     "Testimonials",
     "Contact",
     "FAQ",
@@ -22,17 +21,16 @@ function Landing() {
     <ScrollContainer sections={sections}>
       <div className="min-h-screen overflow-x-hidden">
         <Navbar />
-        <Hero />
-        <Projects />
-        {/* <Services /> */}
-        <section id="about" className="h-screen w-full bg-[#d5e21f]"></section>
+        <section id="home">
+          <Hero />
+        </section>
+        <section id="about">
+          <Projects />
+        </section>
+
         <section
           id="services"
           className="h-screen w-full bg-[#8fd5e8]"
-        ></section>
-        <section
-          id="portfolio"
-          className="h-screen w-full bg-[#201127]"
         ></section>
         <section
           id="testimonials"
