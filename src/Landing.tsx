@@ -1,9 +1,11 @@
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
+import Process from "./components/Process";
 import Projects from "./components/Projects";
 import ScrollContainer from "./components/ScrollContainer";
 import ScrollProgressCursor from "./components/ScrollProgressCursor";
 import ScrollToTop from "./components/ScrollToTop";
+// import Statement from "./components/Statement";
 // import Services from "./components/Services";
 
 function Landing() {
@@ -24,14 +26,13 @@ function Landing() {
         <section id="home">
           <Hero />
         </section>
-        <section id="about">
+        <section id="work">
           <Projects />
         </section>
 
-        <section
-          id="services"
-          className="h-screen w-full bg-[#8fd5e8]"
-        ></section>
+        <section id="services" className=" ">
+          <Process />
+        </section>
         <section
           id="testimonials"
           className="h-screen w-full bg-[#3e101f]"

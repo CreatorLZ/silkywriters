@@ -1,21 +1,21 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import InfiniteSlider from "./InfiniteSLider";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const Hero = () => {
   const heroRef = useRef(null);
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0); // Force scroll to top on mount
-  // }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0); // Force scroll to top on mount
+  }, []);
 
   // Track scroll progress within the hero section
   const { scrollYProgress } = useScroll({ target: heroRef });
 
   // Add spring easing for slightly faster transitions
   const scrollYProgressSpring = useSpring(scrollYProgress, {
-    stiffness: 80, // Faster response
-    damping: 40, // Smooth with minimal oscillation
+    stiffness: 100, // Faster response
+    damping: 50, // Smooth with minimal oscillation
   });
 
   // Map scroll progress to skewX, rotateY, translateZ, opacity, and y

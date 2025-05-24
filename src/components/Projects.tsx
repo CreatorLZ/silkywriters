@@ -82,6 +82,7 @@ const Projects: React.FC = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [scales, setScales] = useState<number[]>(projects.map(() => 1));
   const projectRefs = useRef(projects.map(() => createRef<HTMLDivElement>()));
+  const featuredSectionRef = useRef<HTMLDivElement>(null);
 
   // Create scroll tracking for each project section
   const scrollYProgresses = projects.map(
@@ -106,7 +107,7 @@ const Projects: React.FC = () => {
   // Transform x position for the "FEATURED WORK" div
   const xTransform = useTransform(
     scrollYProgress,
-    [0.18, 0.182, 0.69, 0.7], // Scroll progress: 10% to 10.2% (slide in), 68% to 70% (slide out)
+    [0.28, 0.282, 0.68, 0.69], // Scroll progress: 28% to 28.2% (slide in), 68% to 69% (slide out)
     [-230, 0, 0, -230] // Slide in from -230px (off-screen) to 0px, stay at 0px, then slide out to -230px
   );
 
@@ -137,37 +138,88 @@ const Projects: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Parallax Slide component
+  const Slide = ({
+    src,
+    direction,
+    left,
+    progress,
+  }: {
+    src: string;
+    direction: "left" | "right";
+    left: string;
+    progress: any;
+  }) => {
+    const translateX = useTransform(
+      progress,
+      [0, 1],
+      [
+        300 * (direction === "left" ? -1 : 1),
+        -300 * (direction === "left" ? -1 : 1),
+      ]
+    );
+    return (
+      <motion.div
+        style={{ x: translateX, left }}
+        className="relative flex whitespace-nowrap mb-8"
+      >
+        <Phrase src={src} />
+        <Phrase src={src} />
+        <Phrase src={src} />
+      </motion.div>
+    );
+  };
+
+  // Parallax Phrase component
+  const Phrase = ({ src }: { src: string }) => {
+    return (
+      <div className="px-5 flex gap-5 items-center">
+        <p className="text-[7.5vw] text-white font-medium outline-text4">
+          Featured Work
+        </p>
+        <span className="relative h-[7.5vw] aspect-[4/2] rounded-full overflow-hidden">
+          <img
+            src={src}
+            alt="project image"
+            style={{ objectFit: "cover" }}
+            className="w-full h-full"
+          />
+        </span>
+      </div>
+    );
+  };
+
   return (
-    <div className=" w-full h-full flex flex-col gap-64 pt-4 pb-52 relative overflow-scroll scroll-smooth">
+    <div className=" w-full h-full flex flex-col gap-64 pt-4 pb-10 relative overflow-scroll scroll-smooth">
       {/* statement*/}
       <div className="w-full h-[90vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0">
         <motion.div
-          className="absolute w-[0.7px] h-32 bg-white -top-0 left-[50%] z-50"
+          className="absolute w-[0.7px] h-32 bg-white -top-0 left-[50%] z-20"
           initial={{ opacity: 0, height: 0 }}
           whileInView={{ opacity: 1, height: 128 }}
           transition={{ duration: 1, delay: 0.1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         />
         <motion.div
-          className="absolute w-[900px] h-[0.7px] bg-white top-32 left-[15%] z-50"
+          className="absolute w-[900px] h-[0.7px] bg-white top-32 left-[15%] z-20"
           initial={{ opacity: 0, width: 0 }}
           whileInView={{ opacity: 1, width: 900 }}
           transition={{ duration: 1, delay: 0.3 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         />
         <motion.div
-          className="absolute w-[900px] h-[0.7px] bg-white bottom-32 left-[15%] z-50"
+          className="absolute w-[900px] h-[0.7px] bg-white bottom-32 left-[15%] z-20"
           initial={{ opacity: 0, width: 0 }}
           whileInView={{ opacity: 1, width: 900 }}
           transition={{ duration: 1, delay: 0.3 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         />
         <motion.div
-          className="absolute w-[0.7px] h-32 bg-white -bottom-0 left-[50%] z-50"
+          className="absolute w-[0.7px] h-32 bg-white -bottom-0 left-[50%] z-20"
           initial={{ opacity: 0, height: 0 }}
           whileInView={{ opacity: 1, height: 128 }}
           transition={{ duration: 1, delay: 0.1 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         />
 
         <motion.h1
@@ -179,7 +231,7 @@ const Projects: React.FC = () => {
             ease: "easeOut",
             delay: 0.2,
           }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           We're not new to this, <span className="outline-text4">but</span> we
           maybe new to you.
@@ -194,14 +246,14 @@ const Projects: React.FC = () => {
             ease: "easeOut",
             delay: 0.4, // Slightly delayed after the heading
           }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
         >
           Our work is a testament to our commitment to excellence and
           innovation.
         </motion.p>
 
         <InfiniteSlider
-          duration={55}
+          duration={5}
           durationOnHover={100}
           className="py-4 ml-[0px] text-white w-[50%] flex items-center justify-center"
         >
@@ -216,6 +268,64 @@ const Projects: React.FC = () => {
         </InfiniteSlider>
       </div>
       {/* statement end*/}
+
+      {/* Featured Work Section text*/}
+      <div ref={featuredSectionRef} className="relative">
+        <Slide
+          src={projects[0].image}
+          direction="left"
+          left="-40%"
+          progress={scrollYProgress}
+        />
+        <Slide
+          src={projects[1].image}
+          direction="right"
+          left="-25%"
+          progress={scrollYProgress}
+        />
+        <Slide
+          src={projects[2].image}
+          direction="left"
+          left="-75%"
+          progress={scrollYProgress}
+        />
+        <div className="w-full h-[50vh] flex items-center justify-center mb-20">
+          <motion.p
+            className="text-4xl font-extralight text-center text-white w-[50%] items-center justify-center tracking-normal"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 1,
+              ease: [0.25, 0.1, 0.25, 1], // Smooth easing curve
+              delay: 0.2,
+            }}
+            viewport={{ once: false, margin: "-100px" }}
+          >
+            We ask questions, listen and advise our clients so that-together-we
+            can create the best custom solutions possible. Here are a few
+            examples of fabulous results.
+          </motion.p>
+          <div className="absolute left-[50%] -bottom-14 flex flex-col items-center">
+            <motion.div
+              className="w-[0.7px] h-32 bg-white"
+              initial={{ opacity: 0, height: 0 }}
+              whileInView={{ opacity: 1, height: 128 }}
+              transition={{ duration: 1, delay: 0.1 }}
+              viewport={{ once: false }}
+            />
+            <motion.div
+              className="w-6 h-6 rotate-45 border-b-[0.7px] border-r-[0.7px] border-white -translate-y-1"
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, delay: 1.1 }}
+              viewport={{ once: false }}
+            />
+          </div>
+        </div>
+      </div>
+      {/* Featured Work Section text end*/}
+
+      {/* Featured Work Section */}
 
       <motion.div
         className="fixed bottom-0 left-0 w-[230px] h-[95px] z-50 flex items-center justify-center text-center bg-white text-black tracking-wide"
