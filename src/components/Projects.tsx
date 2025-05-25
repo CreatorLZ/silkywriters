@@ -291,7 +291,7 @@ const Projects: React.FC = () => {
         />
         <div className="w-full h-[50vh] flex items-center justify-center mb-20">
           <motion.p
-            className="text-3xl font-light text-center text-white/80 w-[50%] items-center justify-center tracking-normal"
+            className="text-2xl font-light text-center text-white/80 w-[50%] items-center justify-center tracking-normal"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
