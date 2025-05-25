@@ -152,7 +152,7 @@ const Testimonials = () => {
           <p className="text-gray-400 text-sm mb-6">
             Ready to join our satisfied clients?
           </p>
-          <button className="bg-white text-black px-8 py-3 rounded-full font-semibold text-sm uppercase tracking-wider hover:bg-gray-200 transition-colors duration-300">
+          <button className="bg-white cursor-pointer text-black px-8 py-3 rounded-full font-semibold text-sm uppercase tracking-wider hover:bg-gray-200 transition-colors duration-300">
             Start Your Project
           </button>
         </div>
