@@ -192,32 +192,32 @@ const Projects: React.FC = () => {
   return (
     <div className=" w-full h-full flex flex-col gap-64 pt-4 pb-10 relative overflow-scroll scroll-smooth">
       {/* statement*/}
-      <div className="w-full h-[90vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0">
+      <div className="w-full h-[90vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0 gap-5">
         <motion.div
-          className="absolute w-[0.7px] h-32 bg-white -top-0 left-[50%] z-20"
+          className="absolute w-[0.5px] h-32 bg-gray-50 opacity-5 -top-0 left-[50%] z-20 hidden"
           initial={{ opacity: 0, height: 0 }}
-          whileInView={{ opacity: 1, height: 128 }}
+          whileInView={{ opacity: 0.4, height: 128 }}
           transition={{ duration: 1, delay: 0.1 }}
           viewport={{ once: false }}
         />
         <motion.div
-          className="absolute w-[900px] h-[0.7px] bg-white top-32 left-[15%] z-20"
+          className="absolute w-[100vw] h-[0.5px] bg-gray-50 top-10 left-0 z-20"
           initial={{ opacity: 0, width: 0 }}
-          whileInView={{ opacity: 1, width: 900 }}
+          whileInView={{ opacity: 0.1, width: "100vw" }}
           transition={{ duration: 1, delay: 0.3 }}
           viewport={{ once: false }}
         />
         <motion.div
-          className="absolute w-[900px] h-[0.7px] bg-white bottom-32 left-[15%] z-20"
+          className="absolute w-[100vw] h-[0.5px] bg-gray-50 opacity-5 bottom-10 left-0 z-20"
           initial={{ opacity: 0, width: 0 }}
-          whileInView={{ opacity: 1, width: 900 }}
+          whileInView={{ opacity: 0.1, width: "100vw" }}
           transition={{ duration: 1, delay: 0.3 }}
           viewport={{ once: false }}
         />
         <motion.div
-          className="absolute w-[0.7px] h-32 bg-white -bottom-0 left-[50%] z-20"
+          className="absolute w-[0.5px] h-32 bg-gray-50  -bottom-0 left-[50%] z-20 hidden"
           initial={{ opacity: 0, height: 0 }}
-          whileInView={{ opacity: 1, height: 128 }}
+          whileInView={{ opacity: 0.4, height: 128 }}
           transition={{ duration: 1, delay: 0.1 }}
           viewport={{ once: false }}
         />
@@ -291,7 +291,7 @@ const Projects: React.FC = () => {
         />
         <div className="w-full h-[50vh] flex items-center justify-center mb-20">
           <motion.p
-            className="text-4xl font-extralight text-center text-white w-[50%] items-center justify-center tracking-normal"
+            className="text-3xl font-light text-center text-white/80 w-[50%] items-center justify-center tracking-normal"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
@@ -307,16 +307,16 @@ const Projects: React.FC = () => {
           </motion.p>
           <div className="absolute left-[50%] -bottom-14 flex flex-col items-center">
             <motion.div
-              className="w-[0.7px] h-32 bg-white"
+              className="w-[0.5px] h-32 bg-gray-50 opacity-5"
               initial={{ opacity: 0, height: 0 }}
-              whileInView={{ opacity: 1, height: 128 }}
+              whileInView={{ opacity: 0.4, height: 128 }}
               transition={{ duration: 1, delay: 0.1 }}
               viewport={{ once: false }}
             />
             <motion.div
-              className="w-6 h-6 rotate-45 border-b-[0.7px] border-r-[0.7px] border-white -translate-y-1"
+              className="w-6 h-6 rotate-45 border-b-[0.7px] border-r-[0.7px] border-gray-50 -translate-y-1"
               initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              whileInView={{ opacity: 0.4, scale: 1 }}
               transition={{ duration: 0.5, delay: 1.1 }}
               viewport={{ once: false }}
             />

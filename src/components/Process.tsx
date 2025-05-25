@@ -65,7 +65,8 @@ const Process = () => {
 
       {/* Process steps */}
       <div className="w-full h-full flex relative z-50 ">
-        <div className="h-[450px] w-[700px] border-2 border-white z-50">
+        <div className="h-[450px] w-[700px] border-0 border-white z-50 relative">
+          <div className="absolute inset-0 bg-black opacity-80 z-[51]"></div>
           <img src={project3} alt="" className="h-full w-full z-50" />
         </div>
         <img
