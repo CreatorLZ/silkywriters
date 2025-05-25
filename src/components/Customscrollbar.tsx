@@ -55,10 +55,24 @@ export default function CustomScrollbar({
 
     // Track active section based on scroll position
     const handleScroll = () => {
-      const scrollPosition = window.scrollY + window.innerHeight / 2;
-      const sectionElements = document.querySelectorAll("section, .h-screen");
+      const scrollPosition = window.scrollY + window.innerHeight / 3; // Adjusted threshold
+      const sectionIds = [
+        "home",
+        "work",
+        "services",
+        "testimonials",
+        "contact",
+        "faq",
+      ];
+
+      // Get all sections by their IDs
+      const sectionElements = sectionIds
+        .map((id) => document.getElementById(id))
+        .filter(Boolean);
 
       sectionElements.forEach((section, index) => {
+        if (!section) return;
+
         const sectionTop = section.getBoundingClientRect().top + window.scrollY;
         const sectionBottom = sectionTop + section.clientHeight;
 
@@ -130,15 +144,28 @@ export default function CustomScrollbar({
 
   // Handle section indicator click
   const handleSectionClick = (index: number) => {
-    const sectionElements = document.querySelectorAll("section, .h-screen");
-    if (sectionElements[index]) {
-      const sectionTop =
-        sectionElements[index].getBoundingClientRect().top + window.scrollY;
+    // Map section indices to their corresponding IDs
+    const sectionIds = [
+      "home",
+      "work",
+      "services",
+      "testimonials",
+      "contact",
+      "faq",
+    ];
+    const targetId = sectionIds[index];
 
-      window.scrollTo({
-        top: sectionTop,
-        behavior: "smooth",
-      });
+    if (targetId) {
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const sectionTop =
+          targetElement.getBoundingClientRect().top + window.scrollY;
+
+        window.scrollTo({
+          top: sectionTop,
+          behavior: "smooth",
+        });
+      }
     }
   };
 
