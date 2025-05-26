@@ -1,3 +1,5 @@
+import { motion } from "framer-motion";
+
 const Unique = () => {
   return (
     <section className=" text-white py-20 w-full h-full  overflow-scroll">
@@ -5,9 +7,15 @@ const Unique = () => {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start gap-16 px-10 md:px-10">
         {/* Left Heading */}
         <div className="lg:w-2/5">
-          <h1 className="text-[4rem] md:text-[4rem] lg:text-[4rem] font-bold leading-[1.1] tracking-wide uppercase text-white  ">
+          <motion.h1
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: false }}
+            className="text-[4rem] md:text-[4rem] lg:text-[4rem] font-bold leading-[1.1] tracking-wide uppercase text-white"
+          >
             WHAT SETS <br /> <span className="outline-text4">US APART</span>
-          </h1>
+          </motion.h1>
         </div>
 
         {/* Right Grid - 2x2 Layout */}

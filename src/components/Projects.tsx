@@ -107,12 +107,20 @@ const Projects: React.FC = () => {
   // Transform x position for the "FEATURED WORK" div
   const xTransform = useTransform(
     scrollYProgress,
-    [0.28, 0.282, 0.68, 0.69], // Scroll progress: 28% to 28.2% (slide in), 68% to 69% (slide out)
+    [0.28, 0.282, 0.62, 0.625], // Scroll progress: 28% to 28.2% (slide in), 68% to 69% (slide out)
     [-230, 0, 0, -230] // Slide in from -230px (off-screen) to 0px, stay at 0px, then slide out to -230px
   );
 
   // Apply smooth animation to the x transform
   const xSpring = useSpring(xTransform, { stiffness: 100, damping: 20 });
+
+  const xTransform2 = useTransform(
+    scrollYProgress,
+    [0.69, 0.7, 0.96, 0.97], // Start sliding in at 69%, fully visible at 70%, stay until end
+    [-400, 0, 0, -400] // Slide in from -300px (off-screen) to 0px, then stay at 0px
+  );
+
+  const xSpring2 = useSpring(xTransform2, { stiffness: 100, damping: 20 });
 
   // Handle background image scale
   useEffect(() => {
@@ -332,6 +340,46 @@ const Projects: React.FC = () => {
         style={{ x: xSpring }} // Apply smooth x animation
       >
         <h2>FEATURED WORK</h2>
+      </motion.div>
+
+      {/* Project Discussion Widget */}
+      <motion.div
+        className="fixed bottom-6 left-0 z-50 flex items-center gap-4 bg-white/20 backdrop-blur-sm rounded-r-full pr-6 py-3 shadow-lg"
+        style={{ x: xSpring2 }}
+      >
+        {/* Avatar */}
+        <div className="w-14 h-14 ml-2 rounded-full overflow-hidden bg-gray-200 flex-shrink-0">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+            alt="silkywriter"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        {/* Text Content */}
+        <div className="flex flex-col">
+          <h3 className="text-white font-semibold text-sm tracking-wide uppercase">
+            DISCUSS YOUR PROJECT
+          </h3>
+          <p className="text-gray-300 text-sm">Speak with us today</p>
+        </div>
+
+        {/* Message Icon Button */}
+        <button className="ml-4 w-12 h-12 bg-white hover:bg-black/70 !hover:text-white transition-colors duration-200 rounded-full flex items-center justify-center group">
+          <svg
+            className="w-5 h-5 text-[#1B1B1B] group-hover:scale-110 group-hover:text-white transition-transform duration-200"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+            />
+          </svg>
+        </button>
       </motion.div>
       {projects.map((project, index) => {
         const x = xs[index];

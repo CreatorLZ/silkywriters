@@ -1,3 +1,5 @@
+import FAQSection from "./components/Faqs";
+import Footer from "./components/footer";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 // import Process from "./components/Process";
@@ -17,8 +19,8 @@ function Landing() {
     "Work",
     "Services",
     "Testimonials",
-    "Contact",
     "FAQ",
+    "Footer",
   ];
 
   return (
@@ -37,11 +39,16 @@ function Landing() {
         <section id="testimonials">
           <Testimonials />
         </section>
-        <section
+        {/* <section
           id="contact"
           className="h-screen w-full bg-[#50551b]"
-        ></section>
-        <section id="faq" className="h-screen w-full bg-amber-900"></section>
+        ></section> */}
+        <section id="faq" className="">
+          <FAQSection />
+        </section>
+        <section id="footer" className="">
+          <Footer />
+        </section>
         <ScrollToTop />
         <ScrollProgressCursor />
       </div>

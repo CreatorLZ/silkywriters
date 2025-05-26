@@ -1,5 +1,5 @@
 import InfiniteSlider from "./InfiniteSLider";
-
+import { motion } from "framer-motion";
 const Testimonials = () => {
   const testimonials = [
     {
@@ -93,9 +93,15 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-16">
-          <h2 className="text-[2rem] font-bold uppercase tracking-[0.2em] text-gray-200 mb-2">
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: false }}
+            className="text-[2rem] font-bold uppercase tracking-[0.2em] text-gray-200 mb-2"
+          >
             CLIENT TESTIMONIALS
-          </h2>
+          </motion.h2>
         </div>
 
         {/* Testimonials Grid */}
@@ -157,6 +163,7 @@ const Testimonials = () => {
           </button>
         </div>
       </div>
+      <div className="w-screen h-[0.5px] bg-gray-50 opacity-5 mt-32"></div>
     </section>
   );
 };
