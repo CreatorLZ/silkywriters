@@ -134,6 +134,7 @@ const About = () => {
             </div>
           </div>
         </div>
+        <div className="w-screen h-[0.5px] bg-gray-50 opacity-5 mt-2"></div>
         <Footer />
       </div>
     </ScrollContainer>
