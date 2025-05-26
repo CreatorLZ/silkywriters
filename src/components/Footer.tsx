@@ -137,10 +137,13 @@ const Footer = () => {
                 Privacy
               </a>
               <a
-                href="#"
+                href="https://isaacanyim-iota.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-gray-300 transition-colors duration-300 uppercase tracking-wider"
               >
-                Terms of Use
+                Website by{" "}
+                <span className="font-bold underline">CreatorLZ </span>
               </a>
             </div>
           </div>

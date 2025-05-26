@@ -114,9 +114,10 @@ const Projects: React.FC = () => {
   // Apply smooth animation to the x transform
   const xSpring = useSpring(xTransform, { stiffness: 100, damping: 20 });
 
+  // Transform x position for the "DISCUSS YOUR PROJECT" widget
   const xTransform2 = useTransform(
     scrollYProgress,
-    [0.69, 0.7, 0.96, 0.97], // Start sliding in at 69%, fully visible at 70%, stay until end
+    [0.67, 0.68, 0.96, 0.965], // Start sliding in at 67%, fully visible at 68%, stay until 96%, then slide out at 96.5%
     [-400, 0, 0, -400] // Slide in from -300px (off-screen) to 0px, then stay at 0px
   );
 
@@ -318,7 +319,7 @@ const Projects: React.FC = () => {
               className="w-[0.5px] h-32 bg-gray-50 opacity-5"
               initial={{ opacity: 0, height: 0 }}
               whileInView={{ opacity: 0.4, height: 128 }}
-              transition={{ duration: 1, delay: 0.1 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
               viewport={{ once: false }}
             />
             <motion.div
@@ -355,7 +356,6 @@ const Projects: React.FC = () => {
             className="w-full h-full object-cover"
           />
         </div>
-
         {/* Text Content */}
         <div className="flex flex-col">
           <h3 className="text-white font-semibold text-sm tracking-wide uppercase">
@@ -363,23 +363,23 @@ const Projects: React.FC = () => {
           </h3>
           <p className="text-gray-300 text-sm">Speak with us today</p>
         </div>
-
-        {/* Message Icon Button */}
-        <button className="ml-4 w-12 h-12 bg-white hover:bg-black/70 !hover:text-white transition-colors duration-200 rounded-full flex items-center justify-center group">
-          <svg
-            className="w-5 h-5 text-[#1B1B1B] group-hover:scale-110 group-hover:text-white transition-transform duration-200"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-            />
-          </svg>
-        </button>
+        <a href="mailto:hello@silkywriters.com">
+          <button className="ml-4 w-12 h-12 bg-white hover:bg-black/70 !hover:text-white transition-colors duration-200 rounded-full flex items-center justify-center group cursor-pointer">
+            <svg
+              className="w-5 h-5 text-[#1B1B1B] group-hover:scale-110 group-hover:text-white transition-transform duration-200"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+          </button>
+        </a>
       </motion.div>
       {projects.map((project, index) => {
         const x = xs[index];
