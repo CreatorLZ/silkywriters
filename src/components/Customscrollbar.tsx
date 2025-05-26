@@ -61,8 +61,8 @@ export default function CustomScrollbar({
         "work",
         "services",
         "testimonials",
-        "contact",
-        "faq",
+        "FAQ",
+        "Footer",
       ];
 
       // Get all sections by their IDs
@@ -150,8 +150,8 @@ export default function CustomScrollbar({
       "work",
       "services",
       "testimonials",
-      "contact",
-      "faq",
+      "FAQ",
+      "Footer",
     ];
     const targetId = sectionIds[index];
 

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom"; // Fixed import
 
 const ModernNavbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -9,10 +10,10 @@ const ModernNavbar = () => {
 
   // Navigation sections/links
   const navLinks = [
-    { name: "WORK", description: "All good stuff." },
-    { name: "ABOUT", description: "What we do." },
-    { name: "CONTACT", description: "Get in touch." },
-    { name: "SERVICES", description: "What we offer." },
+    { name: "WORK", description: "All good stuff.", path: "/work" },
+    { name: "ABOUT", description: "What we do.", path: "/about" },
+    { name: "CONTACT", description: "Get in touch.", path: "/contact" },
+    { name: "SERVICES", description: "What we offer.", path: "/services" },
 
     // Add more sections as needed
   ];
@@ -81,7 +82,11 @@ const ModernNavbar = () => {
         <div className="h-full flex items-center justify-center px-8 md:px-24">
           <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 md:gap-y-24 lg:px-28">
             {navLinks.map((link, index) => (
-              <div key={index} className="overflow-hidden cursor-pointer">
+              <Link
+                to={link.path}
+                key={index}
+                className="overflow-hidden cursor-pointer"
+              >
                 <div
                   className={`transform transition-transform duration-700 ${
                     isMenuOpen ? "translate-y-0" : "translate-y-full"
@@ -93,7 +98,7 @@ const ModernNavbar = () => {
                   </h2>
                   <p className="text-white text-sm mt-2">{link.description}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
