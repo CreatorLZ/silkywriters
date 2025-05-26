@@ -3,12 +3,15 @@
 import { useState } from "react";
 import Footer from "../components/Footer";
 import ScrollContainer from "../components/ScrollContainer";
+import ScrollToTop from "../components/ScrollToTop";
+import ModernNavbar from "../components/Navbar";
 
 const About = () => {
   const [isHovered, setIsHovered] = useState(false);
   return (
     <ScrollContainer sections={[]}>
       <div className="relative w-screen min-h-screen overflow-scroll px-28 pt-28 pb-0 flex flex-col text-white">
+        <ModernNavbar />
         <div className="w-full flex flex-col items-center gap-8 mb-44">
           <h1 className="text-7xl font-extrabold uppercase">
             Welcome to Silkywriters
@@ -137,6 +140,7 @@ const About = () => {
         <div className="w-screen h-[0.5px] bg-gray-50 opacity-5 mt-2"></div>
         <Footer />
       </div>
+      <ScrollToTop />
     </ScrollContainer>
   );
 };

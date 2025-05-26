@@ -1,7 +1,7 @@
 import FAQSection from "./components/Faqs";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
+import ModernNavbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import ScrollContainer from "./components/ScrollContainer";
 import ScrollProgressCursor from "./components/ScrollProgressCursor";
@@ -23,7 +23,7 @@ function Landing() {
   return (
     <ScrollContainer sections={sections}>
       <div className="min-h-screen overflow-x-hidden">
-        <Navbar />
+        <ModernNavbar />
         <section id="home">
           <Hero />
         </section>

@@ -23,16 +23,18 @@ const ModernNavbar = () => {
       {/* Fixed Logo and Menu Button */}
       <div className="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-6 z-50">
         {/* Logo/Avatar on left */}
-        <div
-          className={`w-28 h-28 rounded-full bg-white hover:bg-[goldenrod] cursor-pointer flex items-center justify-center overflow-hidden transition-all duration-500 ease-in-out ${
-            isMenuOpen ? "opacity-100" : "opacity-0"
-          }`}
-          style={{ transition: "background-color 0.3s ease-in-out" }}
-        >
-          <div className="w-24 h-24 flex items-center justify-center bg-transparent">
-            <img src="./slogo.png" alt="slogo" />
+        <Link to="/">
+          <div
+            className={`w-28 h-28 rounded-full bg-white hover:bg-[goldenrod] cursor-pointer flex items-center justify-center overflow-hidden transition-all duration-500 ease-in-out ${
+              isMenuOpen ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ transition: "background-color 0.3s ease-in-out" }}
+          >
+            <div className="w-24 h-24 flex items-center justify-center bg-transparent">
+              <img src="./slogo.png" alt="slogo" />
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* Right side with "START A PROJECT" circular text and menu button */}
         <div className="flex items-center gap-6">
