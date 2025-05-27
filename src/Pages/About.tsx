@@ -1,18 +1,22 @@
 import { motion } from "framer-motion";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import ScrollContainer from "../components/ScrollContainer";
 import ScrollToTop from "../components/ScrollToTop";
 import ModernNavbar from "../components/Navbar";
+import { Link } from "react-router-dom";
 
 const About = () => {
   const [isHovered, setIsHovered] = useState(false);
+  useEffect(() => {
+    window.scrollTo(0, 0); // Force scroll to top on mount
+  }, []);
   return (
     <ScrollContainer sections={[]}>
-      <div className="relative w-screen min-h-screen overflow-scroll px-28 pt-28 pb-0 flex flex-col text-white">
+      <div className="relative w-screen min-h-screen overflow-scroll  pt-32 pb-0 flex flex-col text-white">
         <ModernNavbar />
-        <div className="w-full flex flex-col items-center gap-8 mb-44">
+        <div className="w-full flex flex-col items-center gap-8 mb-44 px-28">
           {/* <h1 className="text-7xl font-extrabold uppercase">
             Prepare <span className="outline-text4">to Be Persuaded</span>
           </h1> */}
@@ -82,13 +86,14 @@ const About = () => {
         <h1 className="text-[150px] absolute -top-[-30rem] right-[-15rem] font-extrabold outline-text2 tracking-widest -rotate-90 transform translate-y-2">
           ABOUT
         </h1>
-        <h1 className="text-7xl font-extrabold uppercase mb-44">
+        <h1 className="text-7xl font-extrabold uppercase mb-44 px-28">
           We’ve got a way with words.{" "}
           <span className="outline-text4">The best kind of way</span>
         </h1>
-        <div className="w-full mx-auto flex flex-col lg:flex-row items-start gap-16 px-0 md:px-3 ">
+
+        <div className="w-full mx-auto px-28 flex flex-col lg:flex-row items-start gap-16 ">
           {/* Right Grid - 2x2 Layout */}
-          <div className="lg:w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+          <div className="lg:w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 ">
             {/* Top Left */}
             <div className="space-y-4">
               <h2 className="text-xl font-extrabold uppercase tracking-[0.2em] text-white mb-6">
@@ -148,44 +153,46 @@ const About = () => {
         </div>
         {/* Circular text container */}
         <div className="w-full flex justify-center">
-          <div
-            className="circular-text-container mt-20 w-36 h-36 z-10 mb-40"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            aria-label="Start a Project"
-          >
+          <Link to="/contact" className="no-underline">
             <div
-              className="absolute inset-0 rounded-full border-2 border-white flex items-center justify-center transition-colors duration-500 ease-in-out overflow-visible"
-              style={{
-                borderColor: isHovered ? "goldenrod" : "goldenrod",
-              }}
+              className="circular-text-container mt-20 w-36 h-36 z-10 mb-40"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              aria-label="Start a Project"
             >
               <div
-                className={`circular-bg-expand ${
-                  isHovered ? "scale-100" : "scale-0"
-                }`}
-                style={{ backgroundColor: "goldenrod" }}
-              ></div>
-              <div
-                className={`relative w-full h-full z-10 cursor-pointer flex items-center justify-center overflow-visible ${
-                  isHovered ? "scale-60" : "scale-100"
-                }`}
+                className="absolute inset-0 rounded-full border-2 border-white flex items-center justify-center transition-colors duration-500 ease-in-out overflow-visible"
+                style={{
+                  borderColor: isHovered ? "goldenrod" : "goldenrod",
+                }}
               >
-                <span
-                  className={`tracking-[0.5em] text-sm font-medium whitespace-nowrap extended-text transition-colors duration-300 ${
-                    isHovered ? "!text-black" : "!text-white"
+                <div
+                  className={`circular-bg-expand ${
+                    isHovered ? "scale-100" : "scale-0"
                   }`}
-                  style={{
-                    position: "absolute",
-                    width: "200%",
-                    textAlign: "center",
-                  }}
+                  style={{ backgroundColor: "goldenrod" }}
+                ></div>
+                <div
+                  className={`relative w-full h-full z-10 cursor-pointer flex items-center justify-center overflow-visible ${
+                    isHovered ? "scale-60" : "scale-100"
+                  }`}
                 >
-                  CONTACT US
-                </span>
+                  <span
+                    className={`tracking-[0.5em] text-sm font-medium whitespace-nowrap extended-text transition-colors duration-300 ${
+                      isHovered ? "!text-black" : "!text-white"
+                    }`}
+                    style={{
+                      position: "absolute",
+                      width: "200%",
+                      textAlign: "center",
+                    }}
+                  >
+                    CONTACT US
+                  </span>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
         <div className="w-screen h-[0.5px] bg-gray-50 opacity-5 mt-2"></div>
         <Footer />
