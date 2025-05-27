@@ -1,4 +1,4 @@
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { useState } from "react";
 import Footer from "../components/Footer";
@@ -13,23 +13,73 @@ const About = () => {
       <div className="relative w-screen min-h-screen overflow-scroll px-28 pt-28 pb-0 flex flex-col text-white">
         <ModernNavbar />
         <div className="w-full flex flex-col items-center gap-8 mb-44">
-          <h1 className="text-7xl font-extrabold uppercase">
+          {/* <h1 className="text-7xl font-extrabold uppercase">
+            Prepare <span className="outline-text4">to Be Persuaded</span>
+          </h1> */}
+          <motion.h1
+            className="text-7xl font-extrabold uppercase relative overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+          >
+            <motion.span
+              className="inline-block mr-4"
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.8,
+                delay: 0.2,
+                ease: [0.25, 0.46, 0.45, 0.94],
+              }}
+            >
+              Prepare
+            </motion.span>
+            <motion.span
+              className="outline-text4 inline-block relative"
+              initial={{ y: 100, opacity: 0, scale: 0.8 }}
+              animate={{ y: 0, opacity: 1, scale: 1 }}
+              transition={{
+                duration: 1,
+                delay: 0.6,
+                ease: [0.23, 1, 0.32, 1],
+              }}
+            >
+              {"  "} to Be Persuaded
+              {/* Subtle sweep effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                initial={{ x: "-100%", skewX: -12 }}
+                animate={{ x: "100%", skewX: -12 }}
+                transition={{
+                  duration: 1.2,
+                  delay: 1.2,
+                  ease: "easeInOut",
+                }}
+              />
+            </motion.span>
+          </motion.h1>
+          <motion.h2
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: false }}
+            className="text-[2rem] font-bold uppercase tracking-[0.2em] text-gray-200 mb-4"
+          >
             Welcome to Silkywriters
-          </h1>
-          <p className="text-lg md:text-xl lg:text-2xl font-normal tracking-wide max-w-5xl leading-10">
-            We are <strong>Silkywriters</strong>, a{" "}
-            <span className="underline">writing agency</span> built to make your
-            ideas shine. Academic writing was our first love (and we’re still
-            very good at it!), but we’ve since expanded into everything from
-            brand copy to web content(and yes, we’ve grown, because our clients
-            needed more. we are that good). If you’re here, you probably already
-            understand the value of strong, clear writing. That’s smart. The
-            even smarter move? You found us. Writing is what we do, and we do it
-            exceptionally well. True story.
+          </motion.h2>
+          <p className="text-lg md:text-xl lg:text-xl font-normal tracking-wide max-w-5xl leading-12">
+            In a world drowning in mediocre content,{" "}
+            <strong>Silkywriters</strong> stands as your beacon of excellence.
+            We cut our teeth in academic writing, where precision meets
+            creativity, and now we craft everything from magnetic brand stories
+            to compelling web content. We're not just another writing agency –
+            we're your partners in turning words into weapons of mass
+            persuasion. When excellence is non-negotiable, you've come to the
+            right place.
           </p>
         </div>
 
-        <h1 className="text-[150px] absolute -top-[-22rem] right-[-15rem] font-extrabold outline-text2 tracking-widest -rotate-90 transform translate-y-2">
+        <h1 className="text-[150px] absolute -top-[-30rem] right-[-15rem] font-extrabold outline-text2 tracking-widest -rotate-90 transform translate-y-2">
           ABOUT
         </h1>
         <h1 className="text-7xl font-extrabold uppercase mb-44">

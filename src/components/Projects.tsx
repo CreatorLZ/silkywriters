@@ -117,7 +117,7 @@ const Projects: React.FC = () => {
   // Transform x position for the "DISCUSS YOUR PROJECT" widget
   const xTransform2 = useTransform(
     scrollYProgress,
-    [0.67, 0.68, 0.96, 0.965], // Start sliding in at 67%, fully visible at 68%, stay until 96%, then slide out at 96.5%
+    [0.67, 0.671, 0.96, 0.965], // Start sliding in at 67%, fully visible at 67.1%, stay until 96%, then slide out at 96.5%
     [-400, 0, 0, -400] // Slide in from -300px (off-screen) to 0px, then stay at 0px
   );
 
