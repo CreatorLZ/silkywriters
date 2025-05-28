@@ -147,7 +147,7 @@ const Hero = () => {
   return (
     <div
       ref={heroRef}
-      className="text-white h-[100vh] min-h-[900px] w-screen relative overflow-scroll px-36 pt-28 pb-0  flex flex-col gap-12"
+      className="text-white h-[100vh] min-h-[900px] w-screen relative overflow-hidden px-36 pt-28 pb-0  flex flex-col gap-12"
       style={{ perspective: "1000px" }}
     >
       <motion.h2

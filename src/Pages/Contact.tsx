@@ -58,20 +58,20 @@ const ContactPage = () => {
 
   return (
     <ScrollContainer sections={[]}>
-      <div className="min-h-screen  text-white relative overflow-hidden">
+      <div className="min-h-screen w-screen text-white relative overflow-hidden">
         <ModernNavbar />
         <h1 className="text-[160px] absolute -top-[-30rem] right-[-22rem] font-extrabold outline-text2 tracking-widest -rotate-90 transform translate-y-2">
           CONTACT
         </h1>
-        <div className="container mx-auto px-36 py-16 w-full">
+        <div className="container px-36 py-16 w-full">
           {/* Header Section */}
           <motion.div
-            className="mb-16"
+            className="mb-16 w-full"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-6xl md:text-7xl font-extrabold uppercase mb-6">
+            <h1 className="text-6xl md:text-7xl lg:text-7xl font-extrabold uppercase mb-6 w-full">
               Let's{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[goldenrod] to-orange-500">
                 Talk
@@ -84,7 +84,7 @@ const ContactPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: false }}
-              className="text-[2rem] font-bold uppercase tracking-[0.2em] text-gray-200 mb-4"
+              className="text-[2rem] font-bold uppercase tracking-[0.2em] text-gray-200 mb-4 w-full"
             >
               Tell us about your project and let's craft something
               extraordinary.

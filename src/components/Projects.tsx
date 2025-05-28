@@ -199,7 +199,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <div className=" w-full h-full flex flex-col gap-64 pt-4 pb-10 relative overflow-scroll scroll-smooth">
+    <div className=" w-full h-full flex flex-col gap-64 pt-4 pb-10 relative overflow-hidden scroll-smooth">
       {/* statement*/}
       <div className="w-full h-[90vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0 gap-5">
         <motion.div

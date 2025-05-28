@@ -22,7 +22,7 @@ const Unique = () => {
         <div className="lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
           {/* Top Left */}
           <div className="space-y-4">
-            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-300 mb-6">
+            <h2 className="text-lg font-extrabold uppercase tracking-[0.2em] text-white mb-6">
               TAILORED TO YOUR VOICE
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed font-medium">
@@ -36,7 +36,7 @@ const Unique = () => {
 
           {/* Top Right */}
           <div className="space-y-4">
-            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-300 mb-6">
+            <h2 className="text-lg font-extrabold uppercase tracking-[0.2em] text-white mb-6">
               EXPERT WRITERS, DIVERSE EXPERTISE
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed font-medium">
@@ -50,7 +50,7 @@ const Unique = () => {
 
           {/* Bottom Left */}
           <div className="space-y-4">
-            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-300 mb-6">
+            <h2 className="text-lg font-extrabold uppercase tracking-[0.2em] text-white mb-6">
               RESEARCH-BACKED STORYTELLING
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed font-medium">
@@ -64,7 +64,7 @@ const Unique = () => {
 
           {/* Bottom Right */}
           <div className="space-y-4">
-            <h2 className="text-sm font-bold uppercase tracking-[0.2em] text-gray-300 mb-6">
+            <h2 className="text-lg font-extrabold uppercase tracking-[0.2em] text-white mb-6">
               BEYOND WORDS
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed font-medium">
