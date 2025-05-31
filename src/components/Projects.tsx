@@ -8,6 +8,11 @@ import tech2 from "../assets/tech2.jpg";
 import project3 from "../assets/project3.jpg";
 import tech1 from "../assets/tech1.jpg";
 import diary from "../assets/dairy.jpg";
+import seclusion1 from "../assets/seclusion1.jpg";
+import sunset from "../assets/sunset.jpg";
+import disabled from "../assets/disabled.jpg";
+import law1 from "../assets/law1.jpg";
+import law from "../assets/law.jpg";
 import InfiniteSlider from "./InfiniteSLider";
 
 const logos = [
@@ -22,6 +27,7 @@ const logos = [
 interface Project {
   id: number;
   title: string;
+  continuation?: string;
   image: string;
   number: string;
   category: string;
@@ -34,8 +40,9 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "TRUANCY",
-      image: students,
+      title: "INTERNATIONAL RULE OF LAW",
+      continuation: "THE DONALD TRUMP DEVIATION",
+      image: law,
       number: "01",
       category: "RESEARCH",
       borderColor: "#FF4C4C",
@@ -43,39 +50,33 @@ const Projects: React.FC = () => {
     },
     {
       id: 2,
-      title: "TASKWISE",
-      image: tech1,
+      title: "WOMEN SECLUSION ",
+      continuation: "IN CONTEMPORARY SOCIETY",
+      image: seclusion1,
       number: "02",
-      category: "TECHNICAL WRITING",
+      category: "RESEARCH",
       borderColor: "goldenrod",
       fillColor: "goldenrod",
     },
     {
       id: 3,
-      title: "THE_FUTURE",
-      image: tech2,
+      title: "AFRICAN INDEPENDENCE",
+      continuation: "AND POLITICS",
+      image: sunset,
       number: "03",
-      category: "DOCUMENTARY",
+      category: "RESEARCH",
       borderColor: "#4C8BF5",
       fillColor: "#4C8BF5",
     },
     {
       id: 4,
-      title: "VANGUARD",
-      image: project3,
+      title: "SOCIAL EXCLUSION ",
+      continuation: "OF PERSONS WITH DISABILITY",
+      image: disabled,
       number: "04",
-      category: "DEVELOPMENT",
+      category: "RESEARCH",
       borderColor: "#4CAF50",
       fillColor: "#4CAF50",
-    },
-    {
-      id: 5,
-      title: "LAMINE",
-      image: diary,
-      number: "05",
-      category: "CULINARY",
-      borderColor: "#FF9800",
-      fillColor: "#FF9800",
     },
   ];
 
@@ -107,7 +108,7 @@ const Projects: React.FC = () => {
   // Transform x position for the "FEATURED WORK" div
   const xTransform = useTransform(
     scrollYProgress,
-    [0.28, 0.282, 0.62, 0.625], // Scroll progress: 28% to 28.2% (slide in), 68% to 69% (slide out)
+    [0.26, 0.261, 0.62, 0.625], // Scroll progress: 28% to 28.2% (slide in), 68% to 69% (slide out)
     [-230, 0, 0, -230] // Slide in from -230px (off-screen) to 0px, stay at 0px, then slide out to -230px
   );
 
@@ -211,14 +212,14 @@ const Projects: React.FC = () => {
         />
         <motion.div
           className="absolute w-[100vw] h-[0.5px] bg-gray-50 top-10 left-0 z-20"
-          initial={{ opacity: 0, width: 0 }}
+          initial={{ opacity: 0.1, width: "100vw" }}
           whileInView={{ opacity: 0.1, width: "100vw" }}
           transition={{ duration: 1, delay: 0.3 }}
           viewport={{ once: false }}
         />
         <motion.div
           className="absolute w-[100vw] h-[0.5px] bg-gray-50 opacity-5 bottom-10 left-0 z-20"
-          initial={{ opacity: 0, width: 0 }}
+          initial={{ opacity: 0.1, width: "100vw" }}
           whileInView={{ opacity: 0.1, width: "100vw" }}
           transition={{ duration: 1, delay: 0.3 }}
           viewport={{ once: false }}
@@ -314,19 +315,19 @@ const Projects: React.FC = () => {
             can create the best custom solutions possible. Here are a few
             examples of fabulous results.
           </motion.p>
-          <div className="absolute left-[50%] -bottom-14 flex flex-col items-center">
+          <div className="absolute left-[50%] -bottom-12 flex flex-col items-center">
             <motion.div
               className="w-[0.5px] h-32 bg-gray-50 opacity-5"
               initial={{ opacity: 0, height: 0 }}
-              whileInView={{ opacity: 0.4, height: 128 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              whileInView={{ opacity: 0.5, height: 138 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
               viewport={{ once: false }}
             />
             <motion.div
               className="w-6 h-6 rotate-45 border-b-[0.7px] border-r-[0.7px] border-gray-50 -translate-y-1"
               initial={{ opacity: 0, scale: 0 }}
-              whileInView={{ opacity: 0.4, scale: 1 }}
-              transition={{ duration: 0.5, delay: 1.1 }}
+              whileInView={{ opacity: 0.5, scale: 1 }}
+              transition={{ duration: 0.2, delay: 1 }}
               viewport={{ once: false }}
             />
           </div>
@@ -398,6 +399,9 @@ const Projects: React.FC = () => {
                 backgroundPosition: mainBackgroundPosition,
               }}
             >
+              {/* Add the subtle dark overlay */}
+              <div className="absolute inset-0 bg-black/20 pointer-events-none" />
+
               {/* Inverted text overlay */}
               <div
                 className="inverted-text-overlay !flex"
@@ -408,14 +412,15 @@ const Projects: React.FC = () => {
                 }}
               >
                 <motion.h2
-                  className="text-9xl text-left font-extrabold outline-text3 !flex"
+                  className="text-6xl text-left font-extrabold outline-text3 !flex"
                   style={{
                     position: "absolute",
-                    top: "-5rem",
-                    left: "12rem",
+                    top: "-1.8rem",
+                    left: "2rem",
                     x, // Smooth x animation
                     translateX: "0%",
                     translateY: "0%",
+                    whiteSpace: "nowrap",
                     ["--project-image" as string]: `url(${
                       project.image || "/placeholder.svg"
                     })`,
@@ -439,7 +444,7 @@ const Projects: React.FC = () => {
 
               {/* Original title (solid white text) */}
               <motion.div
-                className="absolute -top-[5rem] left-[12rem] !flex"
+                className="absolute -top-[1.8rem] left-[2rem] !flex"
                 style={{
                   x, // Smooth x animation
                   translateX: "0%",
@@ -456,10 +461,40 @@ const Projects: React.FC = () => {
                 }}
                 viewport={{ once: true, amount: 0.5 }}
               >
-                <h2 className="text-9xl text-left font-extrabold outline-text3 !flex">
+                <h2
+                  className="text-6xl text-left font-extrabold outline-text3 !flex"
+                  style={{ whiteSpace: "nowrap" }}
+                >
                   {project.title}
                 </h2>
               </motion.div>
+              {project.continuation && (
+                <motion.h3
+                  className="text-xl text-left font-bold outline-text3 !flex"
+                  style={{
+                    position: "absolute",
+                    top: "2.5rem", // Position below the main title
+                    left: "2rem",
+                    x,
+                    translateX: "0%",
+                    translateY: "0%",
+                    whiteSpace: "nowrap",
+                    color: "rgba(255, 255, 255, 0.829)", // Slightly lighter for hierarchy
+                  }}
+                  initial={{ y: 100, opacity: 0 }}
+                  whileInView={{
+                    y: 0,
+                    opacity: 1,
+                    transition: {
+                      y: { duration: 0.97, ease: "easeOut", delay: 0.1 },
+                      opacity: { duration: 0.6, ease: "easeOut", delay: 0.1 },
+                    },
+                  }}
+                  viewport={{ once: true, amount: 0.5 }}
+                >
+                  {project.continuation}
+                </motion.h3>
+              )}
 
               <div className="absolute top-42 left-[55rem]">
                 <p className="text-gray-400 font-light text-[18px] tracking-[0.1em] rotate-90 whitespace-nowrap uppercase">
@@ -504,7 +539,7 @@ const Projects: React.FC = () => {
               </div>
 
               <div>
-                <h1 className="text-[260px] absolute -top-[-5rem] right-[-32rem] font-extrabold outline-text2 tracking-widest rotate-90 transform -translate-y-2">
+                <h1 className="text-[260px] absolute -top-[-5rem] right-[-32rem] font-extrabold outline-text2 tracking-wide rotate-90 transform -translate-y-2">
                   {project.number}
                 </h1>
               </div>

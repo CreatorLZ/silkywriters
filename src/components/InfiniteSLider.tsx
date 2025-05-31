@@ -3,9 +3,8 @@
 import { useMotionValue, animate, motion } from "framer-motion";
 import { useState, useEffect, type ReactNode } from "react";
 import useMeasure from "react-use-measure";
-import classNames from "classnames"; // You'll need to install this package
+import classNames from "classnames";
 
-// Define the props interface with TypeScript
 interface InfiniteSliderProps {
   children: ReactNode;
   gap?: number;
