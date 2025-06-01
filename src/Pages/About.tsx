@@ -67,11 +67,11 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false }}
-            className="text-[2rem] font-bold uppercase tracking-[0.2em] text-gray-200 mb-4"
+            className="text-[2rem] font-bold uppercase tracking-[0.2em] text-white/40 mb-6"
           >
             Welcome to Silkywriters
           </motion.h2>
-          <p className="text-lg md:text-xl lg:text-xl font-normal tracking-wide max-w-5xl leading-12">
+          <p className="text-base md:text-xl lg:text-base text-white/80 font-medium tracking-wide max-w-5xl leading-12">
             In a world drowning in mediocre content,{" "}
             <strong>Silkywriters</strong> stands as your beacon of excellence.
             We cut our teeth in academic writing, where precision meets
