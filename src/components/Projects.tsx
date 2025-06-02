@@ -3,16 +3,17 @@
 import type React from "react";
 import { useState, useEffect, useRef, createRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import students from "../assets/students.jpg";
-import tech2 from "../assets/tech2.jpg";
-import project3 from "../assets/project3.jpg";
-import tech1 from "../assets/tech1.jpg";
-import diary from "../assets/dairy.jpg";
+// import students from "../assets/students.jpg";
+// import tech2 from "../assets/tech2.jpg";
+// import project3 from "../assets/project3.jpg";
+// import tech1 from "../assets/tech1.jpg";
+// import diary from "../assets/dairy.jpg";
 import seclusion1 from "../assets/seclusion1.jpg";
 import sunset from "../assets/sunset.jpg";
 import disabled from "../assets/disabled.jpg";
-import law1 from "../assets/law1.jpg";
-import law from "../assets/law.jpg";
+import trump from "../assets/trump.jpg";
+// import law1 from "../assets/law1.jpg";
+// import law from "../assets/law.jpg";
 import InfiniteSlider from "./InfiniteSLider";
 
 const logos = [
@@ -42,7 +43,7 @@ const Projects: React.FC = () => {
       id: 1,
       title: "INTERNATIONAL RULE OF LAW",
       continuation: "THE DONALD TRUMP DEVIATION",
-      image: law,
+      image: trump,
       number: "01",
       category: "RESEARCH",
       borderColor: "#FF4C4C",

@@ -33,15 +33,14 @@ const ContactPage = () => {
   };
 
   const projectTypes = [
-    "Website Copywriting",
-    "Blog Content",
-    "Academic Writing",
-    "Brand Storytelling",
-    "SEO Content",
-    "Technical Writing",
-    "Email Marketing",
-    "Social Media Content",
-    "Other",
+    "Thesis Writing",
+    "Dissertation Support",
+    "Research Papers",
+    "Academic Essays",
+    "Ghost Writing",
+    "Book Writing",
+    "Literary Analysis",
+    "YouTube Script Writing",
   ];
 
   const budgetOptions = [
@@ -119,18 +118,6 @@ const ContactPage = () => {
               </div>
 
               <div className="flex flex-wrap items-center gap-3 text-lg leading-relaxed">
-                <span>I work for</span>
-                <input
-                  type="text"
-                  placeholder="Company Name"
-                  value={formData.company}
-                  onChange={(e) => handleInputChange("company", e.target.value)}
-                  className="bg-transparent border-b border-gray-600 focus:border-white outline-none px-2 py-1 min-w-[180px] transition-colors duration-300"
-                />
-                <span>and</span>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-3 text-lg leading-relaxed">
                 <span>we could use your services for</span>
                 <select
                   value={formData.projectType}
@@ -148,40 +135,10 @@ const ContactPage = () => {
                 </select>
                 <span>.</span>
               </div>
-
-              <div className="flex flex-wrap items-center gap-3 text-lg leading-relaxed">
-                <span>We already contacted</span>
-                <select
-                  value={formData.contactedCompanies}
-                  onChange={(e) =>
-                    handleInputChange("contactedCompanies", e.target.value)
-                  }
-                  className=" border-b border-gray-600 focus:border-white outline-none px-2 py-1 min-w-[60px] transition-colors duration-300"
-                >
-                  {[...Array(11)].map((_, i) => (
-                    <option key={i} value={i.toString()} className="bg-black">
-                      {i}
-                    </option>
-                  ))}
-                </select>
-                <span>other companies,</span>
-              </div>
             </div>
 
             {/* Step 2: Detailed Info */}
             <div className="space-y-6 pt-8">
-              <div className="flex flex-wrap items-start gap-3 text-lg leading-relaxed">
-                <span>but I'd like to work with Silkywriters because</span>
-                <textarea
-                  placeholder="Reason"
-                  value={formData.reason}
-                  onChange={(e) => handleInputChange("reason", e.target.value)}
-                  className="bg-transparent border-b border-gray-600 focus:border-white outline-none px-2 py-1 min-w-[300px] min-h-[40px] resize-none transition-colors duration-300"
-                  rows={2}
-                />
-                <span>.</span>
-              </div>
-
               <div className="flex flex-wrap items-center gap-3 text-lg leading-relaxed">
                 <span>We'll invest between</span>
                 <select
@@ -196,17 +153,6 @@ const ContactPage = () => {
                   ))}
                 </select>
                 <span>in this project.</span>
-              </div>
-
-              <div className="flex flex-wrap items-center gap-3 text-lg leading-relaxed">
-                <span>You can reach me at</span>
-                <input
-                  type="tel"
-                  placeholder="Phone Number"
-                  value={formData.phone}
-                  onChange={(e) => handleInputChange("phone", e.target.value)}
-                  className="bg-transparent border-b border-gray-600 focus:border-white outline-none px-2 py-1 min-w-[150px] transition-colors duration-300"
-                />
               </div>
 
               <div className="flex flex-wrap items-center gap-3 text-lg leading-relaxed">

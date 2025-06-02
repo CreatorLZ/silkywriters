@@ -9,7 +9,7 @@ import Work from "./Pages/Work.tsx";
 import About from "./Pages/About.tsx";
 import Contact from "./Pages/Contact.tsx";
 import Serivices from "./Pages/Services.tsx";
-import ResearchProjectDisplay from "./components/ResearchProjectDisplay.tsx";
+// import ResearchProjectDisplay from "./components/ResearchProjectDisplay.tsx";
 
 const router = createBrowserRouter([
   {
@@ -18,8 +18,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/work",
-    // element: <Work />,
-    element: <ResearchProjectDisplay />,
+    element: <Work />,
+    // element: <ResearchProjectDisplay />,
   },
   {
     path: "/about",

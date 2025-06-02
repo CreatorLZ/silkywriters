@@ -65,17 +65,9 @@ const Hero = () => {
     "Research Papers",
     "Academic Essays",
     "Ghost Writing",
-    "Creative Writing",
-    "Technical Writing",
-    "Blog Posts",
-    "Content Strategy",
     "Book Writing",
-    "Grant Writing",
-    "White Papers",
-    "Case Studies",
     "Literary Analysis",
-    "Script Writing",
-    "Web Content",
+    "YouTube Script Writing",
   ];
 
   // Main heading animation
@@ -163,7 +155,8 @@ const Hero = () => {
         }}
         className="font-extrabold text-8xl leading-28 uppercase w-full"
       >
-        We craft stories that matter
+        {/* WE MAKE YOUR WORDS STAND OUT */}
+        WE SHAPE IDEAS WITH PRECISION
       </motion.h2>
 
       <motion.p
@@ -179,14 +172,26 @@ const Hero = () => {
         }}
         className="text-xl font-light"
       >
-        Your one-stop solution for
+        {/* Your one-stop solution for
         <span className="underline decoration-1 underline-offset-4 font-bold">
           {" "}
           all your writing needs.
-        </span>{" "}
-        Whether you need captivating content, engaging blog posts, or polished
+        </span>{" "} */}
+        {/* Whether you need captivating content, engaging blog posts, or polished
         academic papers, we've got you covered. We bring your ideas to life with
-        flair and precision.
+        flair and precision. */}
+        Your trusted partner for{" "}
+        <span className="underline decoration-1 underline-offset-4 font-bold">
+          academic writing,
+        </span>{" "}
+        <span className="underline decoration-1 underline-offset-4 font-bold">
+          research,
+        </span>{" "}
+        and{" "}
+        <span className="underline decoration-1 underline-offset-4 font-bold">
+          Youtube scripts.
+        </span>{" "}
+        We deliver precision, depth, and creativity to bring your ideas to life.
       </motion.p>
 
       <motion.div
@@ -244,7 +249,7 @@ const Hero = () => {
                 key={index}
                 className="min-w-fit px-8 flex items-center justify-center"
               >
-                <span className="text-2xl font-light whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">
+                <span className="text-xl font-light whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity">
                   {service}
                 </span>
               </div>
