@@ -1,12 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import {
-  ArrowRight,
-  Calendar,
-  User,
-  BookOpen,
-  ExternalLink,
-} from "lucide-react";
+import { ArrowRight, User, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 
@@ -115,10 +109,10 @@ const Work: React.FC = () => {
     ...Array.from(new Set(projects.map((p) => p.category))),
   ];
 
-  const filteredProjects =
-    selectedCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === selectedCategory);
+  // const filteredProjects =
+  //   selectedCategory === "All"
+  //     ? projects
+  //     : projects.filter((p) => p.category === selectedCategory);
 
   const featuredProject = projects.find((p) => p.featured);
   const regularProjects = projects.filter((p) => !p.featured);
