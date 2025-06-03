@@ -21,7 +21,7 @@ const logos = [
   "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
   "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
   "https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg",
-  "https://c37uf7lofs.ufs.sh/f/GSgiKERmD2ElS49Le4jaC4EgyF69hqUMi1L8uOGzeIfTodYr",
+  "https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg",
 ];
 
 // Define the Project interface
@@ -205,31 +205,17 @@ const Projects: React.FC = () => {
       {/* statement*/}
       <div className="w-full h-[90vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0 gap-5">
         <motion.div
-          className="absolute w-[0.5px] h-32 bg-gray-50 opacity-5 -top-0 left-[50%] z-20 hidden"
-          initial={{ opacity: 0, height: 0 }}
-          whileInView={{ opacity: 0.4, height: 128 }}
-          transition={{ duration: 1, delay: 0.1 }}
-          viewport={{ once: false }}
-        />
-        <motion.div
           className="absolute w-[100vw] h-[0.5px] bg-gray-50 top-10 left-0 z-20"
-          initial={{ opacity: 0.1, width: "100vw" }}
+          initial={{ opacity: 0.1, width: 0 }}
           whileInView={{ opacity: 0.1, width: "100vw" }}
           transition={{ duration: 1, delay: 0.3 }}
           viewport={{ once: false }}
         />
         <motion.div
           className="absolute w-[100vw] h-[0.5px] bg-gray-50 opacity-5 bottom-10 left-0 z-20"
-          initial={{ opacity: 0.1, width: "100vw" }}
+          initial={{ opacity: 0.1, width: 0 }}
           whileInView={{ opacity: 0.1, width: "100vw" }}
           transition={{ duration: 1, delay: 0.3 }}
-          viewport={{ once: false }}
-        />
-        <motion.div
-          className="absolute w-[0.5px] h-32 bg-gray-50  -bottom-0 left-[50%] z-20 hidden"
-          initial={{ opacity: 0, height: 0 }}
-          whileInView={{ opacity: 0.4, height: 128 }}
-          transition={{ duration: 1, delay: 0.1 }}
           viewport={{ once: false }}
         />
 
@@ -240,7 +226,7 @@ const Projects: React.FC = () => {
           transition={{
             duration: 0.8,
             ease: "easeOut",
-            delay: 0.2,
+            delay: 0.4,
           }}
           viewport={{ once: false }}
         >
