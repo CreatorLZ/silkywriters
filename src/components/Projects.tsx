@@ -457,7 +457,7 @@ const Projects: React.FC = () => {
               </motion.div>
               {project.continuation && (
                 <motion.h3
-                  className="text-xl text-left font-bold outline-text3 !flex"
+                  className="text-3xl text-left font-light  !flex"
                   style={{
                     position: "absolute",
                     top: "3.2rem", // Position below the main title
