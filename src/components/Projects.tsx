@@ -220,7 +220,7 @@ const Projects: React.FC = () => {
         />
 
         <motion.h1
-          className="text-4xl font-bold text-center text-gray-100"
+          className="hero-section text-4xl font-normal text-center text-gray-100"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
@@ -235,7 +235,7 @@ const Projects: React.FC = () => {
         </motion.h1>
 
         <motion.p
-          className="mt-4 text-center text-gray-400"
+          className="hero-section mt-4 text-center text-gray-400"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
@@ -267,7 +267,7 @@ const Projects: React.FC = () => {
       {/* statement end*/}
 
       {/* Featured Work Section text*/}
-      <div ref={featuredSectionRef} className="relative">
+      <div ref={featuredSectionRef} className="relative hero-section">
         <Slide
           src={projects[0].image}
           direction="left"
@@ -283,12 +283,12 @@ const Projects: React.FC = () => {
         <Slide
           src={projects[2].image}
           direction="left"
-          left="-75%"
+          left="-45%"
           progress={scrollYProgress}
         />
         <div className="w-full h-[50vh] flex items-center justify-center mb-20">
           <motion.p
-            className="text-2xl font-light text-center text-white/80 w-[50%] items-center justify-center tracking-normal"
+            className="hero-section text-2xl font-normal text-center text-white/80 w-[50%] items-center justify-center tracking-wide"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
