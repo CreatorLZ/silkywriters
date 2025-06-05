@@ -14,9 +14,26 @@ html {
 * {
   scroll-behavior: auto !important;
 }
-
+@font-face {
+  font-family: "Monigue";
+  src: url("../src/assets/fonts/Monigue.otf") format("opentype"),
+    url("../src/assets/fonts/Monigue.ttf") format("truetype");
+  font-display: swap;
+  font-weight: normal;
+  font-style: normal;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+.normal-text {
+  font-family: "Open Sans", sans-serif; /* Open Sans for normal text */
+}
+.hero-section {
+  font-family: "Monigue", sans-serif; /* Monigue for hero section */
+}
 body {
   /* background-color: #111827; */
+  /* font-family: "Inter", sans-serif; */
   background-color: rgb(27, 27, 27);
   overflow-x: hidden;
   max-width: 100vw;

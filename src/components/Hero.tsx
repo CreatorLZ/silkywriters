@@ -42,37 +42,6 @@ const Hero = () => {
     restDelta: 0.001,
   });
 
-  // More dramatic and faster transform values
-  const skewX = useTransform(
-    scrollYProgressSpring,
-    [0, 0.15, 0.35, 0.6, 0.8], // Compressed range
-    [0, -2, -6, -10, -15] // Reduced skew values
-  );
-
-  const skewY = useTransform(
-    scrollYProgressSpring,
-    [0, 0.15, 0.35, 0.6, 0.8],
-    [0, 1, 3, 5, 7] // Reduced tilt values
-  );
-
-  const rotateY = useTransform(
-    scrollYProgressSpring,
-    [0, 0.1, 0.3, 0.5, 0.7],
-    [0, 3, 8, 15, 20] // Reduced rotation values
-  );
-
-  const rotateX = useTransform(
-    scrollYProgressSpring,
-    [0, 0.15, 0.35, 0.6, 0.8],
-    [0, 1, 3, 6, 8] // Reduced rotation values
-  );
-
-  const translateZ = useTransform(
-    scrollYProgressSpring,
-    [0, 0.15, 0.35, 0.6, 0.8],
-    [0, -30, -80, -150, -200]
-  );
-
   // Faster scale change
   const scale = useTransform(
     scrollYProgressSpring,
@@ -211,7 +180,7 @@ const Hero = () => {
   return (
     <div
       ref={heroRef}
-      className="text-white h-[100vh] min-h-[900px] w-screen relative overflow-hidden px-36 pt-16 pb-0 flex flex-col gap-12 "
+      className="hero-section text-white h-[100vh] min-h-[900px] w-screen relative overflow-hidden px-36 pt-28 pb-0 flex flex-col gap-8 "
       style={{
         perspective: "1500px",
         transformStyle: "preserve-3d",
@@ -222,17 +191,12 @@ const Hero = () => {
         animate="show"
         variants={headingVariants}
         style={{
-          skewX,
-          skewY,
-          rotateY,
-          rotateX,
-          translateZ,
           scale,
           opacity: opacityHeading,
           y: yHeading,
           transformOrigin: "center center",
         }}
-        className="font-extrabold text-8xl leading-tight uppercase w-full will-change-transform"
+        className="font-normal text-9xl leading-28 uppercase w-full will-change-transform tracking-wide"
       >
         WE SHAPE IDEAS WITH PRECISION
       </motion.h2>
@@ -242,27 +206,22 @@ const Hero = () => {
         animate="show"
         variants={paragraphVariants}
         style={{
-          skewX: useTransform(skewX, (value) => value * 0.6),
-          skewY: useTransform(skewY, (value) => value * 0.6),
-          rotateY: useTransform(rotateY, (value) => value * 0.7),
-          rotateX: useTransform(rotateX, (value) => value * 0.5),
-          translateZ: useTransform(translateZ, (value) => value * 0.5),
           scale: useTransform(scale, (value) => 1 - (1 - value) * 0.3),
           opacity: opacityParagraph,
           y: yParagraph,
           transformOrigin: "center center",
         }}
-        className="text-xl font-light will-change-transform"
+        className="text-xl font-extralight will-change-transform tracking-wide leading-relaxed "
       >
         Your trusted partner for{" "}
-        <span className="underline decoration-1 underline-offset-4 font-bold">
+        <span className="underline decoration-1 underline-offset-4 font-normal">
           academic writing,
         </span>{" "}
-        <span className="underline decoration-1 underline-offset-4 font-bold">
+        <span className="underline decoration-1 underline-offset-4 font-normal">
           research,
         </span>{" "}
         and{" "}
-        <span className="underline decoration-1 underline-offset-4 font-bold">
+        <span className="underline decoration-1 underline-offset-4 font-normal">
           Youtube scripts.
         </span>{" "}
         We deliver precision, depth, and creativity to bring your ideas to life.
@@ -273,11 +232,6 @@ const Hero = () => {
         animate="show"
         variants={buttonsVariants}
         style={{
-          skewX: useTransform(skewX, (value) => value * 0.4),
-          skewY: useTransform(skewY, (value) => value * 0.4),
-          rotateY: useTransform(rotateY, (value) => value * 0.5),
-          rotateX: useTransform(rotateX, (value) => value * 0.3),
-          translateZ: useTransform(translateZ, (value) => value * 0.3),
           scale: useTransform(scale, (value) => 1 - (1 - value) * 0.2),
           opacity: opacityButtons,
           y: yButtons,
@@ -292,7 +246,7 @@ const Hero = () => {
           }}
           whileTap={{ scale: 0.95 }}
           href="#"
-          className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition duration-300"
+          className="bg-white text-black px-6 py-3 rounded-full font-normal hover:bg-gray-200 transition duration-300"
         >
           Get Started
         </motion.a>
@@ -303,7 +257,7 @@ const Hero = () => {
           }}
           whileTap={{ scale: 0.95 }}
           href="#"
-          className="border border-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition duration-300"
+          className="border border-white px-6 py-3 rounded-full font-normal hover:bg-white hover:text-black transition duration-300"
         >
           Learn More
         </motion.a>
@@ -314,15 +268,10 @@ const Hero = () => {
         animate="show"
         variants={sliderVariants}
         style={{
-          skewX: useTransform(skewX, (value) => value * 0.2),
-          skewY: useTransform(skewY, (value) => value * 0.2),
-          rotateY: useTransform(rotateY, (value) => value * 0.3),
-          rotateX: useTransform(rotateX, (value) => value * 0.2),
-          translateZ: useTransform(translateZ, (value) => value * 0.1),
           scale: useTransform(
             scrollYProgressSpring,
             [0, 0.3, 0.6, 1],
-            [1, 1.2, 1.4, 1.6]
+            [1, 1.1, 1.2, 1.3]
           ),
           opacity: useTransform(
             scrollYProgressSpring,
@@ -332,14 +281,10 @@ const Hero = () => {
           y: ySlider,
           transformOrigin: "center center",
         }}
-        className="absolute bottom-[260px] right-[-200px] w-[150%] transform-gpu rotate-[-12deg] will-change-transform"
+        className="w-full will-change-transform mt-8"
       >
         <div className="relative">
-          <InfiniteSlider
-            duration={35}
-            durationOnHover={100}
-            className="py-4 ml-[0px]"
-          >
+          <InfiniteSlider duration={35} durationOnHover={100} className="py-4">
             {writingServices.map((service, index) => (
               <div
                 key={index}
