@@ -12,7 +12,7 @@ const Unique = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false }}
-            className="text-[4rem] md:text-[4rem] lg:text-[4rem] font-bold leading-[1.1] tracking-wide uppercase text-white"
+            className="hero-section text-[4rem] md:text-[4rem] lg:text-[4rem] font-normal leading-[1.1] tracking-wide uppercase text-white"
           >
             WHAT SETS <br /> <span className="outline-text4">US APART</span>
           </motion.h1>

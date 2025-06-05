@@ -250,9 +250,9 @@ const Projects: React.FC = () => {
         </motion.p>
 
         <InfiniteSlider
-          duration={5}
+          duration={10}
           durationOnHover={100}
-          className="py-4 ml-[0px] text-white w-[50%] flex items-center justify-center"
+          className="py-4 ml-[0px] text-white w-[100%] flex items-center justify-center"
         >
           {logos.map((logo, index) => (
             <img
@@ -325,7 +325,7 @@ const Projects: React.FC = () => {
       {/* Featured Work Section */}
 
       <motion.div
-        className="fixed bottom-0 left-0 w-[230px] h-[95px] z-50 flex items-center justify-center text-center bg-white text-black tracking-wide"
+        className="hero-section fixed bottom-0 left-0 w-[230px] h-[95px] z-50 flex items-center justify-center text-center bg-white text-black tracking-wide"
         style={{ x: xSpring }} // Apply smooth x animation
       >
         <h2>FEATURED WORK</h2>
@@ -399,10 +399,10 @@ const Projects: React.FC = () => {
                 }}
               >
                 <motion.h2
-                  className="text-6xl text-left font-extrabold outline-text3 !flex"
+                  className="hero-section text-8xl text-left font-normal outline-text3 !flex tracking-wide"
                   style={{
                     position: "absolute",
-                    top: "-1.8rem",
+                    top: "-2.5rem",
                     left: "2rem",
                     x, // Smooth x animation
                     translateX: "0%",
@@ -431,7 +431,7 @@ const Projects: React.FC = () => {
 
               {/* Original title (solid white text) */}
               <motion.div
-                className="absolute -top-[1.8rem] left-[2rem] !flex"
+                className="absolute -top-[2.5rem] left-[2rem] !flex"
                 style={{
                   x, // Smooth x animation
                   translateX: "0%",
@@ -449,7 +449,7 @@ const Projects: React.FC = () => {
                 viewport={{ once: true, amount: 0.5 }}
               >
                 <h2
-                  className="text-6xl text-left font-extrabold outline-text3 !flex"
+                  className="hero-section text-8xl text-left font-normal outline-text3 !flex tracking-wide"
                   style={{ whiteSpace: "nowrap" }}
                 >
                   {project.title}
@@ -460,7 +460,7 @@ const Projects: React.FC = () => {
                   className="text-xl text-left font-bold outline-text3 !flex"
                   style={{
                     position: "absolute",
-                    top: "2.5rem", // Position below the main title
+                    top: "3.2rem", // Position below the main title
                     left: "2rem",
                     x,
                     translateX: "0%",
