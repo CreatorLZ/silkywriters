@@ -246,7 +246,7 @@ const Hero = () => {
           }}
           whileTap={{ scale: 0.95 }}
           href="#"
-          className="bg-white text-black px-6 py-3 rounded-full font-normal hover:bg-gray-200 transition duration-300"
+          className="bg-white text-black px-10 py-3 rounded-full font-normal hover:bg-gray-200 transition duration-300"
         >
           Get Started
         </motion.a>
@@ -257,7 +257,7 @@ const Hero = () => {
           }}
           whileTap={{ scale: 0.95 }}
           href="#"
-          className="border border-white px-6 py-3 rounded-full font-normal hover:bg-white hover:text-black transition duration-300"
+          className="border border-white px-10 py-3 rounded-full font-normal hover:bg-white hover:text-black transition duration-300"
         >
           Learn More
         </motion.a>

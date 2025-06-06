@@ -95,10 +95,12 @@ const ModernNavbar = () => {
                   }`}
                   style={{ transitionDelay: `${index * 100}ms` }}
                 >
-                  <h2 className="text-5xl md:text-7xl font-bold text-white tracking-tight outline-text">
+                  <h2 className="text-5xl md:text-7xl font-normal text-white tracking-tight outline-text">
                     {link.name}
                   </h2>
-                  <p className="text-white text-sm mt-2">{link.description}</p>
+                  <p className="text-white text-base mt-2">
+                    {link.description}
+                  </p>
                 </div>
               </Link>
             ))}
@@ -112,7 +114,7 @@ const ModernNavbar = () => {
           isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
       >
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center normal-text">
           <div>
             <p>silkywriters@gmail.com</p>
           </div>

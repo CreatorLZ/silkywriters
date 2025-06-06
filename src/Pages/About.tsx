@@ -14,14 +14,14 @@ const About = () => {
   }, []);
   return (
     <ScrollContainer sections={[]}>
-      <div className="relative w-screen min-h-screen overflow-scroll  pt-32 pb-0 flex flex-col text-white">
+      <div className="relative w-screen min-h-screen overflow-scroll overflow-x-hidden  pt-32 pb-0 flex flex-col text-white">
         <ModernNavbar />
         <div className="w-full flex flex-col items-center gap-8 mb-44 px-28">
           {/* <h1 className="text-7xl font-extrabold uppercase">
             Prepare <span className="outline-text4">to Be Persuaded</span>
           </h1> */}
           <motion.h1
-            className="text-7xl font-extrabold uppercase relative overflow-hidden"
+            className="text-9xl font-normal uppercase relative overflow-hidden"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
@@ -67,11 +67,11 @@ const About = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: false }}
-            className="text-[2rem] font-bold uppercase tracking-[0.2em] text-white/40 mb-6"
+            className="text-[2rem] font-normal uppercase tracking-[0.2em] text-white/40 mb-6"
           >
             Welcome to Silkywriters
           </motion.h2>
-          <p className="text-base md:text-xl lg:text-base text-white/80 font-medium tracking-wide max-w-5xl leading-12">
+          <p className="text-base md:text-xl lg:text-base text-white/80 font-normal tracking-wide max-w-5xl leading-12 normal-text">
             In a world drowning in mediocre content,{" "}
             <strong>Silkywriters</strong> stands as your beacon of excellence.
             We cut our teeth in academic writing, where precision meets
@@ -83,10 +83,10 @@ const About = () => {
           </p>
         </div>
 
-        <h1 className="text-[150px] absolute -top-[-30rem] right-[-15rem] font-extrabold outline-text2 tracking-widest -rotate-90 transform translate-y-2">
+        <h1 className="text-[200px] absolute -top-[-30rem] right-[-12rem] font-normal outline-text2 tracking-widest -rotate-90 transform translate-y-2">
           ABOUT
         </h1>
-        <h1 className="text-7xl font-extrabold uppercase mb-44 px-28">
+        <h1 className="text-9xl font-normal uppercase mb-44 px-28">
           We’ve got a way with words.{" "}
           <span className="outline-text4">The best kind of way</span>
         </h1>
@@ -96,10 +96,10 @@ const About = () => {
           <div className="lg:w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 ">
             {/* Top Left */}
             <div className="space-y-4">
-              <h2 className="text-xl font-extrabold uppercase tracking-[0.2em] text-white mb-6">
+              <h2 className="text-xl font-normal uppercase tracking-[0.2em] text-white mb-6">
                 TAILORED TO YOUR VOICE
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed font-medium">
+              <p className="normal-text text-white/50 text-sm leading-relaxed font-medium">
                 Every brand has its own story to tell. We don't believe in
                 cookie-cutter content or generic templates. Our writers take the
                 time to understand your unique voice, industry, and target
@@ -110,10 +110,10 @@ const About = () => {
 
             {/* Top Right */}
             <div className="space-y-4">
-              <h2 className="text-xl font-extrabold uppercase tracking-[0.2em] text-white mb-6">
+              <h2 className="text-xl font-normal uppercase tracking-[0.2em] text-white mb-6">
                 EXPERT WRITERS, DIVERSE EXPERTISE
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed font-medium">
+              <p className="normal-text text-white/50 text-sm leading-relaxed font-medium">
                 Our team comprises seasoned writers from various professional
                 backgrounds - from academic writing to technical writing,
                 creative storytelling to SEO expertise. This diversity allows us
@@ -124,10 +124,10 @@ const About = () => {
 
             {/* Bottom Left */}
             <div className="space-y-4">
-              <h2 className="text-xl font-extrabold uppercase tracking-[0.2em] text-white mb-6">
+              <h2 className="text-xl font-normal uppercase tracking-[0.2em] text-white mb-6">
                 RESEARCH-BACKED STORYTELLING
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed font-medium">
+              <p className="normal-text text-white/50 text-sm leading-relaxed font-medium">
                 Great writing starts with thorough research. Before we craft a
                 single sentence, we dive deep into your industry, competitors,
                 and target audience. This foundation of knowledge enables us to
@@ -138,10 +138,10 @@ const About = () => {
 
             {/* Bottom Right */}
             <div className="space-y-4">
-              <h2 className="text-xl font-extrabold uppercase tracking-[0.2em] text-white mb-6">
+              <h2 className="text-xl font-normal uppercase tracking-[0.2em] text-white mb-6">
                 BEYOND WORDS
               </h2>
-              <p className="text-white/50 text-sm leading-relaxed font-medium">
+              <p className="normal-text text-white/50 text-sm leading-relaxed font-medium">
                 While we pride ourselves on crafting compelling copy, our impact
                 goes deeper. We create content strategies that drive engagement,
                 boost conversions, and build lasting connections with your

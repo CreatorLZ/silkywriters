@@ -117,14 +117,14 @@ const Testimonials = () => {
               <div className="relative bg-[rgb(35,35,35)] hover:bg-[rgb(51,50,50)] transition-all duration-300 p-8 h-64 flex flex-col justify-between border-0  hover:border-gray-200 overflow-hidden">
                 {/* Client Name */}
                 <div className="mb-4">
-                  <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-gray-400 mb-6">
+                  <h3 className="text-sm font-normal uppercase tracking-[0.15em] text-gray-400 mb-6">
                     {testimonial.client}
                   </h3>
                 </div>
 
                 {/* Quote Preview - First few words */}
                 <div className="flex-1 flex items-center">
-                  <p className="text-lg font-light text-white leading-relaxed">
+                  <p className=" font-normal text-base text-white leading-relaxed normal-text">
                     "{testimonial.quote.split(" ").slice(0, 6).join(" ")}..."
                   </p>
                 </div>
@@ -132,18 +132,18 @@ const Testimonials = () => {
                 {/* Hover overlay with full quote - confined to card */}
                 <div className="absolute inset-0 bg-[rgb(35,35,35)] border border-gray-600 p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between z-10">
                   <div>
-                    <h3 className="text-sm font-bold uppercase tracking-[0.15em] text-gray-300 mb-4">
+                    <h3 className="text-sm font-normal uppercase tracking-[0.15em] text-gray-300 mb-4">
                       {testimonial.client}
                     </h3>
-                    <p className="text-xs text-gray-200 leading-relaxed mb-4 overflow-hidden">
+                    <p className="text-sm normal-text text-gray-200 leading-relaxed mb-4 overflow-hidden">
                       "{testimonial.quote}"
                     </p>
                   </div>
                   <div className="border-t border-gray-600 pt-3">
-                    <p className="text-xs font-semibold text-white uppercase tracking-wider">
+                    <p className="text-xs font-normal text-white uppercase tracking-wider">
                       {testimonial.author}
                     </p>
-                    <p className="text-xs text-gray-400 mt-1">
+                    <p className="text-xs text-gray-400 mt-1 normal-text">
                       {testimonial.role}
                     </p>
                   </div>
@@ -155,10 +155,10 @@ const Testimonials = () => {
 
         {/* Bottom CTA */}
         <div className="mt-20 text-center">
-          <p className="text-gray-400 text-sm mb-6">
+          <p className="text-gray-300 text-base mb-6 font-normal">
             Ready to join our satisfied clients?
           </p>
-          <button className="bg-white cursor-pointer text-black px-8 py-3 rounded-full font-semibold text-sm uppercase tracking-wider hover:bg-gray-200 transition-colors duration-300">
+          <button className="bg-white cursor-pointer text-black px-8 py-3 rounded-full font-normal text-sm uppercase tracking-wider hover:bg-gray-200 transition-colors duration-300">
             Start Your Project
           </button>
         </div>

@@ -105,7 +105,7 @@ const MouseTracker = () => {
               className="absolute inset-0 rounded-full"
               style={{
                 border: "1px solid",
-                borderColor: isHovering ? "#fffff" : "#ffffff",
+                borderColor: isHovering ? "#ffffff" : "#ffffff",
               }}
               animate={{
                 scale: isHovering ? 1.6 : 1.3,

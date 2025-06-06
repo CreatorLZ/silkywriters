@@ -22,10 +22,10 @@ const Unique = () => {
         <div className="lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
           {/* Top Left */}
           <div className="space-y-4">
-            <h2 className="text-lg font-extrabold uppercase tracking-[0.2em] text-white mb-6">
+            <h2 className="text-lg font-normal uppercase tracking-[0.2em] text-white mb-6">
               TAILORED TO YOUR VOICE
             </h2>
-            <p className="text-gray-400 text-sm leading-relaxed font-medium">
+            <p className="text-gray-400 text-sm leading-relaxed font-normal normal-text">
               Every brand has its own story to tell. We don't believe in
               cookie-cutter content or generic templates. Our writers take the
               time to understand your unique voice, industry, and target
@@ -36,10 +36,10 @@ const Unique = () => {
 
           {/* Top Right */}
           <div className="space-y-4">
-            <h2 className="text-lg font-extrabold uppercase tracking-[0.2em] text-white mb-6">
+            <h2 className="text-lg font-normal uppercase tracking-[0.2em] text-white mb-6">
               EXPERT WRITERS, DIVERSE EXPERTISE
             </h2>
-            <p className="text-gray-400 text-sm leading-relaxed font-medium">
+            <p className="text-gray-400 text-sm leading-relaxed font-normal normal-text">
               Our team comprises seasoned writers from various professional
               backgrounds - from academic writing to technical writing, creative
               storytelling to SEO expertise. This diversity allows us to match
@@ -50,10 +50,10 @@ const Unique = () => {
 
           {/* Bottom Left */}
           <div className="space-y-4">
-            <h2 className="text-lg font-extrabold uppercase tracking-[0.2em] text-white mb-6">
+            <h2 className="text-lg font-normal uppercase tracking-[0.2em] text-white mb-6">
               RESEARCH-BACKED STORYTELLING
             </h2>
-            <p className="text-gray-400 text-sm leading-relaxed font-medium">
+            <p className="text-gray-400 text-sm leading-relaxed font-normal normal-text">
               Great writing starts with thorough research. Before we craft a
               single sentence, we dive deep into your industry, competitors, and
               target audience. This foundation of knowledge enables us to create
@@ -64,10 +64,10 @@ const Unique = () => {
 
           {/* Bottom Right */}
           <div className="space-y-4">
-            <h2 className="text-lg font-extrabold uppercase tracking-[0.2em] text-white mb-6">
+            <h2 className="text-lg font-normal uppercase tracking-[0.2em] text-white mb-6">
               BEYOND WORDS
             </h2>
-            <p className="text-gray-400 text-sm leading-relaxed font-medium">
+            <p className="text-gray-400 text-sm leading-relaxed font-normal normal-text">
               While we pride ourselves on crafting compelling copy, our impact
               goes deeper. We create content strategies that drive engagement,
               boost conversions, and build lasting connections with your

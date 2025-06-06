@@ -135,7 +135,7 @@ const Work: React.FC = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-2xl font-bold uppercase tracking-wider">
+              <h1 className="text-2xl font-normal uppercase tracking-wider">
                 Our Work
               </h1>
 
@@ -183,10 +183,10 @@ const Work: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
           >
-            <h2 className="text-6xl md:text-8xl font-extrabold uppercase tracking-wider mb-6">
+            <h2 className="text-6xl md:text-8xl font-normal uppercase tracking-wider mb-6">
               Featured <span className="outline-text4">Work</span>
             </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            <p className="normal-text text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
               Explore selected works from our comprehensive research portfolio
               spanning constitutional law, social justice, and contemporary
               governance challenges.
@@ -237,7 +237,7 @@ const Work: React.FC = () => {
                       <span>{featuredProject.readTime}</span>
                     </div>
 
-                    <h3 className="text-4xl font-bold uppercase tracking-wider mb-2">
+                    <h3 className="text-4xl font-normal uppercase tracking-wider mb-2">
                       {featuredProject.title}
                     </h3>
 
@@ -248,11 +248,11 @@ const Work: React.FC = () => {
                     )}
                   </div>
 
-                  <p className="text-gray-300 leading-relaxed mb-6">
+                  <p className="text-gray-300 leading-relaxed mb-6 normal-text">
                     {featuredProject.description}
                   </p>
 
-                  <div className="flex flex-wrap gap-2 mb-8">
+                  <div className="flex flex-wrap gap-2 mb-8 normal-text">
                     {featuredProject.tags.map((tag, index) => (
                       <span
                         key={index}
@@ -271,7 +271,7 @@ const Work: React.FC = () => {
                       console.log(`Navigate to project ${featuredProject.id}`);
                     }}
                   >
-                    <span className="text-sm uppercase tracking-wider font-medium">
+                    <span className="text-sm uppercase tracking-wider font-normal normal-text">
                       Read Excerpts From The Research
                     </span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -364,7 +364,7 @@ const Work: React.FC = () => {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold uppercase tracking-wider mb-2 group-hover:text-gray-300 transition-colors duration-300">
+                    <h3 className="text-xl font-normal uppercase tracking-wider mb-2 group-hover:text-gray-300 transition-colors duration-300">
                       {project.title}
                     </h3>
 
@@ -375,12 +375,12 @@ const Work: React.FC = () => {
                     )}
 
                     {/* Description */}
-                    <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
+                    <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3 normal-text">
                       {project.description}
                     </p>
 
                     {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-2 mb-4 normal-text">
                       {project.tags.slice(0, 3).map((tag, tagIndex) => (
                         <span
                           key={tagIndex}
@@ -397,7 +397,7 @@ const Work: React.FC = () => {
                     </div>
 
                     {/* Author */}
-                    <div className="flex items-center justify-between text-xs text-gray-500">
+                    <div className="flex items-center justify-between text-xs text-gray-500 normal-text">
                       <div className="flex items-center gap-2">
                         <User className="w-3 h-3" />
                         <span>{project.author}</span>
@@ -421,10 +421,10 @@ const Work: React.FC = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-4xl font-bold uppercase tracking-wider mb-6">
+            <h3 className="text-4xl font-normal uppercase tracking-wider mb-6">
               Have a Research <span className="outline-text4">Project?</span>
             </h3>
-            <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+            <p className="text-gray-400 text-lg mb-8 leading-relaxed normal-text">
               Let's collaborate on your next research initiative. Our expert
               team is ready to tackle complex academic and policy challenges.
             </p>
@@ -432,14 +432,14 @@ const Work: React.FC = () => {
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-white text-black px-8 py-4 rounded-full font-semibold uppercase tracking-wider hover:bg-gray-200 transition-colors duration-300"
+                className="bg-white text-black px-8 py-4 rounded-full font-normal uppercase tracking-wider hover:bg-gray-200 transition-colors duration-300"
               >
                 Start Your Project
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="border border-white px-8 py-4 rounded-full font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
+                className="border border-white px-8 py-4 rounded-full font-normal uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
               >
                 View Services
               </motion.button>

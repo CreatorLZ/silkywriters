@@ -70,7 +70,7 @@ const ContactPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-6xl md:text-7xl lg:text-7xl font-extrabold uppercase mb-6 w-full">
+            <h1 className="text-6xl md:text-7xl lg:text-9xl font-normal uppercase mb-6 w-full">
               Let's{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[goldenrod] to-orange-500">
                 Talk
@@ -83,7 +83,7 @@ const ContactPage = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               viewport={{ once: false }}
-              className="text-[2rem] font-bold uppercase tracking-[0.2em] text-gray-200 mb-4 w-full"
+              className="text-[2rem] font-normal uppercase tracking-[0.2em] text-gray-200 mb-4 w-full"
             >
               Tell us about your project and let's craft something
               extraordinary.
@@ -92,7 +92,7 @@ const ContactPage = () => {
 
           {/* Contact Form */}
           <motion.div
-            className="space-y-8"
+            className="space-y-8 normal-text"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}

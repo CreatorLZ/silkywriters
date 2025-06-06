@@ -3,17 +3,12 @@
 import type React from "react";
 import { useState, useEffect, useRef, createRef } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-// import students from "../assets/students.jpg";
-// import tech2 from "../assets/tech2.jpg";
-// import project3 from "../assets/project3.jpg";
-// import tech1 from "../assets/tech1.jpg";
-// import diary from "../assets/dairy.jpg";
-import seclusion1 from "../assets/seclusion1.jpg";
-import sunset from "../assets/sunset.jpg";
+
+import woman2 from "../assets/woman2.jpg";
+import nelson from "../assets/nelson.jpg";
 import disabled from "../assets/disabled.jpg";
 import trump from "../assets/trump.jpg";
-// import law1 from "../assets/law1.jpg";
-// import law from "../assets/law.jpg";
+
 import InfiniteSlider from "./InfiniteSLider";
 
 const logos = [
@@ -53,7 +48,7 @@ const Projects: React.FC = () => {
       id: 2,
       title: "WOMEN SECLUSION ",
       continuation: "IN CONTEMPORARY SOCIETY",
-      image: seclusion1,
+      image: woman2,
       number: "02",
       category: "RESEARCH",
       borderColor: "goldenrod",
@@ -63,7 +58,7 @@ const Projects: React.FC = () => {
       id: 3,
       title: "AFRICAN INDEPENDENCE",
       continuation: "AND POLITICS",
-      image: sunset,
+      image: nelson,
       number: "03",
       category: "RESEARCH",
       borderColor: "#4C8BF5",
@@ -288,7 +283,7 @@ const Projects: React.FC = () => {
         />
         <div className="w-full h-[50vh] flex items-center justify-center mb-20">
           <motion.p
-            className="hero-section text-2xl font-normal text-center text-white/80 w-[50%] items-center justify-center tracking-wide"
+            className=" normal-text text-xl font-normal text-center text-white/80 w-[50%] items-center justify-center tracking-wide"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
@@ -333,7 +328,7 @@ const Projects: React.FC = () => {
 
       {/* Project Discussion Widget */}
       <motion.div
-        className="fixed bottom-6 left-0 z-50 flex items-center gap-4 bg-white/20 backdrop-blur-sm rounded-r-full pr-6 py-3 shadow-lg"
+        className="fixed bottom-6 left-0 z-30 flex items-center gap-2.5 bg-white/20 backdrop-blur-sm rounded-r-full pr-4 py-2 shadow-lg"
         style={{ x: xSpring2 }}
       >
         {/* Avatar */}
@@ -346,10 +341,12 @@ const Projects: React.FC = () => {
         </div>
         {/* Text Content */}
         <div className="flex flex-col">
-          <h3 className="text-white font-semibold text-sm tracking-wide uppercase">
+          <h3 className="text-white font-bold text-sm tracking-wide uppercase normal-text">
             DISCUSS YOUR PROJECT
           </h3>
-          <p className="text-gray-300 text-sm">Speak with us today</p>
+          <p className="text-gray-300 text-sm normal-text">
+            Speak with us today
+          </p>
         </div>
         <a href="mailto:hello@silkywriters.com">
           <button className="ml-4 w-12 h-12 bg-white hover:bg-black/70 !hover:text-white transition-colors duration-200 rounded-full flex items-center justify-center group cursor-pointer">

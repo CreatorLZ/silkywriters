@@ -16,7 +16,7 @@ html {
 }
 @font-face {
   font-family: "Monigue";
-  src: url("../src/assets/fonts/Monigue.otf") format("opentype"),
+  src: url("../src/assets/fonts/Monigue.ttf") format("truetype"),
     url("../src/assets/fonts/Monigue.ttf") format("truetype");
   font-display: swap;
   font-weight: normal;
@@ -26,7 +26,7 @@ body {
   font-family: "Monigue", sans-serif;
 }
 .normal-text {
-  font-family: "Open Sans", sans-serif; /* Open Sans for normal text */
+  font-family: "Space Grotesk", sans-serif;
 }
 .hero-section {
   font-family: "Monigue", sans-serif; /* Monigue for hero section */
