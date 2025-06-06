@@ -16,14 +16,15 @@ html {
 }
 @font-face {
   font-family: "Monigue";
-  src: url("../src/assets/fonts/Monigue.ttf") format("truetype"),
-    url("../src/assets/fonts/Monigue.ttf") format("truetype");
+  src: url("../src/assets/fonts/monigue.woff2") format("woff2"),
+    url("../src/assets/fonts/monigue.woff") format("woff");
   font-display: swap;
   font-weight: normal;
   font-style: normal;
 }
 body {
-  font-family: "Monigue", sans-serif;
+  font-family: "Monigue", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
 }
 .normal-text {
   font-family: "Space Grotesk", sans-serif;
