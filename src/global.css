@@ -23,8 +23,8 @@ html {
   font-style: normal;
 }
 body {
-  font-family: "Monigue", system-ui, -apple-system, BlinkMacSystemFont,
-    sans-serif;
+  font-family: "Monigue", "Space Grotesk", system-ui, -apple-system,
+    BlinkMacSystemFont, sans-serif;
 }
 .normal-text {
   font-family: "Space Grotesk", sans-serif;
