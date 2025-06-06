@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import FAQSection from "./components/Faqs";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
@@ -8,8 +9,25 @@ import ScrollProgressCursor from "./components/ScrollProgressCursor";
 import ScrollToTop from "./components/ScrollToTop";
 import Testimonials from "./components/Testimonials";
 import Unique from "./components/Unique";
+import loadMonigueFont from "./utils/fontLoader";
+import Loading from "./components/Loading";
 
 function Landing() {
+  const [fontLoaded, setFontLoaded] = useState(false);
+
+  useEffect(() => {
+    const loadFont = async () => {
+      try {
+        await loadMonigueFont();
+        setFontLoaded(true);
+      } catch (error) {
+        console.warn("Font loading failed, using fallback:", error);
+        setFontLoaded(true); // Still show the page with fallback fonts
+      }
+    };
+
+    loadFont();
+  }, []);
   // Define section names for the scrollbar indicators
   const sections = [
     "Home",
@@ -19,6 +37,10 @@ function Landing() {
     "FAQ",
     "Footer",
   ];
+
+  if (!fontLoaded) {
+    return <Loading />; // or your Loading component
+  }
 
   return (
     <ScrollContainer sections={sections}>

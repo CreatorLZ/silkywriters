@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import { StrictMode, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import "./global.css";
 import Landing from "./Landing.tsx";
@@ -9,12 +9,17 @@ import Work from "./Pages/Work.tsx";
 import About from "./Pages/About.tsx";
 import Contact from "./Pages/Contact.tsx";
 import Serivices from "./Pages/Services.tsx";
+import Loading from "./components/Loading.tsx";
 // import ResearchProjectDisplay from "./components/ResearchProjectDisplay.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Landing />,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Landing />
+      </Suspense>
+    ),
   },
   {
     path: "/work",
