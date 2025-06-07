@@ -11,6 +11,7 @@ import Testimonials from "./components/Testimonials";
 import Unique from "./components/Unique";
 import loadMonigueFont from "./utils/fontLoader";
 import Loading from "./components/Loading";
+import WhyChooseSilkywriters from "./components/Features";
 
 function Landing() {
   const [fontLoaded, setFontLoaded] = useState(false);
@@ -48,6 +49,9 @@ function Landing() {
         <ModernNavbar />
         <section id="home">
           <Hero />
+        </section>
+        <section id="Features">
+          <WhyChooseSilkywriters />
         </section>
         <section id="work">
           <Projects />
