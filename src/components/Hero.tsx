@@ -85,26 +85,18 @@ const Hero = () => {
     "YouTube Script Writing",
   ];
 
-  // Enhanced animation variants
+  // Natural reveal animations - just opacity and upward movement
   const headingVariants = {
     hidden: {
       opacity: 0,
-      y: 150,
-      x: 80,
-      rotate: 4,
-      skewX: 3,
-      scale: 0.9,
+      y: 80,
     },
     show: {
       opacity: 1,
       y: 0,
-      x: 0,
-      rotate: 0,
-      skewX: 0,
-      scale: 1,
       transition: {
-        duration: 1.8,
-        ease: [0.16, 1, 0.3, 1],
+        duration: 1.2,
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -112,23 +104,15 @@ const Hero = () => {
   const paragraphVariants = {
     hidden: {
       opacity: 0,
-      y: 120,
-      x: 60,
-      rotate: 3,
-      skewX: 2,
-      scale: 0.92,
+      y: 60,
     },
     show: {
       opacity: 1,
       y: 0,
-      x: 0,
-      rotate: 0,
-      skewX: 0,
-      scale: 1,
       transition: {
-        duration: 1.6,
+        duration: 1.0,
         delay: 0.2,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -136,23 +120,15 @@ const Hero = () => {
   const buttonsVariants = {
     hidden: {
       opacity: 0,
-      y: 100,
-      x: 40,
-      rotate: 2,
-      skewX: 1.5,
-      scale: 0.94,
+      y: 40,
     },
     show: {
       opacity: 1,
       y: 0,
-      x: 0,
-      rotate: 0,
-      skewX: 0,
-      scale: 1,
       transition: {
-        duration: 1.4,
+        duration: 0.8,
         delay: 0.4,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -160,19 +136,15 @@ const Hero = () => {
   const sliderVariants = {
     hidden: {
       opacity: 0,
-      y: 200,
-      rotateX: 35,
-      scale: 0.85,
+      y: 100,
     },
     show: {
       opacity: 1,
       y: 0,
-      rotateX: 0,
-      scale: 1,
       transition: {
-        duration: 2,
+        duration: 1.4,
         delay: 0.6,
-        ease: [0.16, 1, 0.3, 1],
+        ease: [0.25, 0.46, 0.45, 0.94],
       },
     },
   };
@@ -239,28 +211,19 @@ const Hero = () => {
         }}
         className="flex gap-4 will-change-transform"
       >
-        <motion.a
-          whileHover={{
-            scale: 1.05,
-            transition: { duration: 0.2, ease: "easeOut" },
-          }}
-          whileTap={{ scale: 0.95 }}
-          href="#"
-          className="bg-white text-black px-10 py-3 rounded-full font-normal hover:bg-gray-200 transition duration-300"
-        >
-          Get Started
-        </motion.a>
-        <motion.a
-          whileHover={{
-            scale: 1.05,
-            transition: { duration: 0.2, ease: "easeOut" },
-          }}
-          whileTap={{ scale: 0.95 }}
-          href="#"
-          className="border border-white px-10 py-3 rounded-full font-normal hover:bg-white hover:text-black transition duration-300"
-        >
-          Learn More
-        </motion.a>
+        <div className="text-center">
+          <button className="group relative bg-white text-black px-10 py-4 rounded-full font-normal text-lg transition-all duration-300  hover:shadow-lg hover:shadow-white/20 overflow-hidden">
+            <span className="relative z-10">Get started</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+          </button>
+        </div>
+
+        <div className="text-center">
+          <button className="group relative bg-transparent border border-white text-white px-10 py-4 rounded-full font-normal text-lg transition-all duration-300  hover:shadow-lg hover:shadow-white/20 overflow-hidden hover:bg-white hover:text-black">
+            <span className="relative z-10">Learn More</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
+          </button>
+        </div>
       </motion.div>
 
       <motion.div

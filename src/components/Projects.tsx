@@ -523,7 +523,7 @@ const Projects: React.FC = () => {
               </div>
 
               <div>
-                <h1 className="text-[260px] absolute -top-[-5rem] right-[-32rem] font-extrabold outline-text2 tracking-wide rotate-90 transform -translate-y-2">
+                <h1 className="text-[260px] absolute -top-[-5rem] right-[-29rem] font-extrabold outline-text2 tracking-wide rotate-90 transform -translate-y-2">
                   {project.number}
                 </h1>
               </div>

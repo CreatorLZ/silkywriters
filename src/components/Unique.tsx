@@ -1,17 +1,82 @@
 import { motion } from "framer-motion";
 
 const Unique = () => {
+  // Natural animation variants for heading
+  const headingVariants = {
+    hidden: {
+      opacity: 0,
+      y: 60,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.0,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+  };
+
+  // Staggered animation variants for grid items
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+  };
+
+  // Separator line variants
+  const lineVariants = {
+    hidden: {
+      scaleX: 0,
+      opacity: 0,
+    },
+    visible: {
+      scaleX: 1,
+      opacity: 0.05,
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      },
+    },
+  };
+
   return (
     <section className=" text-white py-20 w-full h-full  overflow-scroll">
-      <div className="w-screen h-[0.5px] bg-gray-50 opacity-5 mb-32"></div>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={lineVariants}
+        className="w-screen h-[0.5px] bg-gray-50 opacity-5 mb-32"
+        style={{ transformOrigin: "left" }}
+      ></motion.div>
+
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start gap-16 px-10 md:px-10">
         {/* Left Heading */}
         <div className="lg:w-2/5">
           <motion.h1
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: false }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={headingVariants}
             className="hero-section text-[4rem] md:text-[4rem] lg:text-[4rem] font-normal leading-[1.1] tracking-wide uppercase text-white"
           >
             WHAT SETS <br /> <span className="outline-text4">US APART</span>
@@ -19,9 +84,15 @@ const Unique = () => {
         </div>
 
         {/* Right Grid - 2x2 Layout */}
-        <div className="lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+          className="lg:w-3/5 grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16"
+        >
           {/* Top Left */}
-          <div className="space-y-4">
+          <motion.div variants={itemVariants} className="space-y-4">
             <h2 className="text-lg font-normal uppercase tracking-[0.2em] text-white mb-6">
               TAILORED TO YOUR VOICE
             </h2>
@@ -32,10 +103,10 @@ const Unique = () => {
               audience. The result? Content that sounds authentically you and
               resonates with your readers.
             </p>
-          </div>
+          </motion.div>
 
           {/* Top Right */}
-          <div className="space-y-4">
+          <motion.div variants={itemVariants} className="space-y-4">
             <h2 className="text-lg font-normal uppercase tracking-[0.2em] text-white mb-6">
               EXPERT WRITERS, DIVERSE EXPERTISE
             </h2>
@@ -46,10 +117,10 @@ const Unique = () => {
               each project with the perfect writer, ensuring your content hits
               the mark every single time.
             </p>
-          </div>
+          </motion.div>
 
           {/* Bottom Left */}
-          <div className="space-y-4">
+          <motion.div variants={itemVariants} className="space-y-4">
             <h2 className="text-lg font-normal uppercase tracking-[0.2em] text-white mb-6">
               RESEARCH-BACKED STORYTELLING
             </h2>
@@ -60,10 +131,10 @@ const Unique = () => {
               content that not only engages readers but also establishes your
               authority in your field.
             </p>
-          </div>
+          </motion.div>
 
           {/* Bottom Right */}
-          <div className="space-y-4">
+          <motion.div variants={itemVariants} className="space-y-4">
             <h2 className="text-lg font-normal uppercase tracking-[0.2em] text-white mb-6">
               BEYOND WORDS
             </h2>
@@ -74,10 +145,18 @@ const Unique = () => {
               audience. Every word we write is purposeful, designed to help you
               achieve your business goals.
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-      <div className="w-screen h-[0.5px] bg-gray-50 opacity-5 mt-32"></div>
+
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={lineVariants}
+        className="w-screen h-[0.5px] bg-gray-50 opacity-5 mt-32"
+        style={{ transformOrigin: "left" }}
+      ></motion.div>
     </section>
   );
 };

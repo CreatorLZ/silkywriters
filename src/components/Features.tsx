@@ -41,7 +41,7 @@ const WhyChooseSilkywriters = () => {
   ];
 
   return (
-    <div className="min-h-screen  text-white px-5 py-20 relative overflow-hidden">
+    <div className="min-h-screen  text-white px-20 py-20 relative overflow-hidden">
       <motion.div
         className="absolute w-[100vw] h-[0.5px] bg-gray-50 top-0 left-0 z-20"
         initial={{ opacity: 0.1, width: 0 }}
@@ -53,7 +53,7 @@ const WhyChooseSilkywriters = () => {
         {/* Header */}
         <div className="text-center mb-20">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-6  tracking-wide">
-            Why Choose Silkywriters?
+            Why Choose Silkywriters <span className="">?</span>
           </h1>
           <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
             We're not new to this, but we may be new to you.
@@ -90,7 +90,7 @@ const WhyChooseSilkywriters = () => {
 
         {/* CTA Section */}
         <div className="text-center">
-          <button className="group relative bg-white text-black px-10 py-4 rounded-lg font-normal text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-white/20 overflow-hidden">
+          <button className="group relative bg-white text-black px-10 py-4 rounded-full font-normal text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-white/20 overflow-hidden">
             <span className="relative z-10">Start Your Project Today</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
           </button>
