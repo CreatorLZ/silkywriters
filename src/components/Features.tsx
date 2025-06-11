@@ -33,7 +33,7 @@ const WhyChooseSilkywriters = () => {
         "Manage all your projects, revisions, and communications through our secure client portal. Complete transparency and control at your fingertips.",
     },
     {
-      icon: "✨",
+      icon: "🥇",
       title: "Expert Writing Team",
       description:
         "Work with seasoned professionals who understand your industry. Our writers combine creativity with strategic thinking to deliver content that truly resonates.",
@@ -55,7 +55,7 @@ const WhyChooseSilkywriters = () => {
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-6  tracking-wide">
             Why Choose Silkywriters <span className="">?</span>
           </h1>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed tracking-wider">
             We're not new to this, but we may be new to you.
           </p>
         </div>
@@ -76,7 +76,7 @@ const WhyChooseSilkywriters = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-normal mb-4 text-white group-hover:text-white transition-colors duration-300">
+              <h3 className="text-xl font-normal mb-4 text-white group-hover:text-white transition-colors duration-300 tracking-wider">
                 {feature.title}
               </h3>
 
