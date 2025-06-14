@@ -1,6 +1,6 @@
 "use client";
 import { ReactLenis } from "lenis/react";
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 // Define props interface
 interface LenisProviderProps {
@@ -8,7 +8,8 @@ interface LenisProviderProps {
 }
 
 function LenisProvider({ children }: LenisProviderProps) {
-  // Define options type
+  const lenisRef = useRef<any>(null);
+
   const options = {
     lerp: 0.008,
     duration: 1.7,
@@ -17,8 +18,43 @@ function LenisProvider({ children }: LenisProviderProps) {
     smoothWheel: true,
   };
 
+  // Listen for browser navigation events instead of React Router
+  useEffect(() => {
+    const handlePopState = () => {
+      if (lenisRef.current) {
+        lenisRef.current.scrollTo(0, { immediate: true });
+      }
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 0);
+    };
+
+    // Listen for browser back/forward navigation
+    window.addEventListener("popstate", handlePopState);
+
+    // Listen for programmatic navigation (if using history.pushState)
+    const originalPushState = window.history.pushState;
+    const originalReplaceState = window.history.replaceState;
+
+    window.history.pushState = function (...args) {
+      originalPushState.apply(window.history, args);
+      handlePopState();
+    };
+
+    window.history.replaceState = function (...args) {
+      originalReplaceState.apply(window.history, args);
+      handlePopState();
+    };
+
+    return () => {
+      window.removeEventListener("popstate", handlePopState);
+      window.history.pushState = originalPushState;
+      window.history.replaceState = originalReplaceState;
+    };
+  }, []);
+
   return (
-    <ReactLenis root options={options}>
+    <ReactLenis root options={options} ref={lenisRef}>
       {children}
     </ReactLenis>
   );

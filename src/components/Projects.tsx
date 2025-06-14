@@ -10,6 +10,7 @@ import disabled from "../assets/disabled.jpg";
 import trump from "../assets/trump.jpg";
 
 import InfiniteSlider from "./InfiniteSLider";
+import { Link } from "react-router-dom";
 
 const logos = [
   "https://upload.wikimedia.org/wikipedia/commons/a/ab/Meta-Logo.png",
@@ -30,7 +31,12 @@ interface Project {
   borderColor: string;
   fillColor: string;
 }
-
+const projectLinks: Record<string, string> = {
+  "INTERNATIONAL RULE OF LAW": "/work/rule-of-law",
+  "WOMEN SECLUSION": "/work",
+  "AFRICAN INDEPENDENCE": "/work",
+  "SOCIAL EXCLUSION": "/",
+};
 // Define the component
 const Projects: React.FC = () => {
   const projects: Project[] = [
@@ -487,43 +493,49 @@ const Projects: React.FC = () => {
               </div>
 
               {/* Circular text container */}
-              <div
-                className="circular-text-container mt-96 ml-[860px] min-w-36 min-h-36 z-10"
-                onMouseEnter={() => setHoveredProject(project.id)}
-                onMouseLeave={() => setHoveredProject(null)}
-                aria-label={`View ${project.title} Project`}
+              <Link
+                to={projectLinks[project.title]}
+                key={index}
+                className="no-underline"
               >
                 <div
-                  className="absolute inset-0 rounded-full !border-2 flex items-center justify-center transition-colors duration-500 ease-in-out overflow-visible"
-                  style={{ borderColor: project.borderColor }}
+                  className="circular-text-container mt-96 ml-[860px] min-w-36 min-h-36 z-10"
+                  onMouseEnter={() => setHoveredProject(project.id)}
+                  onMouseLeave={() => setHoveredProject(null)}
+                  aria-label={`View ${project.title} Project`}
                 >
                   <div
-                    className={`circular-bg-expand ${
-                      hoveredProject === project.id ? "scale-100" : "scale-0"
-                    }`}
-                    style={{ backgroundColor: project.fillColor }}
-                  ></div>
-                  <div
-                    className={`relative w-full h-full z-10 cursor-pointer flex items-center justify-center overflow-visible ${
-                      hoveredProject === project.id ? "scale-65" : "scale-100"
-                    }`}
+                    className="absolute inset-0 rounded-full !border-2 flex items-center justify-center transition-colors duration-500 ease-in-out overflow-visible"
+                    style={{ borderColor: project.borderColor }}
                   >
-                    <span
-                      className="tracking-[0.5em] text-sm font-medium whitespace-nowrap extended-text"
-                      style={{
-                        position: "absolute",
-                        width: "200%",
-                        textAlign: "center",
-                      }}
+                    <div
+                      className={`circular-bg-expand ${
+                        hoveredProject === project.id ? "scale-100" : "scale-0"
+                      }`}
+                      style={{ backgroundColor: project.fillColor }}
+                    ></div>
+                    <div
+                      className={`relative w-full h-full z-10 cursor-pointer flex items-center justify-center overflow-visible ${
+                        hoveredProject === project.id ? "scale-65" : "scale-100"
+                      }`}
                     >
-                      VIEW PROJECT
-                    </span>
+                      <span
+                        className="tracking-[0.5em] text-sm font-medium whitespace-nowrap extended-text"
+                        style={{
+                          position: "absolute",
+                          width: "200%",
+                          textAlign: "center",
+                        }}
+                      >
+                        VIEW PROJECT
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Link>
 
               <div>
-                <h1 className="text-[260px] absolute -top-[-5rem] right-[-29rem] font-extrabold outline-text2 tracking-wide rotate-90 transform -translate-y-2">
+                <h1 className="text-[260px]  absolute -top-[-5rem] right-[-29rem] font-extrabold outline-text2 tracking-wide rotate-90 transform -translate-y-2">
                   {project.number}
                 </h1>
               </div>

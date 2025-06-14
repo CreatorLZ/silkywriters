@@ -12,7 +12,9 @@ const ResearchProjectDisplay = () => {
   const headerRef = useRef(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Force scroll to top on mount
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTo(0, 0);
+    document.body.scrollTo(0, 0);
   }, []);
 
   // Scroll-based animations
@@ -140,7 +142,7 @@ const ResearchProjectDisplay = () => {
               transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-8"
             >
-              <h1 className="text-6xl md:text-8xl font-extrabold uppercase tracking-wider leading-none mb-4">
+              <h1 className="text-6xl md:text-8xl font-normal uppercase tracking-wider leading-none mb-4">
                 {projectData.title}
               </h1>
               <h2 className="text-2xl md:text-3xl font-light text-gray-300 uppercase tracking-widest">
@@ -152,7 +154,7 @@ const ResearchProjectDisplay = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="text-xl font-light text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+              className="text-xl normal-text font-normal text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
             >
               {projectData.abstract}
             </motion.p>
@@ -234,7 +236,7 @@ const ResearchProjectDisplay = () => {
                           DISPLAY {index + 1}
                         </h4>
                       </div>
-                      <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
+                      <h3 className="text-2xl font-normal text-white mb-2 leading-tight tracking-wide">
                         {excerpt.title}
                       </h3>
                     </div>
@@ -242,7 +244,7 @@ const ResearchProjectDisplay = () => {
                     {/* Main Content */}
                     <div className="p-6">
                       <div className="prose prose-invert max-w-none">
-                        <div className="text-gray-300 leading-relaxed text-base mb-6 text-justify">
+                        <div className="text-gray-300 leading-relaxed text-base mb-6 text-justify normal-text">
                           {excerpt.content}
                         </div>
 
@@ -251,7 +253,7 @@ const ResearchProjectDisplay = () => {
                           onClick={() =>
                             setSelectedExcerpt(isSelected ? null : excerpt.id)
                           }
-                          className="text-sm text-gray-400 hover:text-white transition-colors duration-200 uppercase tracking-wider font-medium mb-4 flex items-center gap-2"
+                          className="text-sm text-gray-400 normal-text hover:text-white transition-colors duration-200 uppercase tracking-wider font-medium mb-4 flex items-center gap-2"
                         >
                           {isSelected ? "Show Less" : "Read More"}
                           <ChevronDown
@@ -272,7 +274,7 @@ const ResearchProjectDisplay = () => {
                           className="overflow-hidden"
                         >
                           <div className="border-t border-gray-800/30 pt-6">
-                            <div className="text-gray-300 leading-relaxed text-base mb-6 text-justify">
+                            <div className="text-gray-300 normal-text leading-relaxed text-base mb-6 text-justify">
                               {excerpt.extended}
                             </div>
 
@@ -374,10 +376,11 @@ const ResearchProjectDisplay = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <h3 className="text-3xl font-bold mb-6">
-                Interested in Similar Research?
+              <h3 className="text-4xl font-normal uppercase tracking-wider mb-6">
+                Interested in Similar{" "}
+                <span className="outline-text4">Research?</span>
               </h3>
-              <p className="text-gray-400 text-lg mb-8 leading-relaxed">
+              <p className="text-gray-200 text-lg mb-8 leading-relaxed tracking-wide">
                 Explore our comprehensive research portfolio or discuss your
                 project requirements with our expert team.
               </p>

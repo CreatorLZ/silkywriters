@@ -29,6 +29,10 @@ function Landing() {
 
     loadFont();
   }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Force scroll to top on mount
+  }, []);
   // Define section names for the scrollbar indicators
   const sections = [
     "Home",
