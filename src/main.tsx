@@ -24,24 +24,43 @@ const router = createBrowserRouter([
   },
   {
     path: "/work",
-    element: <Work />,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Work />,
+      </Suspense>
+    ),
   },
   {
     path: "/work/rule-of-law",
-
-    element: <ResearchProjectDisplay />,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <ResearchProjectDisplay />
+      </Suspense>
+    ),
   },
   {
     path: "/about",
-    element: <About />,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <About />
+      </Suspense>
+    ),
   },
   {
     path: "/contact",
-    element: <Contact />,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Contact />
+      </Suspense>
+    ),
   },
   {
     path: "/services",
-    element: <Serivices />,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Serivices />
+      </Suspense>
+    ),
   },
 ]);
 

@@ -18,7 +18,7 @@ function LenisProvider({ children }: LenisProviderProps) {
     smoothWheel: true,
   };
 
-  // Listen for browser navigation events instead of React Router
+  // Listen for browser navigation events
   useEffect(() => {
     const handlePopState = () => {
       if (lenisRef.current) {
