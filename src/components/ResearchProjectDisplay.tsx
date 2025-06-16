@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useState, useEffect } from "react";
 import {
   ArrowLeft,
   BookOpen,
@@ -8,22 +7,14 @@ import {
   ChevronDown,
   Loader2,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 // Loading Component
 const Loading = ({ progress }: { progress: number }) => {
   return (
-    <motion.div
-      initial={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100]  flex items-center justify-center"
-    >
+    <div className="fixed inset-0 z-50  flex items-center justify-center">
       <div className="text-center">
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="mb-8"
-        >
+        <div className="mb-8">
           <Loader2 className="w-12 h-12 text-white animate-spin mx-auto mb-4" />
           <h2 className="text-2xl font-light text-white uppercase tracking-widest mb-2">
             Loading Research
@@ -31,29 +22,22 @@ const Loading = ({ progress }: { progress: number }) => {
           <p className="text-gray-400 text-sm uppercase tracking-wider">
             Preparing Content
           </p>
-        </motion.div>
+        </div>
 
         {/* Progress Bar */}
         <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden mx-auto">
-          <motion.div
-            className="h-full bg-white"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress}%` }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+          <div
+            className="h-full bg-white transition-all duration-300 ease-out"
+            style={{ width: `${progress}%` }}
           />
         </div>
 
         {/* Progress Text */}
-        <motion.p
-          className="text-gray-500 text-xs mt-4 font-mono"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
+        <p className="text-gray-500 text-xs mt-4 font-mono">
           {Math.round(progress)}% Complete
-        </motion.p>
+        </p>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -62,16 +46,12 @@ const ResearchProjectDisplay = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [contentReady, setContentReady] = useState(false);
-
-  const containerRef = useRef(null);
-  const headerRef = useRef(null);
+  const [scrollY, setScrollY] = useState(0);
 
   // Loading effect on mount
   useEffect(() => {
     // Reset scroll position
     window.scrollTo(0, 0);
-    document.documentElement.scrollTo(0, 0);
-    document.body.scrollTo(0, 0);
 
     // Simulate loading progress
     const loadingInterval = setInterval(() => {
@@ -94,10 +74,19 @@ const ResearchProjectDisplay = () => {
     return () => clearInterval(loadingInterval);
   }, []);
 
-  // Scroll-based animations
-  const { scrollYProgress } = useScroll({ target: containerRef });
-  const headerY = useTransform(scrollYProgress, [0, 0.3], [0, -100]);
-  const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  // Handle scroll for header effects
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Calculate header position and transform based on scroll
+
+  const headerTransform = Math.min(scrollY / 10, 10);
 
   // Sample project data
   const projectData = {
@@ -119,17 +108,7 @@ const ResearchProjectDisplay = () => {
     status: "Published",
   };
 
-  interface Excerpt {
-    id: number;
-    title: string;
-    content: string;
-    extended: string;
-    citations?: string[];
-    theme: "constitutional" | "executive" | "judicial";
-    position: { [key: string]: string };
-  }
-
-  const excerpts: Excerpt[] = [
+  const excerpts = [
     {
       id: 1,
       title: "Foundations of the Rule of Law",
@@ -138,7 +117,6 @@ const ResearchProjectDisplay = () => {
       extended:
         "The origins of the rule of law reveal a deliberate intent by its progenitors to construct a governance system bound by the spirit of the grundnorm, ensuring that state mechanisms operate within a structured legal order. Historically, governance evolved from systems of unregulated freedom to centralized authority, wherein sovereigns amassed absolute power.",
       theme: "constitutional",
-      position: { top: "15%", left: "8%" },
     },
     {
       id: 2,
@@ -148,7 +126,6 @@ const ResearchProjectDisplay = () => {
       extended:
         "The legal scholarship establishes that executive orders are instrumentalized by Presidents to achieve their most pressing agenda and initiatives, predicated upon the statutory and constitutional powers to do such. The concern has been that this substantial power in the hands of a president is disturbing and may give rise to arbitrariness and absolutism.",
       theme: "executive",
-      position: { top: "45%", right: "12%" },
     },
     {
       id: 3,
@@ -163,7 +140,6 @@ const ResearchProjectDisplay = () => {
         "Shane Peter and Harold Bruff, Separation of Powers Law (Durham NC: Carolina Academic Press, 1996)",
       ],
       theme: "judicial",
-      position: { bottom: "20%", left: "15%" },
     },
   ];
 
@@ -173,53 +149,46 @@ const ResearchProjectDisplay = () => {
   }
 
   return (
-    <div className="relative">
-      <div
-        ref={containerRef}
-        className="min-h-screen  text-white overflow-hidden pt-28"
+    <div className="relative ">
+      {/* Navigation Header - Fixed and always visible */}
+      <header
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm  border-b border-gray-800/50 transition-all duration-300"
+        style={{
+          transform: `translateY(-${headerTransform}px)`,
+        }}
       >
-        {/* Navigation Header */}
-        <motion.header
-          ref={headerRef}
-          className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-black/80 border-b border-gray-800/50"
-          style={{ y: headerY, opacity: headerOpacity }}
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <div className="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
-            <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer">
-              <motion.div
-                className="flex items-center gap-3"
-                whileHover={{ x: -5 }}
-              >
+        <div className="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
+          <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer group">
+            <Link to="/" className="group">
+              <div className="flex items-center gap-3 group-hover:-translate-x-1 transition-transform duration-200">
                 <ArrowLeft className="w-5 h-5" />
                 <span className="text-sm uppercase tracking-wider">
                   Back to Projects
                 </span>
-              </motion.div>
-            </div>
-
-            <div className="flex items-center gap-8 text-sm text-gray-400">
-              <span className="uppercase tracking-wider">
-                {projectData.category}
-              </span>
-              <span>•</span>
-              <span>{projectData.date}</span>
-            </div>
+              </div>
+            </Link>
           </div>
-        </motion.header>
 
+          <div className="flex items-center gap-8 text-sm text-gray-400">
+            <span className="uppercase tracking-wider">
+              {projectData.category}
+            </span>
+            <span>•</span>
+            <span>{projectData.date}</span>
+          </div>
+        </div>
+      </header>
+
+      <div className="min-h-screen text-white overflow-hidden pt-28">
         {/* Hero Section */}
         <section className="relative h-screen flex items-center justify-center px-8">
           <div className="max-w-6xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 100 }}
-              animate={
-                contentReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }
-              }
-              transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
-              className="mb-8"
+            <div
+              className={`mb-8 transition-all duration-1200 ${
+                contentReady
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-24"
+              }`}
             >
               <h1 className="text-6xl md:text-8xl font-normal uppercase tracking-wider leading-none mb-4">
                 {projectData.title}
@@ -227,24 +196,22 @@ const ResearchProjectDisplay = () => {
               <h2 className="text-2xl md:text-3xl font-light text-gray-300 uppercase tracking-widest">
                 {projectData.subtitle}
               </h2>
-            </motion.div>
+            </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 50 }}
-              animate={
-                contentReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
-              }
-              transition={{ duration: 1, delay: 0.3 }}
-              className="text-xl font-normal text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+            <p
+              className={`text-xl font-normal text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-300 ${
+                contentReady
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-12"
+              }`}
             >
               {projectData.abstract}
-            </motion.p>
+            </p>
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={contentReady ? { opacity: 1 } : { opacity: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="flex flex-wrap justify-center gap-3 mb-16"
+            <div
+              className={`flex flex-wrap justify-center gap-3 mb-16 transition-all duration-1000 delay-600 ${
+                contentReady ? "opacity-100" : "opacity-0"
+              }`}
             >
               {projectData.keywords.map((keyword, index) => (
                 <span
@@ -254,21 +221,20 @@ const ResearchProjectDisplay = () => {
                   {keyword}
                 </span>
               ))}
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={
-                contentReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
-              }
-              transition={{ duration: 0.8, delay: 0.9 }}
-              className="flex flex-col items-center"
+            <div
+              className={`flex flex-col items-center transition-all duration-800 delay-900 ${
+                contentReady
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
             >
               <p className="text-sm text-gray-500 uppercase tracking-wider mb-4">
                 Scroll to explore excerpts
               </p>
               <ChevronDown className="w-6 h-6 text-gray-400 animate-bounce" />
-            </motion.div>
+            </div>
           </div>
 
           {/* Decorative elements */}
@@ -283,33 +249,23 @@ const ResearchProjectDisplay = () => {
         {/* Interactive Excerpts Section */}
         <section className="relative min-h-screen py-20 px-8">
           <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="text-center mb-20"
-            >
+            <div className="text-center mb-20">
               <h3 className="text-4xl font-bold uppercase tracking-wider mb-4">
                 Key Excerpts
               </h3>
               <p className="text-gray-400 text-lg">
                 Explore the critical insights from this research
               </p>
-            </motion.div>
+            </div>
 
             <div className="space-y-16">
               {excerpts.map((excerpt, index) => {
                 const isSelected = selectedExcerpt === excerpt.id;
 
                 return (
-                  <motion.article
+                  <article
                     key={excerpt.id}
                     className="bg-white/5 backdrop-blur-sm border border-gray-800/30 hover:border-gray-700/50 transition-all duration-300"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
                   >
                     {/* Section Header */}
                     <div className="border-b border-gray-800/30 p-6 pb-4">
@@ -346,14 +302,12 @@ const ResearchProjectDisplay = () => {
                         </button>
 
                         {/* Extended Content */}
-                        <motion.div
-                          initial={false}
-                          animate={{
-                            height: isSelected ? "auto" : 0,
-                            opacity: isSelected ? 1 : 0,
-                          }}
-                          transition={{ duration: 0.3 }}
-                          className="overflow-hidden"
+                        <div
+                          className={`overflow-hidden transition-all duration-300 ${
+                            isSelected
+                              ? "max-h-96 opacity-100"
+                              : "max-h-0 opacity-0"
+                          }`}
                         >
                           <div className="border-t border-gray-800/30 pt-6">
                             <div className="text-gray-300 leading-relaxed text-base mb-6 text-justify">
@@ -383,10 +337,10 @@ const ResearchProjectDisplay = () => {
                                 </div>
                               )}
                           </div>
-                        </motion.div>
+                        </div>
                       </div>
                     </div>
-                  </motion.article>
+                  </article>
                 );
               })}
             </div>
@@ -404,47 +358,29 @@ const ResearchProjectDisplay = () => {
         <section className="py-20 border-t border-gray-800/50">
           <div className="max-w-6xl mx-auto px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
+              <div className="text-center">
                 <User className="w-8 h-8 text-gray-400 mx-auto mb-4" />
                 <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-2">
                   Author
                 </h4>
                 <p className="text-white font-light">{projectData.author}</p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
+              <div className="text-center">
                 <Calendar className="w-8 h-8 text-gray-400 mx-auto mb-4" />
                 <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-2">
                   Published
                 </h4>
                 <p className="text-white font-light">{projectData.date}</p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="text-center"
-              >
+              <div className="text-center">
                 <BookOpen className="w-8 h-8 text-gray-400 mx-auto mb-4" />
                 <h4 className="text-sm uppercase tracking-wider text-gray-500 mb-2">
                   Status
                 </h4>
                 <p className="text-white font-light">{projectData.status}</p>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -452,12 +388,7 @@ const ResearchProjectDisplay = () => {
         {/* Call to Action */}
         <section className="py-20 text-center">
           <div className="max-w-4xl mx-auto px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
+            <div>
               <h3 className="text-4xl font-normal uppercase tracking-wider mb-6">
                 Interested in Similar Research?
               </h3>
@@ -466,22 +397,14 @@ const ResearchProjectDisplay = () => {
                 project requirements with our expert team.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="bg-white text-black px-8 py-3 rounded-full font-semibold uppercase tracking-wider hover:bg-gray-200 transition-colors duration-300"
-                >
+                <button className="bg-white text-black px-8 py-3 rounded-full font-semibold uppercase tracking-wider hover:bg-gray-200 transition-colors duration-300 hover:scale-105 transform">
                   View All Projects
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="border border-white px-8 py-3 rounded-full font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300"
-                >
+                </button>
+                <button className="border border-white px-8 py-3 rounded-full font-semibold uppercase tracking-wider hover:bg-white hover:text-black transition-colors duration-300 hover:scale-105 transform">
                   Start Your Project
-                </motion.button>
+                </button>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
       </div>
