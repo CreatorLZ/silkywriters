@@ -1,20 +1,97 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowLeft, BookOpen, Calendar, User, ChevronDown } from "lucide-react";
-import Footer from "./Footer";
-import { Link } from "react-router-dom";
-import ScrollContainer from "./ScrollContainer";
-import ScrollToTop from "./ScrollToTop";
+import {
+  ArrowLeft,
+  BookOpen,
+  Calendar,
+  User,
+  ChevronDown,
+  Loader2,
+} from "lucide-react";
+
+// Loading Component
+const Loading = ({ progress }: { progress: number }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100]  flex items-center justify-center"
+    >
+      <div className="text-center">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <Loader2 className="w-12 h-12 text-white animate-spin mx-auto mb-4" />
+          <h2 className="text-2xl font-light text-white uppercase tracking-widest mb-2">
+            Loading Research
+          </h2>
+          <p className="text-gray-400 text-sm uppercase tracking-wider">
+            Preparing Content
+          </p>
+        </motion.div>
+
+        {/* Progress Bar */}
+        <div className="w-64 h-1 bg-gray-800 rounded-full overflow-hidden mx-auto">
+          <motion.div
+            className="h-full bg-white"
+            initial={{ width: 0 }}
+            animate={{ width: `${progress}%` }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+          />
+        </div>
+
+        {/* Progress Text */}
+        <motion.p
+          className="text-gray-500 text-xs mt-4 font-mono"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+        >
+          {Math.round(progress)}% Complete
+        </motion.p>
+      </div>
+    </motion.div>
+  );
+};
 
 const ResearchProjectDisplay = () => {
   const [selectedExcerpt, setSelectedExcerpt] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [contentReady, setContentReady] = useState(false);
+
   const containerRef = useRef(null);
   const headerRef = useRef(null);
 
+  // Loading effect on mount
   useEffect(() => {
+    // Reset scroll position
     window.scrollTo(0, 0);
     document.documentElement.scrollTo(0, 0);
     document.body.scrollTo(0, 0);
+
+    // Simulate loading progress
+    const loadingInterval = setInterval(() => {
+      setLoadingProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(loadingInterval);
+          // Small delay before hiding loading screen
+          setTimeout(() => {
+            setIsLoading(false);
+            setContentReady(true);
+          }, 300);
+          return 100;
+        }
+        // Randomize progress increments for more realistic loading
+        const increment = Math.random() * 15 + 5;
+        return Math.min(prev + increment, 100);
+      });
+    }, 150);
+
+    return () => clearInterval(loadingInterval);
   }, []);
 
   // Scroll-based animations
@@ -22,7 +99,7 @@ const ResearchProjectDisplay = () => {
   const headerY = useTransform(scrollYProgress, [0, 0.3], [0, -100]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
 
-  // Sample project data - you can replace this with actual project data
+  // Sample project data
   const projectData = {
     id: 1,
     title: "INTERNATIONAL RULE OF LAW",
@@ -57,10 +134,9 @@ const ResearchProjectDisplay = () => {
       id: 1,
       title: "Foundations of the Rule of Law",
       content:
-        "The rule of law serves as the principal safeguard militating against the overreach of unchecked power, preventing its oppressive intrusion into the lives of citizens. The well-established maxim that absolute power corrupts absolutely underscores the necessity for a legal framework that restrains authority and upholds justice. This principle is anchored in three foundational pillars: the supremacy of the law over all individuals, the tenet of equality before the law, and the independence of the judiciary, which functions as a critical check on the first two tenets.",
+        "The rule of law serves as the principal safeguard militating against the overreach of unchecked power, preventing its oppressive intrusion into the lives of citizens. The well-established maxim that absolute power corrupts absolutely underscores the necessity for a legal framework that restrains authority and upholds justice.",
       extended:
-        "The origins of the rule of law reveal a deliberate intent by its progenitors to construct a governance system bound by the spirit of the grundnorm, ensuring that state mechanisms operate within a structured legal order. Historically, governance evolved from systems of unregulated freedom to centralized authority, wherein sovereigns amassed absolute power. This shift necessitated the establishment of legal constraints to mitigate the risk of authoritarian excesses and arbitrariness. The transition to democracy, coupled with the decolonization of African nations, catalyzed an international consensus which made pivotal the adherence to the principles of the rule of law.",
-
+        "The origins of the rule of law reveal a deliberate intent by its progenitors to construct a governance system bound by the spirit of the grundnorm, ensuring that state mechanisms operate within a structured legal order. Historically, governance evolved from systems of unregulated freedom to centralized authority, wherein sovereigns amassed absolute power.",
       theme: "constitutional",
       position: { top: "15%", left: "8%" },
     },
@@ -68,9 +144,9 @@ const ResearchProjectDisplay = () => {
       id: 2,
       title: "Executive Power and Separation",
       content:
-        "The machinery of the state is divested across the three arms of government, this is an ambit of the rule of law that presupposes that for the law to be supreme and effective, there need be a systematic check on the powers of the sovereign. Apparently, the norm is that the office of the president is constrained by the principle of separation of power, however, executive orders remain a unilateral tool which presidents wield without the interference of congress or the courts.",
+        "The machinery of the state is divested across the three arms of government, this is an ambit of the rule of law that presupposes that for the law to be supreme and effective, there need be a systematic check on the powers of the sovereign.",
       extended:
-        "The legal scholarship establishes that executive orders are instrumentalized by Presidents to achieve their most pressing agenda and initiatives, predicated upon the statutory and constitutional powers to do such. The concern has been that this substantial power in the hands of a president is disturbing and may give rise to arbitrariness and absolutism. Executive orders have given presidents the power to expand the territories of their powers beyond what is statutory and constitutional; the courts simply allow this fly and uphold executive orders even though there are vestiges of illegality and 'dubious constitutional authority'.",
+        "The legal scholarship establishes that executive orders are instrumentalized by Presidents to achieve their most pressing agenda and initiatives, predicated upon the statutory and constitutional powers to do such. The concern has been that this substantial power in the hands of a president is disturbing and may give rise to arbitrariness and absolutism.",
       theme: "executive",
       position: { top: "45%", right: "12%" },
     },
@@ -78,40 +154,41 @@ const ResearchProjectDisplay = () => {
       id: 3,
       title: "Presidential Pragmatism vs. Constitutional Limits",
       content:
-        "A president, regardless of ideological leanings, must carefully manoeuvre the interplay between executive ambition and political pragmatism, recognizing that an unchecked cascade of executive orders risks not only institutional resistance but also a declining rate of obedience to the principles of the rule of law—a reality that, over time, could undermine the very legitimacy of such decrees.",
+        "A president, regardless of ideological leanings, must carefully manoeuvre the interplay between executive ambition and political pragmatism, recognizing that an unchecked cascade of executive orders risks not only institutional resistance but also a declining rate of obedience to the principles of the rule of law.",
       extended:
-        "One of such examples is President Truman's confiscation of the nation's steel plant which was overturned in the decision in Youngstown Sheet and Tube v. Sawyer. The apex Court questioned the legitimacy of the Executive order of President Truman which sought to seize a private steel mill during the Korean war; the approach was to keep the workers from going on strike as the steel they produced was vital in the making of weaponry for the ongoing war. The apex court held that the actions of Truman was an executive overreach which lacked constitutional and statutory flavour.",
+        "One of such examples is President Truman's confiscation of the nation's steel plant which was overturned in the decision in Youngstown Sheet and Tube v. Sawyer. The apex Court questioned the legitimacy of the Executive order of President Truman which sought to seize a private steel mill during the Korean war.",
       citations: [
-        " Chester Simon, “An International Rule of Law?”, American Journal of Comparative Law 55, No 2 (2008): 331-362,",
-        "Chester Simon, “An International Rule of Law?",
-        "Mayer Kenneth, “ Orders and Presidential Power,” The Journal of Politics 61, no. 2 (1999): 445-466",
+        'Chester Simon, "An International Rule of Law?", American Journal of Comparative Law 55, No 2 (2008): 331-362',
+        'Mayer Kenneth, "Orders and Presidential Power," The Journal of Politics 61, no. 2 (1999): 445-466',
         "Shane Peter and Harold Bruff, Separation of Powers Law (Durham NC: Carolina Academic Press, 1996)",
-        "Fisher Louis, Presidential War Power (Lawrence: University Press of Kansas, 1995)",
-        "Fleishman Joel and Arthur Aufses, “Law and Orders: The Problem of Presidential Legislation,” Law and Contemporary Problems 40 (1976) 1-45.",
-        "342 U.S 579 (1952)",
       ],
       theme: "judicial",
       position: { bottom: "20%", left: "15%" },
     },
   ];
 
+  // Show loading screen
+  if (isLoading) {
+    return <Loading progress={loadingProgress} />;
+  }
+
   return (
-    <ScrollContainer sections={[]}>
+    <div className="relative">
       <div
         ref={containerRef}
-        className="min-h-screen text-white overflow-hidden pt-28"
+        className="min-h-screen  text-white overflow-hidden pt-28"
       >
         {/* Navigation Header */}
         <motion.header
           ref={headerRef}
-          className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-[rgb(27, 27, 27)] border-b border-gray-800/50"
+          className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-black/80 border-b border-gray-800/50"
           style={{ y: headerY, opacity: headerOpacity }}
+          initial={{ y: -100 }}
+          animate={{ y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
           <div className="max-w-7xl mx-auto px-8 py-6 flex items-center justify-between">
-            <Link
-              to="/"
-              className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300"
-            >
+            <div className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors duration-300 cursor-pointer">
               <motion.div
                 className="flex items-center gap-3"
                 whileHover={{ x: -5 }}
@@ -121,7 +198,7 @@ const ResearchProjectDisplay = () => {
                   Back to Projects
                 </span>
               </motion.div>
-            </Link>
+            </div>
 
             <div className="flex items-center gap-8 text-sm text-gray-400">
               <span className="uppercase tracking-wider">
@@ -138,7 +215,9 @@ const ResearchProjectDisplay = () => {
           <div className="max-w-6xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 100 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={
+                contentReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }
+              }
               transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
               className="mb-8"
             >
@@ -152,16 +231,18 @@ const ResearchProjectDisplay = () => {
 
             <motion.p
               initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={
+                contentReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
+              }
               transition={{ duration: 1, delay: 0.3 }}
-              className="text-xl normal-text font-normal text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
+              className="text-xl font-normal text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed"
             >
               {projectData.abstract}
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              animate={contentReady ? { opacity: 1 } : { opacity: 0 }}
               transition={{ duration: 1, delay: 0.6 }}
               className="flex flex-wrap justify-center gap-3 mb-16"
             >
@@ -177,7 +258,9 @@ const ResearchProjectDisplay = () => {
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={
+                contentReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }
+              }
               transition={{ duration: 0.8, delay: 0.9 }}
               className="flex flex-col items-center"
             >
@@ -198,8 +281,8 @@ const ResearchProjectDisplay = () => {
         </section>
 
         {/* Interactive Excerpts Section */}
-        <section className="relative min-h-screen py-20 px-20">
-          <div className="max-w-7xl mx-auto px-8">
+        <section className="relative min-h-screen py-20 px-8">
+          <div className="max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -215,7 +298,6 @@ const ResearchProjectDisplay = () => {
               </p>
             </motion.div>
 
-            {/* Add the new Newspaper-style Excerpt Layout */}
             <div className="space-y-16">
               {excerpts.map((excerpt, index) => {
                 const isSelected = selectedExcerpt === excerpt.id;
@@ -233,7 +315,7 @@ const ResearchProjectDisplay = () => {
                     <div className="border-b border-gray-800/30 p-6 pb-4">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="text-sm font-mono uppercase tracking-widest text-gray-500">
-                          DISPLAY {index + 1}
+                          EXCERPT {index + 1}
                         </h4>
                       </div>
                       <h3 className="text-2xl font-normal text-white mb-2 leading-tight tracking-wide">
@@ -244,7 +326,7 @@ const ResearchProjectDisplay = () => {
                     {/* Main Content */}
                     <div className="p-6">
                       <div className="prose prose-invert max-w-none">
-                        <div className="text-gray-300 leading-relaxed text-base mb-6 text-justify normal-text">
+                        <div className="text-gray-300 leading-relaxed text-base mb-6 text-justify">
                           {excerpt.content}
                         </div>
 
@@ -253,7 +335,7 @@ const ResearchProjectDisplay = () => {
                           onClick={() =>
                             setSelectedExcerpt(isSelected ? null : excerpt.id)
                           }
-                          className="text-sm text-gray-400 normal-text hover:text-white transition-colors duration-200 uppercase tracking-wider font-medium mb-4 flex items-center gap-2"
+                          className="text-sm text-gray-400 hover:text-white transition-colors duration-200 uppercase tracking-wider font-medium mb-4 flex items-center gap-2"
                         >
                           {isSelected ? "Show Less" : "Read More"}
                           <ChevronDown
@@ -274,7 +356,7 @@ const ResearchProjectDisplay = () => {
                           className="overflow-hidden"
                         >
                           <div className="border-t border-gray-800/30 pt-6">
-                            <div className="text-gray-300 normal-text leading-relaxed text-base mb-6 text-justify">
+                            <div className="text-gray-300 leading-relaxed text-base mb-6 text-justify">
                               {excerpt.extended}
                             </div>
 
@@ -377,8 +459,7 @@ const ResearchProjectDisplay = () => {
               viewport={{ once: true }}
             >
               <h3 className="text-4xl font-normal uppercase tracking-wider mb-6">
-                Interested in Similar{" "}
-                <span className="outline-text4">Research?</span>
+                Interested in Similar Research?
               </h3>
               <p className="text-gray-200 text-lg mb-8 leading-relaxed tracking-wide">
                 Explore our comprehensive research portfolio or discuss your
@@ -403,12 +484,8 @@ const ResearchProjectDisplay = () => {
             </motion.div>
           </div>
         </section>
-        <div className="w-screen h-[0.5px] bg-gray-50 opacity-5 mt-32"></div>
-
-        <Footer />
       </div>
-      <ScrollToTop />
-    </ScrollContainer>
+    </div>
   );
 };
 
