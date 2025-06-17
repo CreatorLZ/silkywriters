@@ -8,11 +8,12 @@ import {
   Loader2,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import Footer from "./Footer";
 
 // Loading Component
 const Loading = ({ progress }: { progress: number }) => {
   return (
-    <div className="fixed inset-0 z-50  flex items-center justify-center">
+    <div className="fixed inset-0 z-50  flex items-center justify-center normal-text">
       <div className="text-center">
         <div className="mb-8">
           <Loader2 className="w-12 h-12 text-white animate-spin mx-auto mb-4" />
@@ -199,7 +200,7 @@ const ResearchProjectDisplay = () => {
             </div>
 
             <p
-              className={`text-xl font-normal text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-300 ${
+              className={`text-xl font-normal normal-text text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed transition-all duration-1000 delay-300 ${
                 contentReady
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-12"
@@ -216,7 +217,7 @@ const ResearchProjectDisplay = () => {
               {projectData.keywords.map((keyword, index) => (
                 <span
                   key={index}
-                  className="px-4 py-2 border border-gray-600 rounded-full text-sm uppercase tracking-wider text-gray-300"
+                  className="px-4 normal-text py-2 border border-gray-600 rounded-full text-sm uppercase tracking-wider text-gray-300"
                 >
                   {keyword}
                 </span>
@@ -250,10 +251,10 @@ const ResearchProjectDisplay = () => {
         <section className="relative min-h-screen py-20 px-8">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20">
-              <h3 className="text-4xl font-bold uppercase tracking-wider mb-4">
+              <h3 className="text-4xl font-normal uppercase tracking-wider mb-4">
                 Key Excerpts
               </h3>
-              <p className="text-gray-400 text-lg">
+              <p className="text-gray-400 text-lg normal-text">
                 Explore the critical insights from this research
               </p>
             </div>
@@ -282,7 +283,7 @@ const ResearchProjectDisplay = () => {
                     {/* Main Content */}
                     <div className="p-6">
                       <div className="prose prose-invert max-w-none">
-                        <div className="text-gray-300 leading-relaxed text-base mb-6 text-justify">
+                        <div className="text-gray-300 normal-text leading-relaxed text-base mb-6 text-justify">
                           {excerpt.content}
                         </div>
 
@@ -303,7 +304,7 @@ const ResearchProjectDisplay = () => {
 
                         {/* Extended Content */}
                         <div
-                          className={`overflow-hidden transition-all duration-300 ${
+                          className={`overflow-hidden normal-text transition-all duration-300 ${
                             isSelected
                               ? "max-h-96 opacity-100"
                               : "max-h-0 opacity-0"
@@ -390,7 +391,8 @@ const ResearchProjectDisplay = () => {
           <div className="max-w-4xl mx-auto px-8">
             <div>
               <h3 className="text-4xl font-normal uppercase tracking-wider mb-6">
-                Interested in Similar Research?
+                Interested in Similar{" "}
+                <span className="outline-text4">Research?</span>
               </h3>
               <p className="text-gray-200 text-lg mb-8 leading-relaxed tracking-wide">
                 Explore our comprehensive research portfolio or discuss your
@@ -408,6 +410,7 @@ const ResearchProjectDisplay = () => {
           </div>
         </section>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import Footer from "../components/Footer";
 import ModernNavbar from "../components/Navbar";
 import ScrollContainer from "../components/ScrollContainer";
+import Loading from "../components/Loading";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -54,6 +55,24 @@ const ContactPage = () => {
     "$25,000 - $50,000",
     "$50,000+",
   ];
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Force scroll to top on mount
+
+    // Simulate loading time (you can adjust this or tie it to actual data loading)
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds loading time
+
+    return () => clearTimeout(loadingTimer);
+  }, []);
+
+  // Show loading component while loading
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <ScrollContainer sections={[]}>

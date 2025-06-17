@@ -1,17 +1,32 @@
 import { motion } from "framer-motion";
-
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import ScrollContainer from "../components/ScrollContainer";
 import ScrollToTop from "../components/ScrollToTop";
 import ModernNavbar from "../components/Navbar";
+import Loading from "../components/Loading"; // Adjust path as needed
 import { Link } from "react-router-dom";
 
 const About = () => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     window.scrollTo(0, 0); // Force scroll to top on mount
+
+    // Simulate loading time (you can adjust this or tie it to actual data loading)
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds loading time
+
+    return () => clearTimeout(loadingTimer);
   }, []);
+
+  // Show loading component while loading
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <ScrollContainer sections={[]}>
       <div className="relative w-screen min-h-screen overflow-scroll overflow-x-hidden  pt-32 pb-0 flex flex-col text-white">
@@ -87,7 +102,7 @@ const About = () => {
           ABOUT
         </h1>
         <h1 className="text-9xl font-normal uppercase mb-44 px-28">
-          We’ve got a way with words.{" "}
+          We've got a way with words.{" "}
           <span className="outline-text4">The best kind of way</span>
         </h1>
 

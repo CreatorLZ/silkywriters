@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, User, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
+import Loading from "../components/Loading";
 
 // Import your project images (you'll need to add these to your assets)
 const projectImages = {
@@ -117,10 +118,23 @@ const Work: React.FC = () => {
   const featuredProject = projects.find((p) => p.featured);
   const regularProjects = projects.filter((p) => !p.featured);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0); // Force scroll to top on mount
+
+    // Simulate loading time (you can adjust this or tie it to actual data loading)
+    const loadingTimer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // 2 seconds loading time
+
+    return () => clearTimeout(loadingTimer);
   }, []);
 
+  // Show loading component while loading
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div ref={containerRef} className="min-h-screen text-white overflow-hidden">
       {/* Header */}
