@@ -11,6 +11,8 @@ import Contact from "./Pages/Contact.tsx";
 import Serivices from "./Pages/Services.tsx";
 import Loading from "./components/Loading.tsx";
 import ResearchProjectDisplay from "./components/ResearchProjectDisplay.tsx";
+import WomenSeclusion from "./components/WomenSeclusion.tsx";
+import AfricanIndependencePolitics from "./components/AfricanIndependencePolitics.tsx";
 // import ResearchProjectDisplay from "./components/ResearchProjectDisplay.tsx";
 
 const router = createBrowserRouter([
@@ -38,6 +40,23 @@ const router = createBrowserRouter([
       </Suspense>
     ),
   },
+  {
+    path: "/work/women-seclusion",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <WomenSeclusion />
+      </Suspense>
+    ),
+  },
+  {
+    path: "/work/african-independence",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <AfricanIndependencePolitics />
+      </Suspense>
+    ),
+  },
+
   {
     path: "/about",
     element: (

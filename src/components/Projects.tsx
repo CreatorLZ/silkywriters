@@ -33,8 +33,8 @@ interface Project {
 }
 const projectLinks: Record<string, string> = {
   "INTERNATIONAL RULE OF LAW": "/work/rule-of-law",
-  "WOMEN SECLUSION": "/work",
-  "AFRICAN INDEPENDENCE": "/work",
+  "WOMEN SECLUSION": "/work/women-seclusion",
+  "AFRICAN INDEPENDENCE": "/work/african-independence",
   "SOCIAL EXCLUSION": "/",
 };
 // Define the component
@@ -52,7 +52,7 @@ const Projects: React.FC = () => {
     },
     {
       id: 2,
-      title: "WOMEN SECLUSION ",
+      title: "WOMEN SECLUSION",
       continuation: "IN CONTEMPORARY SOCIETY",
       image: woman2,
       number: "02",
