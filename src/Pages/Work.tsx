@@ -126,7 +126,7 @@ const Work: React.FC = () => {
     // Simulate loading time (you can adjust this or tie it to actual data loading)
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // 2 seconds loading time
+    }, 1000); // 1 seconds loading time
 
     return () => clearTimeout(loadingTimer);
   }, []);
