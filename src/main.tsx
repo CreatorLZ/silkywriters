@@ -13,6 +13,7 @@ import Loading from "./components/Loading.tsx";
 import ResearchProjectDisplay from "./components/ResearchProjectDisplay.tsx";
 import WomenSeclusion from "./components/WomenSeclusion.tsx";
 import AfricanIndependencePolitics from "./components/AfricanIndependencePolitics.tsx";
+import DisabilitySocialExclusion from "./components/DisabilitySocialExclusion.tsx";
 // import ResearchProjectDisplay from "./components/ResearchProjectDisplay.tsx";
 
 const router = createBrowserRouter([
@@ -48,6 +49,15 @@ const router = createBrowserRouter([
       </Suspense>
     ),
   },
+  {
+    path: "/work/social-exclusion",
+    element: (
+      <Suspense fallback={<Loading />}>
+        <DisabilitySocialExclusion />
+      </Suspense>
+    ),
+  },
+
   {
     path: "/work/african-independence",
     element: (

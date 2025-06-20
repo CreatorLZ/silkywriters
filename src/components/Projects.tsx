@@ -35,7 +35,7 @@ const projectLinks: Record<string, string> = {
   "INTERNATIONAL RULE OF LAW": "/work/rule-of-law",
   "WOMEN SECLUSION": "/work/women-seclusion",
   "AFRICAN INDEPENDENCE": "/work/african-independence",
-  "SOCIAL EXCLUSION": "/",
+  "SOCIAL EXCLUSION": "/work/social-exclusion",
 };
 // Define the component
 const Projects: React.FC = () => {
@@ -72,7 +72,7 @@ const Projects: React.FC = () => {
     },
     {
       id: 4,
-      title: "SOCIAL EXCLUSION ",
+      title: "SOCIAL EXCLUSION",
       continuation: "OF PERSONS WITH DISABILITY",
       image: disabled,
       number: "04",
