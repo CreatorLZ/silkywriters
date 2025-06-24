@@ -183,7 +183,7 @@ const Hero = () => {
           y: yParagraph,
           transformOrigin: "center center",
         }}
-        className="text-xl font-extralight will-change-transform tracking-wide leading-relaxed "
+        className="text-base normal-text font-extralight will-change-transform tracking-wide leading-relaxed "
       >
         Your trusted partner for{" "}
         <span className="underline decoration-1 underline-offset-4 font-normal">
