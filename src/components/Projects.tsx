@@ -236,7 +236,7 @@ const Projects: React.FC = () => {
         </motion.h1>
 
         <motion.p
-          className="hero-section mt-4 text-center text-gray-400"
+          className="normal-text mt-4 text-center text-gray-400"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{

@@ -21,11 +21,11 @@ const ModernNavbar = () => {
   return (
     <div className="">
       {/* Fixed Logo and Menu Button */}
-      <div className="fixed  -top-6 lg:top-0 left-6  w-full flex justify-between items-center px-8 py-6 z-50">
+      <div className="fixed  -top-2 lg:top-0 left-6  w-full flex justify-between items-center px-8 py-6 z-50">
         {/* Logo/Avatar on left */}
         <Link to="/">
           <div
-            className={`lg:w-28 lg:h-28 w-20 h-20 rounded-full bg-white hover:bg-[goldenrod] cursor-pointer flex items-center justify-center overflow-hidden transition-all duration-500 ease-in-out ${
+            className={`lg:w-28 lg:h-28 w-18 h-18 rounded-full bg-white hover:bg-[goldenrod] cursor-pointer flex items-center justify-center overflow-hidden transition-all duration-500 ease-in-out absolute lg:top-2 top-4 left-0  ${
               isMenuOpen ? "opacity-100" : "opacity-0"
             }`}
             style={{ transition: "background-color 0.3s ease-in-out" }}
@@ -81,8 +81,8 @@ const ModernNavbar = () => {
             "background-color 0.8s ease-in-out, opacity 0.5s ease-in-out",
         }}
       >
-        <div className="h-full flex items-center justify-center px-8 md:px-24">
-          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 md:gap-y-24 lg:px-28">
+        <div className="h-full flex lg:items-center items-start justify-center px-8 md:px-24 lg:pt-0 pt-40">
+          <div className="w-full grid grid-cols-2 md:grid-cols-2 gap-x-12 gap-y-16 md:gap-y-24 lg:px-28">
             {navLinks.map((link, index) => (
               <Link
                 to={link.path}
