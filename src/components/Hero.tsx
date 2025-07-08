@@ -209,7 +209,7 @@ const Hero = () => {
           y: yButtons,
           transformOrigin: "center center",
         }}
-        className="flex gap-4 will-change-transform mt-10"
+        className="flex gap-4 will-change-transform lg:mt-10 mt-8"
       >
         <div className="text-center">
           <button className="group relative bg-white text-black px-12 lg:px-10 py-2.5 lg:py-4 rounded-full font-normal text-lg transition-all duration-300  hover:shadow-lg hover:shadow-white/20 overflow-hidden">
