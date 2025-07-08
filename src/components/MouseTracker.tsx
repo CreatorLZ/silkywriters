@@ -60,6 +60,7 @@ const MouseTracker = () => {
   return (
     <div
       style={{ cursor: "none" }} // Hide the default cursor
+      className="lg:flex hidden"
     >
       <AnimatePresence>
         {isVisible && (

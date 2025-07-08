@@ -152,7 +152,7 @@ const Hero = () => {
   return (
     <div
       ref={heroRef}
-      className="hero-section text-white h-[100vh] min-h-[900px] w-screen relative overflow-hidden px-36 pt-28 pb-0 flex flex-col gap-8 "
+      className="hero-section text-white h-[100vh] min-h-[900px] w-screen relative overflow-hidden px-4 lg:px-36 pt-32 pb-0 flex flex-col gap-12 lg:gap-8 "
       style={{
         perspective: "1500px",
         transformStyle: "preserve-3d",
@@ -168,7 +168,7 @@ const Hero = () => {
           y: yHeading,
           transformOrigin: "center center",
         }}
-        className="font-normal text-9xl leading-28 uppercase w-full will-change-transform tracking-wide"
+        className="font-normal text-7xl lg:text-9xl leading-16 lg:leading-28 uppercase w-full will-change-transform tracking-wide"
       >
         WE SHAPE IDEAS WITH PRECISION
       </motion.h2>
@@ -183,7 +183,7 @@ const Hero = () => {
           y: yParagraph,
           transformOrigin: "center center",
         }}
-        className="text-base normal-text font-extralight will-change-transform tracking-wide leading-relaxed "
+        className="lg:text-base text-xs normal-text font-extralight will-change-transform tracking-wide leading-relaxed "
       >
         Your trusted partner for{" "}
         <span className="underline decoration-1 underline-offset-4 font-normal">
@@ -209,21 +209,46 @@ const Hero = () => {
           y: yButtons,
           transformOrigin: "center center",
         }}
-        className="flex gap-4 will-change-transform"
+        className="flex gap-4 will-change-transform mt-10"
       >
         <div className="text-center">
-          <button className="group relative bg-white text-black px-10 py-4 rounded-full font-normal text-lg transition-all duration-300  hover:shadow-lg hover:shadow-white/20 overflow-hidden">
+          <button className="group relative bg-white text-black px-12 lg:px-10 py-2.5 lg:py-4 rounded-full font-normal text-lg transition-all duration-300  hover:shadow-lg hover:shadow-white/20 overflow-hidden">
             <span className="relative z-10">Get started</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
           </button>
         </div>
 
         <div className="text-center">
-          <button className="group relative bg-transparent border border-white text-white px-10 py-4 rounded-full font-normal text-lg transition-all duration-300  hover:shadow-lg hover:shadow-white/20 overflow-hidden hover:bg-white hover:text-black">
+          <button className="group relative bg-transparent border border-white text-white px-12 lg:px-10 py-2.5 lg:py-4 rounded-full font-normal text-lg transition-all duration-300  hover:shadow-lg hover:shadow-white/20 overflow-hidden hover:bg-white hover:text-black">
             <span className="relative z-10">Learn More</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
           </button>
         </div>
+      </motion.div>
+
+      {/* Bouncy Down Arrow */}
+      <motion.div
+        className="flex lg:hidden justify-center mt-0"
+        initial={{ y: 0, opacity: 0 }}
+        animate={{ y: [0, 18, 0], opacity: 1 }}
+        transition={{
+          duration: 1.2,
+          repeat: Infinity,
+          repeatType: "loop",
+          ease: "easeInOut",
+          delay: 0.5,
+        }}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="w-8 h-8 text-white opacity-70"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+        </svg>
       </motion.div>
 
       <motion.div
@@ -253,7 +278,7 @@ const Hero = () => {
                 key={index}
                 className="min-w-fit px-8 flex items-center justify-center"
               >
-                <span className="text-xl font-light whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity duration-300">
+                <span className="lg:text-xl text-base font-light whitespace-nowrap opacity-50 hover:opacity-100 transition-opacity duration-300">
                   {service}
                 </span>
               </div>

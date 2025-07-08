@@ -53,7 +53,7 @@ export default function ScrollProgressCursor() {
 
   return (
     <motion.div
-      className="fixed pointer-events-none z-50"
+      className="fixed pointer-events-none z-50 lg:flex hidden"
       style={{
         left: mousePosition.x,
         top: mousePosition.y,

@@ -41,7 +41,7 @@ const WhyChooseSilkywriters = () => {
   ];
 
   return (
-    <div className="min-h-screen  text-white px-20 py-20 relative overflow-hidden">
+    <div className="min-h-screen  text-white lg:px-20 px-5 py-20 relative overflow-hidden">
       <motion.div
         className="absolute w-[100vw] h-[0.5px] bg-gray-50 top-0 left-0 z-20"
         initial={{ opacity: 0.1, width: 0 }}
@@ -49,14 +49,14 @@ const WhyChooseSilkywriters = () => {
         transition={{ duration: 1, delay: 0.3 }}
         viewport={{ once: false }}
       />
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="lg:max-w-7xl max-w-full  lg:mx-auto mx-0 relative z-10">
         {/* Header */}
-        <div className="text-center mb-20">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-normal mb-6  tracking-wide">
+        <div className="text-center w-full mb-20">
+          <h1 className="text-5xl md:text-5xl lg:text-7xl font-normal mb-6  tracking-wide">
             Why Choose Silkywriters <span className="">?</span>
           </h1>
-          <p className="text-xl text-white/70 max-w-2xl mx-auto leading-relaxed tracking-wider">
-            We're not new to this, but we may be new to you.
+          <p className="normal-text text-base text-white/70 max-w-2xl mx-auto leading-relaxed tracking-wider">
+            Trusted expertise. Fresh perspective. Proven results.
           </p>
         </div>
 

@@ -21,11 +21,11 @@ const ModernNavbar = () => {
   return (
     <div className="">
       {/* Fixed Logo and Menu Button */}
-      <div className="fixed top-0 left-0 w-full flex justify-between items-center px-8 py-6 z-50">
+      <div className="fixed  -top-6 lg:top-0 left-6  w-full flex justify-between items-center px-8 py-6 z-50">
         {/* Logo/Avatar on left */}
         <Link to="/">
           <div
-            className={`w-28 h-28 rounded-full bg-white hover:bg-[goldenrod] cursor-pointer flex items-center justify-center overflow-hidden transition-all duration-500 ease-in-out ${
+            className={`lg:w-28 lg:h-28 w-20 h-20 rounded-full bg-white hover:bg-[goldenrod] cursor-pointer flex items-center justify-center overflow-hidden transition-all duration-500 ease-in-out ${
               isMenuOpen ? "opacity-100" : "opacity-0"
             }`}
             style={{ transition: "background-color 0.3s ease-in-out" }}
@@ -41,7 +41,7 @@ const ModernNavbar = () => {
           {/* Menu Button */}
           <button
             onClick={toggleMenu}
-            className="w-14 h-14 bg-gray-200 hover:bg-[goldenrod] cursor-pointer rounded-full flex items-center justify-center focus:outline-none z-50 relative transition-all duration-300 hover:rotate-180"
+            className="lg:w-14 lg:h-14 w-12 h-12 bg-gray-200 hover:bg-[goldenrod] cursor-pointer rounded-full flex items-center justify-center focus:outline-none z-50 relative transition-all duration-300 hover:rotate-180"
             aria-label="Toggle menu"
           >
             {/* Close icon */}

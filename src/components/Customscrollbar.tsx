@@ -174,7 +174,7 @@ export default function CustomScrollbar({
       {/* Custom scrollbar */}
       <motion.div
         ref={scrollbarRef}
-        className="fixed right-6 top-1/2 h-1/2 w-1 -translate-y-1/2 rounded-full z-50"
+        className="fixed right-2 lg:right-6 top-1/2 h-1/2 w-1 -translate-y-1/2 rounded-full z-50"
         style={{ backgroundColor: barColor }}
         onClick={handleBarClick}
         onMouseEnter={() => setIsHovering(true)}
@@ -204,7 +204,7 @@ export default function CustomScrollbar({
 
       {/* Section indicators */}
       {sections.length > 0 && (
-        <div className="fixed right-8 top-1/2 -translate-y-1/2 flex flex-col gap-4 z-50">
+        <div className="fixed hidden lg:right-8 top-1/2 -translate-y-1/2 md:flex flex-col gap-4 z-50">
           {sections.map((section, index) => (
             <motion.button
               key={index}
