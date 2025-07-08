@@ -61,7 +61,7 @@ const DisabilitySocialExclusion = () => {
           setTimeout(() => {
             setIsLoading(false);
             setContentReady(true);
-          }, 300);
+          }, 100);
           return 100;
         }
         // Randomize progress increments for more realistic loading

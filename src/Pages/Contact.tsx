@@ -64,7 +64,7 @@ const ContactPage = () => {
     // Simulate loading time (you can adjust this or tie it to actual data loading)
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 1000); // 2 seconds loading time
+    }, 300); // 300ms loading time
 
     return () => clearTimeout(loadingTimer);
   }, []);
