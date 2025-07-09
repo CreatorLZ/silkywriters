@@ -52,10 +52,10 @@ const WhyChooseSilkywriters = () => {
       <div className="lg:max-w-7xl max-w-full  lg:mx-auto mx-0 relative z-10">
         {/* Header */}
         <div className="text-center w-full mb-20">
-          <h1 className="text-5xl md:text-5xl lg:text-7xl font-normal mb-6  tracking-wide">
+          <h1 className="text-3xl md:text-5xl lg:text-7xl font-normal mb-6  tracking-wide">
             Why Choose Silkywriters <span className="">?</span>
           </h1>
-          <p className="normal-text text-base text-white/70 max-w-2xl mx-auto leading-relaxed tracking-wider">
+          <p className="normal-text text-xs lg:text-base text-white/70 max-w-2xl mx-auto leading-relaxed tracking-wider">
             Trusted expertise. Fresh perspective. Proven results.
           </p>
         </div>
@@ -71,17 +71,17 @@ const WhyChooseSilkywriters = () => {
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
               {/* Icon */}
-              <div className="w-16 h-16 mx-auto mb-6 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center text-3xl transition-all duration-300 group-hover:scale-110 group-hover:bg-white/15 group-hover:border-white/30">
+              <div className="lg:w-16 lg:h-16 h-12 w-12 mx-auto mb-6 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center text-3xl transition-all duration-300 group-hover:scale-110 group-hover:bg-white/15 group-hover:border-white/30">
                 {feature.icon}
               </div>
 
               {/* Title */}
-              <h3 className="text-xl font-normal mb-4 text-white group-hover:text-white transition-colors duration-300 tracking-wider">
+              <h3 className="lg:text-xl text-lg font-normal mb-4 text-white group-hover:text-white transition-colors duration-300 tracking-wider">
                 {feature.title}
               </h3>
 
               {/* Description */}
-              <p className="text-white/70 normal-text leading-relaxed group-hover:text-white/80 transition-colors duration-300">
+              <p className="lg:text-sm text-xs text-white/70 normal-text leading-relaxed group-hover:text-white/80 transition-colors duration-300">
                 {feature.description}
               </p>
             </div>
@@ -90,7 +90,7 @@ const WhyChooseSilkywriters = () => {
 
         {/* CTA Section */}
         <div className="text-center">
-          <button className="group relative bg-white text-black px-10 py-4 rounded-full font-normal text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-white/20 overflow-hidden">
+          <button className="group relative bg-white text-black px-12 lg:px-10 py-2.5 lg:py-4 rounded-full font-normal text-lg transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-white/20 overflow-hidden">
             <span className="relative z-10">Start Your Project Today</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-black/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
           </button>

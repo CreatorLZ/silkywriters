@@ -204,7 +204,7 @@ export default function CustomScrollbar({
 
       {/* Section indicators */}
       {sections.length > 0 && (
-        <div className="fixed hidden lg:right-8 top-1/2 -translate-y-1/2 md:flex flex-col gap-4 z-50">
+        <div className="fixed hidden lg:right-8 top-1/2 -translate-y-1/2 lg:flex flex-col gap-4 z-50">
           {sections.map((section, index) => (
             <motion.button
               key={index}

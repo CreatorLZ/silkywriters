@@ -96,8 +96,14 @@ const Projects: React.FC = () => {
       }).scrollYProgress
   );
 
+  const isMobile = window.innerWidth < 1024; // lg breakpoint
+
   // Smooth x transformation for projects
   const xs = scrollYProgresses.map((scrollYProgress) => {
+    if (isMobile) {
+      // No x animation on mobile
+      return 0;
+    }
     const x = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [50, 0, -50], {
       clamp: false,
     });
@@ -186,7 +192,7 @@ const Projects: React.FC = () => {
   const Phrase = ({ src }: { src: string }) => {
     return (
       <div className="px-5 flex gap-5 items-center">
-        <p className="text-[7.5vw] text-white font-medium outline-text4">
+        <p className="text-[7.5vw]  text-white font-medium outline-text4">
           Featured Work
         </p>
         <span className="relative h-[7.5vw] aspect-[4/2] rounded-full overflow-hidden">
@@ -202,11 +208,11 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <div className=" w-full h-full flex flex-col gap-64 pt-4 pb-10 relative overflow-hidden scroll-smooth">
+    <div className=" w-full h-full flex flex-col lg:gap-64 gap-10 pt-4 pb-10 relative overflow-hidden scroll-smooth">
       {/* statement*/}
-      <div className="w-full h-[90vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0 gap-5">
+      <div className="w-full md:h-[90vh] h-[65vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0 gap-5">
         <motion.div
-          className="absolute w-[100vw] h-[0.5px] bg-gray-50 top-10 left-0 z-20"
+          className="absolute w-[100vw] h-[0.5px]  bg-gray-50 top-10 left-0 z-20"
           initial={{ opacity: 0.1, width: 0 }}
           whileInView={{ opacity: 0.1, width: "100vw" }}
           transition={{ duration: 1, delay: 0.3 }}
@@ -221,7 +227,7 @@ const Projects: React.FC = () => {
         />
 
         <motion.h1
-          className="hero-section text-4xl font-normal text-center text-gray-100"
+          className="hero-section text-3xl lg:text-4xl font-normal text-center text-gray-100"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
@@ -236,7 +242,7 @@ const Projects: React.FC = () => {
         </motion.h1>
 
         <motion.p
-          className="normal-text mt-4 text-center text-gray-400"
+          className="normal-text mt-4 text-center lg:text-sm text-sm text-gray-400"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
@@ -260,7 +266,7 @@ const Projects: React.FC = () => {
               key={index}
               src={logo}
               alt={`Company Logo ${index + 1}`}
-              className="h-8 mx-8 object-contain filter brightness-0 invert"
+              className="lg:h-8 h-6 lg:mx-8 mx-4 object-contain filter brightness-0 invert"
             />
           ))}
         </InfiniteSlider>
@@ -287,9 +293,9 @@ const Projects: React.FC = () => {
           left="-45%"
           progress={scrollYProgress}
         />
-        <div className="w-full h-[50vh] flex items-center justify-center mb-20">
+        <div className="w-full lg:h-[50vh] h-[40vh] flex items-center justify-center mb-20">
           <motion.p
-            className=" normal-text text-xl font-normal text-center text-white/80 w-[50%] items-center justify-center tracking-wide"
+            className=" normal-text lg:text-xl text-base font-normal text-center text-white/80 w-[50%] items-center justify-center tracking-wide"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
@@ -303,9 +309,9 @@ const Projects: React.FC = () => {
             can create the best custom solutions possible. Here are a few
             examples of fabulous results.
           </motion.p>
-          <div className="absolute left-[50%] -bottom-12 flex flex-col items-center">
+          <div className="absolute left-[50%] lg:-bottom-12 bottom-0 flex flex-col items-center">
             <motion.div
-              className="w-[0.5px] h-32 bg-gray-50 opacity-5"
+              className="w-[0.5px] h-32 bg-gray-50 opacity-5 hidden lg:flex"
               initial={{ opacity: 0, height: 0 }}
               whileInView={{ opacity: 0.5, height: 138 }}
               transition={{ duration: 0.5, delay: 0.1 }}
@@ -326,7 +332,7 @@ const Projects: React.FC = () => {
       {/* Featured Work Section */}
 
       <motion.div
-        className="hero-section fixed bottom-0 left-0 w-[230px] h-[95px] z-50 flex items-center justify-center text-center bg-white text-black tracking-wide"
+        className="hero-section fixed bottom-0 left-0 lg:w-[230px] lg:h-[95px] w-[140px] h-[80px] z-50 flex items-center justify-center text-center bg-white text-black tracking-wide"
         style={{ x: xSpring }} // Apply smooth x animation
       >
         <h2>FEATURED WORK</h2>
@@ -375,47 +381,49 @@ const Projects: React.FC = () => {
       {projects.map((project, index) => {
         const x = xs[index];
 
-        const mainBackgroundPosition = "center";
-        const mainBackgroundSize = `${scales[index] * 100}%`;
+        const isMobile = window.innerWidth < 1024; // or use a hook for SSR safety
+        // For desktop: initial is "cover", then scale up with scroll. For mobile: always "cover".
+        const backgroundSize = isMobile
+          ? "cover"
+          : scales[index] <= 1
+          ? "cover"
+          : `${scales[index] * 100}%`;
 
         return (
           <div key={project.id} className="h-full pb-16">
             <motion.div
               ref={projectRefs.current[index]}
-              className="relative w-[860px] h-[460px] flex items-center bg-cover bg-center"
+              className="relative lg:w-[860px] lg:h-[460px] w-[85vw] h-[390px] flex items-center bg-cover bg-center"
               style={{
                 backgroundImage: `url(${project.image || "/placeholder.svg"})`,
-                backgroundSize: mainBackgroundSize,
-                backgroundPosition: mainBackgroundPosition,
+                backgroundSize, // dynamic!
+                backgroundPosition: "center",
+                backgroundRepeat: "no-repeat",
               }}
             >
-              {/* Add the subtle dark overlay */}
+              {/* subtle dark overlay */}
               <div className="absolute inset-0 bg-black/20 pointer-events-none" />
 
               {/* Inverted text overlay */}
               <div
-                className="inverted-text-overlay !flex"
+                className="inverted-text-overlay !flex lg:w-[860px] lg:h-[460px] w-[85vw] h-[390px]"
                 style={{
-                  width: "860px",
-                  height: "450px",
                   clipPath: "inset(0 0 0 0)",
                 }}
               >
                 <motion.h2
-                  className="hero-section text-8xl text-left font-normal outline-text3 !flex tracking-wide"
+                  className="hero-section lg:-top-[2.5rem] -top-[1rem] lg:text-8xl lg:left-[2rem] left-2 text-4xl text-left font-normal outline-text3 !flex tracking-wide"
                   style={{
                     position: "absolute",
-                    top: "-2.5rem",
-                    left: "2rem",
-                    x, // Smooth x animation
+                    x: isMobile ? 0 : x, // Smooth x animation only on desktop
                     translateX: "0%",
                     translateY: "0%",
                     whiteSpace: "nowrap",
                     ["--project-image" as string]: `url(${
                       project.image || "/placeholder.svg"
                     })`,
-                    ["--project-bg-size" as string]: mainBackgroundSize,
-                    ["--project-bg-position" as string]: mainBackgroundPosition,
+                    ["--project-bg-size" as string]: backgroundSize,
+                    ["--project-bg-position" as string]: "center",
                   }}
                   initial={{ y: 100, opacity: 0 }}
                   whileInView={{
@@ -434,9 +442,9 @@ const Projects: React.FC = () => {
 
               {/* Original title (solid white text) */}
               <motion.div
-                className="absolute -top-[2.5rem] left-[2rem] !flex"
+                className="absolute lg:-top-[2.5rem] -top-[1rem] lg:left-[2rem] left-2 !flex"
                 style={{
-                  x, // Smooth x animation
+                  x: isMobile ? 0 : x, // Smooth x animation only on desktop
                   translateX: "0%",
                   translateY: "0%",
                 }}
@@ -452,7 +460,7 @@ const Projects: React.FC = () => {
                 viewport={{ once: true, amount: 0.5 }}
               >
                 <h2
-                  className="hero-section text-8xl text-left font-normal outline-text3 !flex tracking-wide"
+                  className="hero-section lg:text-8xl text-4xl text-left font-normal outline-text3 !flex tracking-wide"
                   style={{ whiteSpace: "nowrap" }}
                 >
                   {project.title}
@@ -460,11 +468,10 @@ const Projects: React.FC = () => {
               </motion.div>
               {project.continuation && (
                 <motion.h3
-                  className="text-3xl text-left font-light  !flex"
+                  className="lg:text-3xl lg:left-[2rem]  left-[0.5rem] lg:top-[3.2rem] top-[1.2rem] text-left font-light  !flex"
                   style={{
                     position: "absolute",
-                    top: "3.2rem", // Position below the main title
-                    left: "2rem",
+
                     x,
                     translateX: "0%",
                     translateY: "0%",
@@ -486,8 +493,8 @@ const Projects: React.FC = () => {
                 </motion.h3>
               )}
 
-              <div className="absolute top-42 left-[55rem]">
-                <p className="text-gray-400 font-light text-[18px] tracking-[0.1em] rotate-90 whitespace-nowrap uppercase">
+              <div className="absolute lg:top-42 top-20 lg:left-[55rem] left-[19rem]">
+                <p className="normal-text text-gray-400 font-normal text-[18px] tracking-[0.1em] rotate-90 whitespace-nowrap uppercase">
                   {project.category}
                 </p>
               </div>
@@ -499,7 +506,7 @@ const Projects: React.FC = () => {
                 className="no-underline"
               >
                 <div
-                  className="circular-text-container mt-96 ml-[860px] min-w-36 min-h-36 z-10"
+                  className="circular-text-container lg:mt-96 mt-60 lg:ml-[860px] ml-[calc(85vw-144px)] min-w-36 min-h-36 z-10"
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                   aria-label={`View ${project.title} Project`}

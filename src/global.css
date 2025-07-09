@@ -105,6 +105,8 @@ body {
 @layer components {
   .circular-text-container {
     position: relative;
+    /* Ensure the container doesn't get clipped on mobile */
+    z-index: 20;
   }
 }
 
@@ -119,6 +121,8 @@ body {
     justify-content: center;
     transition: all 0.5s ease-in-out;
     overflow: visible !important; /* Allow content to overflow */
+    /* Ensure button is always visible */
+    z-index: 21;
   }
 }
 
@@ -142,6 +146,11 @@ body {
     transform: scale(1.1); /* Slightly larger to break out of circle */
     color: white !important;
     transition: color 0.5s ease-in-out, transform 0.3s ease;
+    /* Ensure text is visible on mobile */
+    @media (max-width: 1024px) {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+    }
   }
 }
 
@@ -174,6 +183,28 @@ body {
   .circular-text-container > div,
   .circular-text-container > div > div {
     overflow: visible !important;
+    /* Ensure all nested elements maintain visibility */
+    position: relative;
+    z-index: inherit;
+  }
+}
+
+/* Mobile-specific fixes for the CTA button */
+@media (max-width: 1024px) {
+  .circular-text-container {
+    /* Ensure the button container is properly positioned on mobile */
+    position: relative !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .circular-text-container > div:first-child {
+    /* Make sure the button itself is visible */
+    position: absolute !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 
