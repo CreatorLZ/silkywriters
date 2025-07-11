@@ -42,24 +42,25 @@ const Projects: React.FC = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "INTERNATIONAL RULE OF LAW",
-      continuation: "THE DONALD TRUMP DEVIATION",
-      image: trump,
-      number: "01",
-      category: "RESEARCH",
-      borderColor: "#FF4C4C",
-      fillColor: "#FF4C4C",
-    },
-    {
-      id: 2,
       title: "WOMEN SECLUSION",
       continuation: "IN CONTEMPORARY SOCIETY",
       image: woman2,
-      number: "02",
+      number: "01",
       category: "RESEARCH",
       borderColor: "goldenrod",
       fillColor: "goldenrod",
     },
+    {
+      id: 2,
+      title: "INTERNATIONAL RULE OF LAW",
+      continuation: "THE DONALD TRUMP DEVIATION",
+      image: trump,
+      number: "02",
+      category: "RESEARCH",
+      borderColor: "#FF4C4C",
+      fillColor: "#FF4C4C",
+    },
+
     {
       id: 3,
       title: "AFRICAN INDEPENDENCE",
@@ -208,16 +209,16 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <div className=" w-full h-full flex flex-col lg:gap-64 gap-10 pt-4 pb-10 relative overflow-hidden scroll-smooth">
+    <div className=" w-full h-full flex flex-col lg:gap-64 gap-10 pt-4 pb-10 relative overflow-hidden scroll-smooth ">
       {/* statement*/}
-      <div className="w-full md:h-[90vh] h-[65vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0 gap-5">
-        <motion.div
-          className="absolute w-[100vw] h-[0.5px]  bg-gray-50 top-10 left-0 z-20"
-          initial={{ opacity: 0.1, width: 0 }}
-          whileInView={{ opacity: 0.1, width: "100vw" }}
-          transition={{ duration: 1, delay: 0.3 }}
-          viewport={{ once: false }}
-        />
+      <motion.div
+        className="absolute w-[100vw] h-[0.5px]  bg-gray-50 top-10 left-0 z-20"
+        initial={{ opacity: 0.1, width: 0 }}
+        whileInView={{ opacity: 0.1, width: "100vw" }}
+        transition={{ duration: 1, delay: 0.3 }}
+        viewport={{ once: false }}
+      />
+      <div className="w-full md:h-[90vh] h-[65vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0 gap-5 lg:px-20 px-4">
         <motion.div
           className="absolute w-[100vw] h-[0.5px] bg-gray-50 opacity-5 bottom-10 left-0 z-20"
           initial={{ opacity: 0.1, width: 0 }}
@@ -227,7 +228,7 @@ const Projects: React.FC = () => {
         />
 
         <motion.h1
-          className="hero-section text-3xl lg:text-4xl font-normal text-center text-gray-100"
+          className="hero-section text-3xl lg:text-5xl font-normal text-center text-gray-100"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
@@ -242,7 +243,7 @@ const Projects: React.FC = () => {
         </motion.h1>
 
         <motion.p
-          className="normal-text mt-4 text-center lg:text-sm text-sm text-gray-400"
+          className="normal-text mt-4 text-center lg:text-sm text-sm text-gray-400 max-w-2xl relative"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
@@ -252,14 +253,24 @@ const Projects: React.FC = () => {
           }}
           viewport={{ once: false }}
         >
-          Our work is a testament to our commitment to excellence and
-          innovation.
+          <span className="relative">
+            We have a rich history of delivering exceptional results for our
+            clients across various industries. <br />
+          </span>
+          <motion.div
+            className="absolute left-0 right-0 top-1/2 h-2 bg-gradient-to-r from-white via-gray-300 to-gray-500 opacity-40 blur-lg pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, delay: 1.6 }}
+          />
+          {/* Our work is a testament to our commitment to excellence and
+          innovation. */}
         </motion.p>
 
         <InfiniteSlider
           duration={10}
           durationOnHover={100}
-          className="py-4 ml-[0px] text-white w-[100%] flex items-center justify-center"
+          className="py-4 ml-[0px] text-white w-[100%] flex items-center justify-center lg:mt-14 mt-10"
         >
           {logos.map((logo, index) => (
             <img
@@ -332,7 +343,7 @@ const Projects: React.FC = () => {
       {/* Featured Work Section */}
 
       <motion.div
-        className="hero-section fixed bottom-0 left-0 lg:w-[230px] lg:h-[95px] w-[140px] h-[80px] z-50 flex items-center justify-center text-center bg-white text-black tracking-wide"
+        className="hero-section lg:fixed hidden bottom-0 left-0 lg:w-[230px] lg:h-[95px] w-[140px] h-[80px] z-50  items-center justify-center text-center bg-white text-black tracking-wide"
         style={{ x: xSpring }} // Apply smooth x animation
       >
         <h2>FEATURED WORK</h2>
@@ -390,10 +401,13 @@ const Projects: React.FC = () => {
           : `${scales[index] * 100}%`;
 
         return (
-          <div key={project.id} className="h-full pb-16">
+          <div key={project.id} className="h-full lg:pb-16 pb-40 relative">
+            <h1 className="absolute !z-0 normal-text lg:text-[260px] text-[100px] lg:-top-[-5rem] lg:right-[-4.5rem] top-[-0.7em] right-[0.4em] font-bold outline-text2 tracking-wide lg:rotate-90 rotate-0 transform lg:-translate-y-2 translate-y-0">
+              {project.number}
+            </h1>
             <motion.div
               ref={projectRefs.current[index]}
-              className="relative lg:w-[860px] lg:h-[460px] w-[85vw] h-[390px] flex items-center bg-cover bg-center"
+              className="relative lg:w-[860px] lg:h-[460px] w-[80vw] h-[490px] flex items-center bg-cover bg-center"
               style={{
                 backgroundImage: `url(${project.image || "/placeholder.svg"})`,
                 backgroundSize, // dynamic!
@@ -406,7 +420,7 @@ const Projects: React.FC = () => {
 
               {/* Inverted text overlay */}
               <div
-                className="inverted-text-overlay !flex lg:w-[860px] lg:h-[460px] w-[85vw] h-[390px]"
+                className="inverted-text-overlay !flex lg:w-[860px] lg:h-[460px] w-[80vw] h-[490px]"
                 style={{
                   clipPath: "inset(0 0 0 0)",
                 }}
@@ -493,8 +507,8 @@ const Projects: React.FC = () => {
                 </motion.h3>
               )}
 
-              <div className="absolute lg:top-42 top-20 lg:left-[55rem] left-[19rem]">
-                <p className="normal-text text-gray-400 font-normal text-[18px] tracking-[0.1em] rotate-90 whitespace-nowrap uppercase">
+              <div className="absolute lg:top-42 top-35 lg:left-[55rem] left-[19rem]">
+                <p className="normal-text text-gray-400 font-normal lg:text-[18px] text-xs tracking-[0.1em] rotate-90 whitespace-nowrap uppercase">
                   {project.category}
                 </p>
               </div>
@@ -506,7 +520,7 @@ const Projects: React.FC = () => {
                 className="no-underline"
               >
                 <div
-                  className="circular-text-container lg:mt-96 mt-60 lg:ml-[860px] ml-[calc(85vw-144px)] min-w-36 min-h-36 z-10"
+                  className="circular-text-container lg:mt-96 mt-75 lg:ml-[860px] ml-[calc(85vw-144px)] lg:min-w-36 lg:min-h-36 min-h-16 min-w-16 z-10"
                   onMouseEnter={() => setHoveredProject(project.id)}
                   onMouseLeave={() => setHoveredProject(null)}
                   aria-label={`View ${project.title} Project`}
@@ -517,7 +531,11 @@ const Projects: React.FC = () => {
                   >
                     <div
                       className={`circular-bg-expand ${
-                        hoveredProject === project.id ? "scale-100" : "scale-0"
+                        window.innerWidth < 1024
+                          ? "scale-100"
+                          : hoveredProject === project.id
+                          ? "scale-100"
+                          : "scale-0"
                       }`}
                       style={{ backgroundColor: project.fillColor }}
                     ></div>
@@ -527,10 +545,9 @@ const Projects: React.FC = () => {
                       }`}
                     >
                       <span
-                        className="tracking-[0.5em] text-sm font-medium whitespace-nowrap extended-text"
+                        className="lg:tracking-[0.5em] tracking-normal lg:text-sm text-xs lg:w-[200%] w-[200%] font-medium whitespace-nowrap extended-text"
                         style={{
                           position: "absolute",
-                          width: "200%",
                           textAlign: "center",
                         }}
                       >
@@ -540,12 +557,6 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
               </Link>
-
-              <div>
-                <h1 className="text-[260px]  absolute -top-[-5rem] right-[-29rem] font-extrabold outline-text2 tracking-wide rotate-90 transform -translate-y-2">
-                  {project.number}
-                </h1>
-              </div>
             </motion.div>
           </div>
         );

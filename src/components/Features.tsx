@@ -1,4 +1,15 @@
+"use client";
+
 import { motion } from "framer-motion";
+
+// Simplified animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {}, // No stagger
+  },
+};
 
 const WhyChooseSilkywriters = () => {
   const features = [
@@ -41,52 +52,111 @@ const WhyChooseSilkywriters = () => {
   ];
 
   return (
-    <div className="min-h-screen  text-white lg:px-20 px-5 py-20 relative overflow-hidden">
+    <div className="min-h-screen text-white lg:px-20 px-5 py-20 relative overflow-hidden">
       <motion.div
         className="absolute w-[100vw] h-[0.5px] bg-gray-50 top-0 left-0 z-20"
         initial={{ opacity: 0.1, width: 0 }}
         whileInView={{ opacity: 0.1, width: "100vw" }}
         transition={{ duration: 1, delay: 0.3 }}
-        viewport={{ once: false }}
+        viewport={{ once: true }}
       />
-      <div className="lg:max-w-7xl max-w-full  lg:mx-auto mx-0 relative z-10">
+      <div className="lg:max-w-7xl max-w-full lg:mx-auto mx-0 relative z-10">
         {/* Header */}
-        <div className="text-center w-full mb-20">
-          <h1 className="text-3xl md:text-5xl lg:text-7xl font-normal mb-6  tracking-wide">
-            Why Choose Silkywriters <span className="">?</span>
-          </h1>
-          <p className="normal-text text-xs lg:text-base text-white/70 max-w-2xl mx-auto leading-relaxed tracking-wider">
-            Trusted expertise. Fresh perspective. Proven results.
-          </p>
+        <div className="text-center w-full mb-20 lg:mt-16 mt-10">
+          <motion.h1
+            className="text-3xl md:text-5xl lg:text-7xl font-medium mb-6 tracking-wider bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent relative overflow-visible"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+              delay: 0.4,
+            }}
+            viewport={{ once: true }}
+          >
+            {["Why", "Choose", "Silkywriters"].map((word, i) => (
+              <motion.span
+                key={word}
+                className="inline-block mx-1 bg-gradient-to-r from-white via-white to-white bg-clip-text text-transparent"
+                initial={{ opacity: 0, y: 40, scale: 0.8 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  duration: 0.7,
+                  ease: "easeOut",
+                  delay: 0.4 + i * 0.18,
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+            <motion.span
+              className="inline-block ml-2 bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: -30, rotate: -180, scale: 0.5 }}
+              animate={{ opacity: 1, y: 0, rotate: 0, scale: 1.2 }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 20,
+                delay: 1.1,
+              }}
+              whileHover={{ scale: 1.4, rotate: 20, color: "#f3f4f6" }}
+            >
+              ?
+            </motion.span>
+          </motion.h1>
+
+          <motion.p
+            className="normal-text text-xs text-center lg:text-base text-white/80 max-w-2xl mx-auto leading-relaxed tracking-wider relative"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              ease: "easeOut",
+              delay: 0.4,
+            }}
+            viewport={{ once: true }}
+          >
+            <span className="relative">
+              Trusted expertise. Fresh perspective. Proven results.
+              <motion.div
+                className="absolute left-0 right-0 top-1/2 h-2 bg-gradient-to-r from-white via-gray-300 to-gray-500 opacity-40 blur-lg pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.2, delay: 1.6 }}
+              />
+            </span>
+          </motion.p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
           {features.map((feature, index) => (
             <div
               key={index}
               className="group relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 text-center transition-all duration-500 hover:bg-white/10 hover:border-white/20 hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/50"
             >
-              {/* Top border glow effect */}
               <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-              {/* Icon */}
               <div className="lg:w-16 lg:h-16 h-12 w-12 mx-auto mb-6 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center text-3xl transition-all duration-300 group-hover:scale-110 group-hover:bg-white/15 group-hover:border-white/30">
                 {feature.icon}
               </div>
 
-              {/* Title */}
               <h3 className="lg:text-xl text-lg font-normal mb-4 text-white group-hover:text-white transition-colors duration-300 tracking-wider">
                 {feature.title}
               </h3>
 
-              {/* Description */}
               <p className="lg:text-sm text-xs text-white/70 normal-text leading-relaxed group-hover:text-white/80 transition-colors duration-300">
                 {feature.description}
               </p>
             </div>
           ))}
-        </div>
+        </motion.div>
 
         {/* CTA Section */}
         <div className="text-center">
