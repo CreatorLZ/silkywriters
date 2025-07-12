@@ -269,7 +269,7 @@ const Hero = () => {
           y: ySlider,
           transformOrigin: "center center",
         }}
-        className="w-full will-change-transform mt-8"
+        className="w-full will-change-transform md:mt-8 mt-0"
       >
         <div className="relative">
           <InfiniteSlider duration={35} durationOnHover={100} className="py-4">

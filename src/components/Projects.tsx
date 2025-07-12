@@ -192,7 +192,7 @@ const Projects: React.FC = () => {
   // Parallax Phrase component
   const Phrase = ({ src }: { src: string }) => {
     return (
-      <div className="px-5 flex gap-5 items-center">
+      <div className="lg:px-5 px-2 flex gap-5 items-center">
         <p className="text-[7.5vw]  text-white font-medium outline-text4">
           Featured Work
         </p>
@@ -218,7 +218,7 @@ const Projects: React.FC = () => {
         transition={{ duration: 1, delay: 0.3 }}
         viewport={{ once: false }}
       />
-      <div className="w-full md:h-[90vh] h-[65vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent m-0 gap-5 lg:px-20 px-4">
+      <div className="w-full md:h-[90vh] h-[65vh] flex flex-col pt-0 relative items-center justify-center bg-gray-transparent md:mb-0 mb-20 gap-5 lg:px-20 px-4">
         <motion.div
           className="absolute w-[100vw] h-[0.5px] bg-gray-50 opacity-5 bottom-10 left-0 z-20"
           initial={{ opacity: 0.1, width: 0 }}
@@ -285,7 +285,7 @@ const Projects: React.FC = () => {
       {/* statement end*/}
 
       {/* Featured Work Section text*/}
-      <div ref={featuredSectionRef} className="relative hero-section">
+      <div ref={featuredSectionRef} className="relative hero-section ">
         <Slide
           src={projects[0].image}
           direction="left"
@@ -295,7 +295,7 @@ const Projects: React.FC = () => {
         <Slide
           src={projects[1].image}
           direction="right"
-          left="-25%"
+          left="-33%"
           progress={scrollYProgress}
         />
         <Slide
@@ -304,9 +304,9 @@ const Projects: React.FC = () => {
           left="-45%"
           progress={scrollYProgress}
         />
-        <div className="w-full lg:h-[50vh] h-[40vh] flex items-center justify-center mb-20">
+        <div className="w-full lg:h-[50vh] h-[60vh] flex items-center justify-center mb-20 lg:px-20 px-4 ">
           <motion.p
-            className=" normal-text lg:text-xl text-base font-normal text-center text-white/80 w-[50%] items-center justify-center tracking-wide"
+            className=" normal-text lg:text-xl text-base font-normal text-center text-white/80 lg:w-[50%] w-[100%] items-center justify-center tracking-wide"
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
@@ -320,7 +320,7 @@ const Projects: React.FC = () => {
             can create the best custom solutions possible. Here are a few
             examples of fabulous results.
           </motion.p>
-          <div className="absolute left-[50%] lg:-bottom-12 bottom-0 flex flex-col items-center">
+          <div className="absolute left-[50%] lg:-bottom-12 bottom-50 flex flex-col items-center">
             <motion.div
               className="w-[0.5px] h-32 bg-gray-50 opacity-5 hidden lg:flex"
               initial={{ opacity: 0, height: 0 }}

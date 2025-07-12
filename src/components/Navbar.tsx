@@ -21,7 +21,7 @@ const ModernNavbar = () => {
   return (
     <div className="">
       {/* Fixed Logo and Menu Button */}
-      <div className="fixed  -top-2 lg:top-0 left-6  w-full flex justify-between items-center px-8 py-6 z-50">
+      <div className="fixed  -top-2 lg:top-0 left-4  w-full flex justify-between items-center px-8 py-6 z-50">
         {/* Logo/Avatar on left */}
         <Link to="/">
           <div

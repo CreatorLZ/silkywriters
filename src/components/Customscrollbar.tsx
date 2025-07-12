@@ -246,7 +246,7 @@ export default function CustomScrollbar({
 
       {/* Scroll progress indicator */}
       <motion.div
-        className="fixed top-0 left-0 h-1 bg-gradient-to-r from-white to-[goldenrod] z-50"
+        className="md:flex hidden fixed top-0 left-0 h-1 bg-gradient-to-r from-white to-[goldenrod] z-50"
         style={{
           scaleX: smoothProgress,
           transformOrigin: "0%",

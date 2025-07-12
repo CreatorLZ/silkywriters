@@ -102,7 +102,7 @@ export default function FAQSection() {
       <div className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-[2rem] font-normal uppercase tracking-[0.2em] text-gray-200 mb-2">
+          <h2 className="text-xl md:text-2xl lg:text-[2rem] font-normal uppercase tracking-[0.2em] text-gray-200 mb-2">
             FREQUENTLY ASKED QUESTIONS
           </h2>
         </div>
@@ -120,7 +120,7 @@ export default function FAQSection() {
                 onClick={() => toggleItem(item.id)}
                 className="w-full py-8 text-left flex items-center justify-between group hover:bg-[rgb(35,35,35)] transition-colors duration-200 px-4"
               >
-                <h3 className="normal-text text-lg md:text-xl font-bold text-white pr-8 group-hover:text-gray-200 transition-colors duration-200">
+                <h3 className="normal-text text-base md:text-xl  font-bold text-white pr-8 group-hover:text-gray-200 transition-colors duration-200">
                   {item.question}
                 </h3>
                 <div className="flex-shrink-0">
@@ -138,7 +138,7 @@ export default function FAQSection() {
                 }`}
               >
                 <div className="px-4">
-                  <p className="text-gray-300 leading-relaxed font-light normal-text">
+                  <p className="text-gray-300 md:text-base text-sm leading-relaxed font-light normal-text">
                     {item.answer}
                   </p>
                 </div>
