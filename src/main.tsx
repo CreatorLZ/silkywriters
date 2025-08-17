@@ -14,6 +14,7 @@ import ResearchProjectDisplay from "./components/ResearchProjectDisplay.tsx";
 import WomenSeclusion from "./components/WomenSeclusion.tsx";
 import AfricanIndependencePolitics from "./components/AfricanIndependencePolitics.tsx";
 import DisabilitySocialExclusion from "./components/DisabilitySocialExclusion.tsx";
+// import StudyProgressTracker from "./components/Test.tsx";
 // import ResearchProjectDisplay from "./components/ResearchProjectDisplay.tsx";
 
 const router = createBrowserRouter([
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
     path: "/work",
     element: (
       <Suspense fallback={<Loading />}>
-        <Work />,
+        <Work />,{/* <StudyProgressTracker /> */}
       </Suspense>
     ),
   },

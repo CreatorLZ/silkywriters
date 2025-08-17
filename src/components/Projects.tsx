@@ -31,12 +31,14 @@ interface Project {
   borderColor: string;
   fillColor: string;
 }
+
 const projectLinks: Record<string, string> = {
   "INTERNATIONAL RULE OF LAW": "/work/rule-of-law",
   "WOMEN SECLUSION": "/work/women-seclusion",
   "AFRICAN INDEPENDENCE": "/work/african-independence",
   "SOCIAL EXCLUSION": "/work/social-exclusion",
 };
+
 // Define the component
 const Projects: React.FC = () => {
   const projects: Project[] = [
@@ -60,7 +62,6 @@ const Projects: React.FC = () => {
       borderColor: "#FF4C4C",
       fillColor: "#FF4C4C",
     },
-
     {
       id: 3,
       title: "AFRICAN INDEPENDENCE",
@@ -85,8 +86,23 @@ const Projects: React.FC = () => {
 
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const [scales, setScales] = useState<number[]>(projects.map(() => 1));
+  const [isMobile, setIsMobile] = useState(false);
   const projectRefs = useRef(projects.map(() => createRef<HTMLDivElement>()));
   const featuredSectionRef = useRef<HTMLDivElement>(null);
+
+  // Handle responsive state
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+
+    // Check on mount
+    checkIsMobile();
+
+    // Add resize listener
+    window.addEventListener("resize", checkIsMobile);
+    return () => window.removeEventListener("resize", checkIsMobile);
+  }, []);
 
   // Create scroll tracking for each project section
   const scrollYProgresses = projects.map(
@@ -97,15 +113,10 @@ const Projects: React.FC = () => {
       }).scrollYProgress
   );
 
-  const isMobile = window.innerWidth < 1024; // lg breakpoint
-
   // Smooth x transformation for projects
   const xs = scrollYProgresses.map((scrollYProgress) => {
-    if (isMobile) {
-      // No x animation on mobile
-      return 0;
-    }
-    const x = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [50, 0, -50], {
+    const positions = isMobile ? [0, 0, 0] : [50, 0, -50];
+    const x = useTransform(scrollYProgress, [0.2, 0.5, 0.8], positions, {
       clamp: false,
     });
     return useSpring(x, { stiffness: 50, damping: 40 });
@@ -263,8 +274,6 @@ const Projects: React.FC = () => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1.2, delay: 1.6 }}
           />
-          {/* Our work is a testament to our commitment to excellence and
-          innovation. */}
         </motion.p>
 
         <InfiniteSlider
@@ -392,7 +401,6 @@ const Projects: React.FC = () => {
       {projects.map((project, index) => {
         const x = xs[index];
 
-        const isMobile = window.innerWidth < 1024; // or use a hook for SSR safety
         // For desktop: initial is "cover", then scale up with scroll. For mobile: always "cover".
         const backgroundSize = isMobile
           ? "cover"
@@ -485,8 +493,7 @@ const Projects: React.FC = () => {
                   className="lg:text-3xl lg:left-[2rem]  left-[0.5rem] lg:top-[3.2rem] top-[1.2rem] text-left font-light  !flex"
                   style={{
                     position: "absolute",
-
-                    x,
+                    x: isMobile ? 0 : x,
                     translateX: "0%",
                     translateY: "0%",
                     whiteSpace: "nowrap",
@@ -531,7 +538,7 @@ const Projects: React.FC = () => {
                   >
                     <div
                       className={`circular-bg-expand ${
-                        window.innerWidth < 1024
+                        isMobile
                           ? "scale-100"
                           : hoveredProject === project.id
                           ? "scale-100"

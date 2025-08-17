@@ -44,7 +44,7 @@ function Landing() {
   ];
 
   if (!fontLoaded) {
-    return <Loading />; // or your Loading component
+    return <Loading />;
   }
 
   return (
