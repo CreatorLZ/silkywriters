@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { TrendingUp, Zap, Gem, Target, Shield, Award } from "lucide-react";
 
 // Simplified animation variants
 const containerVariants = {
@@ -14,37 +15,37 @@ const containerVariants = {
 const WhyChooseSilkywriters = () => {
   const features = [
     {
-      icon: "📈",
+      icon: TrendingUp,
       title: "Results-Driven Content",
       description:
         "We craft content that doesn't just inform—it converts. Our strategic approach helps businesses achieve measurable growth through powerful storytelling and persuasive copy.",
     },
     {
-      icon: "⚡",
+      icon: Zap,
       title: "Lightning-Fast Delivery",
       description:
         "Your content needs are delivered within days, not weeks. Our streamlined process and dedicated team ensure you never miss a deadline or opportunity.",
     },
     {
-      icon: "💎",
+      icon: Gem,
       title: "Premium Quality, Fair Pricing",
       description:
         "Get top-tier content without the premium agency price tag. We believe exceptional writing should be accessible to businesses of all sizes.",
     },
     {
-      icon: "🎯",
+      icon: Target,
       title: "Strategic Content Solutions",
       description:
         "We don't just write—we solve problems. Our content strategies are tailored to address your unique business challenges and audience needs.",
     },
     {
-      icon: "🔒",
+      icon: Shield,
       title: "Dedicated Client Portal",
       description:
         "Manage all your projects, revisions, and communications through our secure client portal. Complete transparency and control at your fingertips.",
     },
     {
-      icon: "🥇",
+      icon: Award,
       title: "Expert Writing Team",
       description:
         "Work with seasoned professionals who understand your industry. Our writers combine creativity with strategic thinking to deliver content that truly resonates.",
@@ -141,17 +142,15 @@ const WhyChooseSilkywriters = () => {
               key={index}
               className="group relative bg-white/5 backdrop-blur-xl  border-white/10 border-dashed border-2 p-8 text-center transition-all duration-500 hover:bg-white/10  hover:border-dotted hover:-translate-y-2 hover:shadow-2xl hover:shadow-black/50"
             >
-              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
               <div className="lg:w-16 lg:h-16 h-12 w-12 mx-auto mb-6 bg-white/10 border border-white/20 rounded-xl flex items-center justify-center text-3xl transition-all duration-300 group-hover:scale-110 group-hover:bg-white/15 group-hover:border-white/30">
-                {feature.icon}
+                <feature.icon className="w-8 h-8" />
               </div>
 
               <h3 className="lg:text-xl text-lg font-normal mb-4 text-white group-hover:text-white transition-colors duration-300 tracking-wider">
                 {feature.title}
               </h3>
 
-              <p className="lg:text-sm text-xs text-white/70 normal-text leading-relaxed group-hover:text-white/80 transition-colors duration-300">
+              <p className="lg:text-sm text-xs text-white/50 normal-text leading-relaxed group-hover:text-white/60 transition-colors duration-300">
                 {feature.description}
               </p>
             </div>
