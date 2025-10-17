@@ -121,10 +121,10 @@ const MouseTracker = () => {
 
             {/* Inner Dot (which acts as the actual cursor) */}
             <motion.div
-              className="absolute rounded-full bg-primary"
+              className="absolute rounded-full bg-white"
               style={{
-                width: "8px",
-                height: "8px",
+                width: "0px",
+                height: "0px",
                 top: "23px",
                 left: "23px",
               }}
