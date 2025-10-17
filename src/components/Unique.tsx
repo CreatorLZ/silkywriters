@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 
 const Unique = () => {
   // Natural animation variants for heading
-  const headingVariants = {
+  const headingVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 60,
@@ -18,7 +19,7 @@ const Unique = () => {
   };
 
   // Staggered animation variants for grid items
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {},
     visible: {
       transition: {
@@ -27,7 +28,7 @@ const Unique = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 50,
@@ -43,7 +44,7 @@ const Unique = () => {
   };
 
   // Separator line variants
-  const lineVariants = {
+  const lineVariants: Variants = {
     hidden: {
       scaleX: 0,
       opacity: 0,

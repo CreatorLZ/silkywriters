@@ -7,6 +7,7 @@ import {
   useSpring,
   useMotionValue,
 } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
 import InfiniteSlider from "./InfiniteSLider";
 
@@ -86,7 +87,7 @@ const Hero = () => {
   ];
 
   // Natural reveal animations - just opacity and upward movement
-  const headingVariants = {
+  const headingVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 80,
@@ -101,7 +102,7 @@ const Hero = () => {
     },
   };
 
-  const paragraphVariants = {
+  const paragraphVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 60,
@@ -117,7 +118,7 @@ const Hero = () => {
     },
   };
 
-  const buttonsVariants = {
+  const buttonsVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 40,
@@ -133,7 +134,7 @@ const Hero = () => {
     },
   };
 
-  const sliderVariants = {
+  const sliderVariants: Variants = {
     hidden: {
       opacity: 0,
       y: 100,
